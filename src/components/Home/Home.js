@@ -1,12 +1,14 @@
-import React from 'react';
-import Card from '../UI/Card/Card';
-import classes from './Home.module.css';
+import React, { Fragment } from "react";
+import Card from "../UI/Card/Card";
+import classes from "./Home.module.css";
 
 const Home = (props) => {
   return (
-    <Card className={classes.home}>
-      <h1>Recent Activity:</h1>
-    </Card>
+    <Fragment>
+      <Card className={classes.home}>
+        <h1>Recent Activity:</h1>
+      </Card>
+    </Fragment>
   );
 };
 
