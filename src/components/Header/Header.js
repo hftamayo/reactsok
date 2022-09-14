@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import classes from "./Header.module.css";
-import Buttons from "./Buttons";
+import ButtonsContainer from "./ButtonsContainer";
 import Login from "../Login/Login";
 import Signup from "../Login/Signup";
 import AuthProvider from "../store/AuthProvider";
@@ -45,7 +45,7 @@ const Header = () => {
         {SignupIsShown && <Signup onClose={hideSignupHandler} />}
         <header className={classes["main-header"]}>
           <h1>Sotiria</h1>
-          <Buttons
+          <ButtonsContainer
             onShowLogin={showLoginHandler}
             onShowSignup={showSignupHandler}
             onRequestLogout={requestLogoutHandler}

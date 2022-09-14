@@ -3,7 +3,7 @@ import HeaderButton from "../UI/Buttons/HeaderButton";
 import AuthContext from "../store/auth-context";
 import classes from "./Header.module.css";
 
-const Buttons = (props) => {
+const ButtonsContainer = (props) => {
   const authCtx = useContext(AuthContext);
 
   return (
@@ -37,4 +37,4 @@ const Buttons = (props) => {
   );
 };
 
-export default Buttons;
+export default ButtonsContainer;
