@@ -1,15 +1,13 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Header from "./Header/Header";
 import Home from "./Home/Home";
 
 const Sok = () => {
   return (
-    <div>
+    <Fragment>
       <Header />
-      <main>
-        <Home />
-      </main>
-    </div>
+      <Home />
+    </Fragment>
   );
 };
 

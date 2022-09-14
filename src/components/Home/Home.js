@@ -4,11 +4,17 @@ import classes from "./Home.module.css";
 
 const Home = (props) => {
   return (
-    <Fragment>
-      <Card className={classes.home}>
-        <h1>Recent Activity:</h1>
+    <div className={classes.home}>
+      <Card>
+        <h1>What is Sotyria?</h1>
       </Card>
-    </Fragment>
+      <Card>
+        <h1>Why Sotyria?</h1>
+      </Card>
+      <Card>
+        <h1>Sotyria's feature</h1>
+      </Card>
+    </div>
   );
 };
 
