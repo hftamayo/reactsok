@@ -11,7 +11,6 @@ const ButtonsContainer = (props) => {
       <nav className={classes.nav}>
         {authCtx.isLoggedIn ? (
           <div className={classes.btncontainer}>
-            <HeaderButton onClick={props.onShowCart} />
             <HeaderButton
               onClick={props.onRequestLogout}
               userIcon={1}

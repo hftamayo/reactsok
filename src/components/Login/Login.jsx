@@ -1,12 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, Fragment } from "react";
 import Modal from "../UI/Modal/Modal";
 import classes from "./Login.module.css";
 import Input from "../UI/Input/Input";
+import HeaderButton from "../UI/Buttons/HeaderButton";
 import AuthContext from "../store/auth-context";
 
 const Login = (props) => {
-  const [emailValue, setEmailValue] = useState('');
-  const [passwordValue, setPasswordValue] = useState('');
+  const [emailValue, setEmailValue] = useState("");
+  const [passwordValue, setPasswordValue] = useState("");
 
   const [isCanceling, setIsCanceling] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
@@ -16,11 +17,11 @@ const Login = (props) => {
 
   const emailValueHandler = (event) => {
     setEmailValue(event.target.value);
-  }
+  };
 
   const passwordValueHandler = (event) => {
     setPasswordValue(event.target.value);
-  }
+  };
 
   const errorOnValidateHandler = () => {
     setIsErrorOnValidate(true);
@@ -34,7 +35,7 @@ const Login = (props) => {
     const userCredentialsEntered = {
       email: enteredEmail,
       password: enteredPassword,
-    }
+    };
 
     const response = await fetch("http://localhost:3000/auth/login", {
       method: "POST",
@@ -58,36 +59,40 @@ const Login = (props) => {
   /* incluir transaccion para verificar si es exitoso o hubo algun error */
 
   const errorOnValidateModalContent = (
-    <React.Fragment>
+    <Fragment>
       <p>User or Password incorrect, please verify</p>
       <div className={classes.actions}>
         <button className={classes.button} onClick={props.onClose}>
           Close
         </button>
       </div>
-    </React.Fragment>
+    </Fragment>
   );
 
   const didValidateModalContent = (
-    <React.Fragment>
+    <Fragment>
       <p>Creditials verified, welcome!</p>
       <div className={classes.actions}>
         <button className={classes.button} onClick={props.onClose}>
           Close
         </button>
       </div>
-    </React.Fragment>
+    </Fragment>
   );
 
   const loginButtons = (
-    <React.Fragment>
-      <button className={classes["button--alt"]} onClick={validateCredentialsHandler}>
-        Login
-      </button>
-      <button className={classes["button--alt"]} onClick={props.onClose}>
-        Close
-      </button>
-    </React.Fragment>
+    <Fragment>
+      <HeaderButton
+        onClick={validateCredentialsHandler}
+        userIcon={1}
+        requestedLabel="Login"
+      />
+      <HeaderButton
+        onClick={props.onClose}
+        userIcon={1}
+        requestedLabel="Close"
+      />
+    </Fragment>
   );
 
   const modalActions = (
@@ -95,7 +100,7 @@ const Login = (props) => {
   );
 
   const LoginModalContent = (
-    <React.Fragment>
+    <Fragment>
       <Input
         onChange={emailValueHandler}
         id="email"
@@ -119,12 +124,16 @@ const Login = (props) => {
         //onBlur={validatePasswordHandler}
       />
       {modalActions}
-    </React.Fragment>
+    </Fragment>
   );
 
   return (
     <Modal onClose={props.onClose}>
-      {!isCanceling && !isValidating && !isErrorOnValidate && !didValidate && LoginModalContent}
+      {!isCanceling &&
+        !isValidating &&
+        !isErrorOnValidate &&
+        !didValidate &&
+        LoginModalContent}
       {isValidating && isValidatingModalContent}
       {isErrorOnValidate && errorOnValidateModalContent}
       {!isValidating && didValidate && didValidateModalContent}
