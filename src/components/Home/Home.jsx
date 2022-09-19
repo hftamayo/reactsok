@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Card from "../UI/Card/Card";
 import classes from "./Home.module.css";
 
@@ -6,13 +6,13 @@ const Home = (props) => {
   return (
     <div className={classes.home}>
       <Card>
-        <h1>What is Sotyria?</h1>
+        <h1>What is Sot1r1a?</h1>
       </Card>
       <Card>
-        <h1>Why Sotyria?</h1>
+        <h1>Why Sot1r1a?</h1>
       </Card>
       <Card>
-        <h1>Sotyria's feature</h1>
+        <h1>Sot1r1a's feature</h1>
       </Card>
     </div>
   );

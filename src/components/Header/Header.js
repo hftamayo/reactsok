@@ -44,7 +44,7 @@ const Header = () => {
         {loginIsShown && <Login onClose={hideLoginHandler} />}
         {SignupIsShown && <Signup onClose={hideSignupHandler} />}
         <header className={classes["main-header"]}>
-          <h1>Sotiria</h1>
+          <h1>Sot1r1a</h1>
           <ButtonsContainer
             onShowLogin={showLoginHandler}
             onShowSignup={showSignupHandler}
