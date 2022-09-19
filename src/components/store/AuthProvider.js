@@ -24,7 +24,9 @@ export const AuthProvider = (props) => {
     };
 
     //handler temporal
-    const initValidSessionHandler = () => {
+    const initValidSessionHandler = (userName) => {
+      localStorage.setItem('user', userName);
+      localStorage.setItem('isLoggedIn', '1');      
         setIsLoggedIn(true);
     }
   

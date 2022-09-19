@@ -32,25 +32,20 @@ const Login = (props) => {
     const enteredEmail = emailValue;
     const enteredPassword = passwordValue;
 
-    const userCredentialsEntered = {
-      email: enteredEmail,
-      password: enteredPassword,
-    };
-
-    const response = await fetch("http://localhost:3000/auth/login", {
+    let response = await fetch("http://localhost:3000/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(userCredentialsEntered),
+      body: JSON.stringify({ enteredEmail, enteredPassword }),
     });
-    if (!response.ok) {
+    if (!response.name) {
       errorOnValidateHandler();
     } else {
       setIsValidating(false);
       setIsCanceling(false);
       setDidValidate(true);
-      authCtx.onValidSession();
+      authCtx.onValidSession(enteredEmail);
       //cartCtx.clearCart();
     }
   };
