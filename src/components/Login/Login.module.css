@@ -8,3 +8,10 @@
 .actions {
   text-align: center;
 }
+
+.btncontainer {
+  display: flex;
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+}
