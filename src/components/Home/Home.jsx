@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { useContext, Fragment } from "react";
 import Card from "../UI/Card/Card";
 import classes from "./Home.module.css";
 import GeneralInfo from "./GeneralInfo";
@@ -9,7 +9,7 @@ const Home = (props) => {
   const authCtx = useContext(AuthContext);
 
   return (
-    <Fragment>{authCtx.isLoggedIn ? <GeneralInfo /> : <Dashboard />}</Fragment>
+    <Fragment>{authCtx.isLoggedIn ? <Dashboard /> : <GeneralInfo />}</Fragment>
   );
 };
 
