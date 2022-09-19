@@ -2,12 +2,13 @@ import React, { useState, useRef } from "react";
 import Modal from "../UI/Modal/Modal";
 import classes from "./Login.module.css";
 import Input from "../UI/Input/Input";
+import HeaderButton from "../UI/Buttons/HeaderButton";
 
 const Signup = (props) => {
-  const [firstNameValue, setFirstNameValue] = useState('');
-  const [lastNameValue, setLastNameValue] = useState('');  
-  const [emailClientValue, setEmailClientValue] = useState('');  
-  const [passwordClientValue, setPasswordClientValue] = useState('');  
+  const [firstNameValue, setFirstNameValue] = useState("");
+  const [lastNameValue, setLastNameValue] = useState("");
+  const [emailClientValue, setEmailClientValue] = useState("");
+  const [passwordClientValue, setPasswordClientValue] = useState("");
 
   const [isCanceling, setIsCanceling] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
@@ -17,19 +18,19 @@ const Signup = (props) => {
 
   const firstNameValueHandler = (event) => {
     setFirstNameValue(event.target.value);
-  }
+  };
 
   const lastNameValueHandler = (event) => {
     setLastNameValue(event.target.value);
-  }  
+  };
 
   const emailClientValueHandler = (event) => {
     setEmailClientValue(event.target.value);
-  }  
+  };
 
   const passwordClientValueHandler = (event) => {
     setPasswordClientValue(event.target.value);
-  }
+  };
 
   const errorOnSignupHandler = () => {
     setIsErrorOnSave(true);
@@ -94,12 +95,18 @@ const Signup = (props) => {
 
   const SignupButtons = (
     <React.Fragment>
-      <button className={classes["button--alt"]} onClick={signupHandler}>
-        Sign-Up
-      </button>
-      <button className={classes["button--alt"]} onClick={props.onClose}>
-        Close
-      </button>
+      <div className={classes.btncontainer}>
+        <HeaderButton
+          onClick={signupHandler}
+          userIcon={1}
+          requestedLabel="Login"
+        />
+        <HeaderButton
+          onClick={props.onClose}
+          userIcon={0}
+          requestedLabel="Close"
+        />
+      </div>
     </React.Fragment>
   );
 
@@ -172,7 +179,11 @@ const Signup = (props) => {
 
   return (
     <Modal onClose={props.onClose}>
-      {!isCanceling && !isSaving && !isErrorOnSave && !didSave && SignupModalContent}
+      {!isCanceling &&
+        !isSaving &&
+        !isErrorOnSave &&
+        !didSave &&
+        SignupModalContent}
       {isSaving && isSavingModalContent}
       {isErrorOnSave && errorOnSavingModalContent}
       {!isSaving && didSave && didSaveModalContent}
