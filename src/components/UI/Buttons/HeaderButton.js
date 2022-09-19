@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SignupIcon from "./SignupIcon";
 import UserIcon from "./UserIcon";
+import CloseIcon from "./CloseIcon";
 import classes from "./HeaderButton.module.css";
 
 const HeaderButton = (props) => {
@@ -25,7 +26,7 @@ const HeaderButton = (props) => {
   return (
     <button className={btnClasses} onClick={props.onClick}>
       <span className={classes.icon}>
-        {userIcon === 1 ? <UserIcon /> : (userIcon === 2 ? <SignupIcon /> : '')}
+        {userIcon === 1 ? <UserIcon /> : (userIcon === 2 ? <SignupIcon /> : <CloseIcon />)}
       </span>
       <span>{requestedLabel}</span>
     </button>
