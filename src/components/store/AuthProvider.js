@@ -15,6 +15,7 @@ export const AuthProvider = (props) => {
   
     const logoutHandler = () => {
         localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('sokActiveUser');
         setIsLoggedIn(false);
     };
   
@@ -25,7 +26,7 @@ export const AuthProvider = (props) => {
 
     //handler temporal
     const initValidSessionHandler = (userName) => {
-      localStorage.setItem('user', userName);
+      localStorage.setItem('sokActiveUser', userName);
       localStorage.setItem('isLoggedIn', '1');      
         setIsLoggedIn(true);
     }
