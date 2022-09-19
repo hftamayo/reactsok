@@ -25,7 +25,7 @@ const HeaderButton = (props) => {
   return (
     <button className={btnClasses} onClick={props.onClick}>
       <span className={classes.icon}>
-        {userIcon === 1 ? <UserIcon /> : <SignupIcon />}
+        {userIcon === 1 ? <UserIcon /> : (userIcon === 2 ? <SignupIcon /> : '')}
       </span>
       <span>{requestedLabel}</span>
     </button>

@@ -90,7 +90,7 @@ const Login = (props) => {
         />
         <HeaderButton
           onClick={props.onClose}
-          userIcon={1}
+          userIcon={0}
           requestedLabel="Close"
         />
       </div>

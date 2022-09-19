@@ -26,7 +26,7 @@ const ButtonsContainer = (props) => {
             />
             <HeaderButton
               onClick={props.onShowSignup}
-              userIcon={0}
+              userIcon={2}
               requestedLabel="SignUp"
             />
           </div>
