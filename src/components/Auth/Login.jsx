@@ -12,6 +12,7 @@ const Login = (props) => {
   const [isCanceling, setIsCanceling] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
   const [didValidate, setDidValidate] = useState(false);
+  const [errorOnInputCredentials, setErrorOnInputCredentials] = useState(false);
   const [isErrorOnValidate, setIsErrorOnValidate] = useState(false);
   const authCtx = useContext(AuthContext);
 
@@ -23,24 +24,29 @@ const Login = (props) => {
     setPasswordValue(event.target.value);
   };
 
-  const errorOnValidateHandler = () => {
+  const errorOnValidateHandler = (errorDescription) => {
+    setErrorOnInputCredentials(errorDescription);
     setIsErrorOnValidate(true);
   };
 
   const validateCredentialsHandler = async () => {
     setIsValidating(true);
-    const enteredEmail = emailValue;
-    const enteredPassword = passwordValue;
+    //showSpinner = true
+    const inputCredentials = {
+      enteredEmail: emailValue,
+      enteredPassword: passwordValue,
 
-    let response = await fetch("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]", {
+    };
+
+    const response = await fetch("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ enteredEmail, enteredPassword }),
+      body: JSON.stringify(inputCredentials),
     });
-    if (!response.name) {
-      errorOnValidateHandler();
+    if (!response.email) {
+      errorOnValidateHandler(response.data);
     } else {
       setIsValidating(false);
       setIsCanceling(false);
@@ -56,6 +62,7 @@ const Login = (props) => {
   const errorOnValidateModalContent = (
     <Fragment>
       <p>User or Password incorrect, please verify</p>
+      <p>{errorOnInputCredentials}</p>
       <div className={classes.actions}>
         <button className={classes.button} onClick={props.onClose}>
           Close
