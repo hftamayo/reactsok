@@ -14,6 +14,7 @@ const Signup = (props) => {
   const [isSaving, setIsSaving] = useState(false);
   const [didSave, setDidSave] = useState(false);
   const [isErrorOnSave, setIsErrorOnSave] = useState(false);
+  const [errorOnSaveMessage, setErrorOnSaveMessage] = useState('');
   //const cartCtx = useContext(CartContext);
 
   const firstNameValueHandler = (event) => {
@@ -32,22 +33,25 @@ const Signup = (props) => {
     setPasswordClientValue(event.target.value);
   };
 
-  const errorOnSignupHandler = () => {
+  const errorOnSignupHandler = (errorDescription) => {
+    setErrorOnSaveMessage(errorDescription);
     setIsErrorOnSave(true);
   };
 
   const signupHandler = async () => {
     setIsSaving(true);
+    //showSpinner = true
     const enteredFirstname = firstNameValue;
     const enteredLastname = lastNameValue;
     const enteredEmail = emailClientValue;
     const enteredPassword = passwordClientValue;
 
     const newClientData = {
-      firstname: enteredFirstname,
-      lastname: enteredLastname,
+      //firstname: enteredFirstname,
+      //lastname: enteredLastname,
       email: enteredEmail,
       password: enteredPassword,
+      returnSecureToken: true,
     };
 
     const response = await fetch("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]", {
@@ -58,8 +62,9 @@ const Signup = (props) => {
       body: JSON.stringify(newClientData),
     });
 
+    //showSpinner = false
     if (!response.ok) {
-      errorOnSignupHandler();
+      errorOnSignupHandler(response.data);
     } else {
       setIsSaving(false);
       setIsCanceling(false);
@@ -73,7 +78,8 @@ const Signup = (props) => {
 
   const errorOnSavingModalContent = (
     <React.Fragment>
-      <p>The user account could not be created. Please try again later</p>
+      <p>The user account could not be created. Please report the next error:</p>
+      <p>{errorOnSaveMessage}</p>
       <div className={classes.actions}>
         <button className={classes.button} onClick={props.onClose}>
           Close
