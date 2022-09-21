@@ -32,7 +32,7 @@ const Login = (props) => {
     const enteredEmail = emailValue;
     const enteredPassword = passwordValue;
 
-    let response = await fetch("http://localhost:3000/auth/login", {
+    let response = await fetch("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
