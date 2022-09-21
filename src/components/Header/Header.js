@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
 import classes from "./Header.module.css";
 import ButtonsContainer from "./ButtonsContainer";
-import Login from "../Login/Login";
-import Signup from "../Login/Signup";
+import Login from "../Auth/Login";
+import Signup from "../Auth/Signup";
 import AuthProvider from "../store/AuthProvider";
 
 const Header = () => {
