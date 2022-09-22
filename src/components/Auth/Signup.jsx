@@ -6,6 +6,7 @@ import HeaderButton from "../UI/Buttons/HeaderButton";
 
 const Signup = (props) => {
   const FB_KEY = process.env.SOK_FBASE_API_KEY;
+  const SIGNUP_URL = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key={FB_KEY}";  
   const [firstNameValue, setFirstNameValue] = useState("");
   const [lastNameValue, setLastNameValue] = useState("");
   const [emailClientValue, setEmailClientValue] = useState("");
@@ -55,7 +56,7 @@ const Signup = (props) => {
       returnSecureToken: true,
     };
 
-    const response = await fetch("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key={FB_KEY}", {
+    const response = await fetch(SIGNUP_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
