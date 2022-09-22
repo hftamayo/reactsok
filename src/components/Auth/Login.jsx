@@ -7,6 +7,7 @@ import AuthContext from "../store/auth-context";
 
 const Login = (props) => {
   const FB_KEY = process.env.SOK_FBASE_API_KEY;
+  const SIGNIN_KEY = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={FB_KEY}";
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
 
@@ -39,7 +40,7 @@ const Login = (props) => {
 
     };
 
-    const response = await fetch("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={FB_KEY}", {
+    const response = await fetch(SIGNIN_KEY, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
