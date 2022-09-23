@@ -1,10 +1,43 @@
-import React, { useContext, Fragment } from "react";
+import React, { useContext, Fragment, useState } from "react";
 import HeaderButton from "../UI/Buttons/HeaderButton";
+import Login from "../Auth/Login";
+import Signup from "../Auth/Signup";
 import AuthContext from "../store/auth-context";
 import classes from "./Header.module.css";
 
 const ButtonsContainer = (props) => {
   const authCtx = useContext(AuthContext);
+
+  const isLoggedIn = authCtx.isLoggedIn;
+
+  const [loginIsShown, setLoginIsShown] = useState(false);
+  const [SignupIsShown, setSignupIsShown] = useState(false);
+
+  const showLoginHandler = () => {
+    setLoginIsShown(true);
+  };
+
+  const hideLoginHandler = () => {
+    setLoginIsShown(false);
+  };
+
+  const showSignupHandler = () => {
+    setSignupIsShown(true);
+  };
+
+  const hideSignupHandler = () => {
+    setSignupIsShown(false);
+  };
+
+  const requestLogoutHandler = () => {
+    /*
+    steps to consider:
+    1. products in the cart
+    2. orders not placed
+    */
+    authCtx.logout();
+  };
+
 
   return (
     <Fragment>
@@ -12,7 +45,7 @@ const ButtonsContainer = (props) => {
         {authCtx.isLoggedIn ? (
           <div className={classes.btncontainer}>
             <HeaderButton
-              onClick={props.onRequestLogout}
+              onClick={requestLogoutHandler}
               userIcon={1}
               requestedLabel="Logout"
             />
@@ -20,12 +53,12 @@ const ButtonsContainer = (props) => {
         ) : (
           <div className={classes.btncontainer}>
             <HeaderButton
-              onClick={props.onShowLogin}
+              onClick={showLoginHandler}
               userIcon={1}
               requestedLabel="Login"
             />
             <HeaderButton
-              onClick={props.onShowSignup}
+              onClick={showSignupHandler}
               userIcon={2}
               requestedLabel="SignUp"
             />
