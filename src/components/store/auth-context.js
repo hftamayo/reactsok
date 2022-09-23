@@ -63,8 +63,7 @@ export const AuthContextProvider = (props) => {
     setToken(token);
     localStorage.setItem('sokToken', token);
     localStorage.setItem('sokExpirationTime', expirationTime);
-    localStorage.setItem('isLoggedIn', '1');
-    setIsLoggedIn(true);
+    localStorage.setItem('isLoggedIn', isLoggedIn);
 
     const remainingTime = calculateRemainingTime(expirationTime);
 
@@ -75,6 +74,7 @@ export const AuthContextProvider = (props) => {
     if(tokenData){
       console.log(tokenData.duration);
       logoutTimer = setTimeout(logoutHandler, tokenData.duration);
+      setIsLoggedIn(true);
     }
   }, [tokenData, logoutHandler]);
 
