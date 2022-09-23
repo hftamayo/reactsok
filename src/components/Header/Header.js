@@ -1,11 +1,12 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import classes from "./Header.module.css";
 import ButtonsContainer from "./ButtonsContainer";
 import Login from "../Auth/Login";
 import Signup from "../Auth/Signup";
-import AuthProvider from "../store/AuthProvider";
+import AuthContext from "../store/auth-context";
 
 const Header = () => {
+  const authCtx = useContext(AuthContext);
   const [loginIsShown, setLoginIsShown] = useState(false);
   const [SignupIsShown, setSignupIsShown] = useState(false);
 
@@ -29,18 +30,14 @@ const Header = () => {
     /*
     steps to consider:
     1. products in the cart
-    2. orders not place them
+    2. orders not placed
     */
-    /*
-    source code example:
-      const authCtx = useContext(AuthContext);
-      <Button onClick={authCtx.onLogout}>Logout</Button>
-    */
+   authCtx.logout();
+   
   };
 
   return (
     <Fragment>
-      <AuthProvider>
         {loginIsShown && <Login onClose={hideLoginHandler} />}
         {SignupIsShown && <Signup onClose={hideSignupHandler} />}
         <header className={classes["main-header"]}>
@@ -51,7 +48,6 @@ const Header = () => {
             onRequestLogout={requestLogoutHandler}
           />
         </header>
-      </AuthProvider>
     </Fragment>
   );
 };
