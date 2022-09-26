@@ -1,12 +1,12 @@
 import React, { useState, useRef } from "react";
 import Modal from "../UI/Modal/Modal";
 import classes from "./Login.module.css";
-import Input from "../UI/Input/Input";
 import HeaderButton from "../UI/Buttons/HeaderButton";
 
 const Signup = (props) => {
   const FB_KEY = process.env.SOK_FBASE_API_KEY;
-  const SIGNUP_URL = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key={FB_KEY}";  
+  const SIGNUP_URL =
+    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key={FB_KEY}";
   const [firstNameValue, setFirstNameValue] = useState("");
   const [lastNameValue, setLastNameValue] = useState("");
   const [emailClientValue, setEmailClientValue] = useState("");
@@ -16,7 +16,7 @@ const Signup = (props) => {
   const [isSaving, setIsSaving] = useState(false);
   const [didSave, setDidSave] = useState(false);
   const [isErrorOnSave, setIsErrorOnSave] = useState(false);
-  const [errorOnSaveMessage, setErrorOnSaveMessage] = useState('');
+  const [errorOnSaveMessage, setErrorOnSaveMessage] = useState("");
   //const cartCtx = useContext(CartContext);
 
   const firstNameValueHandler = (event) => {
@@ -80,7 +80,9 @@ const Signup = (props) => {
 
   const errorOnSavingModalContent = (
     <React.Fragment>
-      <p>The user account could not be created. Please report the next error:</p>
+      <p>
+        The user account could not be created. Please report the next error:
+      </p>
       <p>{errorOnSaveMessage}</p>
       <div className={classes.actions}>
         <button className={classes.button} onClick={props.onClose}>
@@ -124,9 +126,10 @@ const Signup = (props) => {
 
   const SignupModalContent = (
     <React.Fragment>
-      <Input
+      <input
         onChange={firstNameValueHandler}
         id="firstname"
+        required
         label="First Name"
         type="text"
         value={firstNameValue}
@@ -135,9 +138,10 @@ const Signup = (props) => {
         //onChange={emailChangeHandler}
         //onBlur={validateEmailHandler}
       />
-      <Input
+      <input
         onChange={lastNameValueHandler}
         id="lastname"
+        required
         label="Last Name"
         type="text"
         value={lastNameValue}
@@ -146,9 +150,10 @@ const Signup = (props) => {
         //onChange={emailChangeHandler}
         //onBlur={validateEmailHandler}
       />
-      <Input
+      <input
         onChange={emailClientValueHandler}
         id="email"
+        required
         label="E-Mail"
         type="email"
         autodata="off"
@@ -158,9 +163,10 @@ const Signup = (props) => {
         //onChange={emailChangeHandler}
         //onBlur={validateEmailHandler}
       />
-      <Input
+      <input
         onChange={passwordClientValueHandler}
         id="paswword"
+        required
         label="Password"
         type="password"
         autodata="new-password"
@@ -171,9 +177,10 @@ const Signup = (props) => {
         //onChange={passwordChangeHandler}
         //onBlur={validatePasswordHandler}
       />
-      <Input
+      <input
         //ref={passwordInputRef}
         id="paswword2"
+        required
         label="Confirm-Password"
         type="password"
         autodata="new-password"
