@@ -164,6 +164,7 @@ const Signup = (props) => {
         label="Password"
         type="password"
         autodata="new-password"
+        minlength="7"
         value={passwordClientValue}
         //isValid={passwordIsValid}
         //value={passwordState.value}
@@ -176,6 +177,7 @@ const Signup = (props) => {
         label="Confirm-Password"
         type="password"
         autodata="new-password"
+        minlength="7"
         //isValid={passwordIsValid}
         //value={passwordState.value}
         //onChange={passwordChangeHandler}
