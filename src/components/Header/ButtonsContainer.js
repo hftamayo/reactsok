@@ -11,7 +11,7 @@ const ButtonsContainer = (props) => {
   const isLoggedIn = authCtx.isLoggedIn;
 
   const [loginIsShown, setLoginIsShown] = useState(false);
-  const [SignupIsShown, setSignupIsShown] = useState(false);
+  const [signupIsShown, setSignupIsShown] = useState(false);
 
   const showLoginHandler = () => {
     setLoginIsShown(true);
@@ -41,6 +41,8 @@ const ButtonsContainer = (props) => {
 
   return (
     <Fragment>
+      {loginIsShown && <Login onClose={hideLoginHandler} />}
+      {signupIsShown && <Signup onClose={hideSignupHandler} />}      
       <nav className={classes.nav}>
         {authCtx.isLoggedIn ? (
           <div className={classes.btncontainer}>
