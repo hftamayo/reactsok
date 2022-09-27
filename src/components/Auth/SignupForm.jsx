@@ -21,24 +21,63 @@ const SignupForm = (props) => {
   const password1ClientRef = useRef();
   const password2ClientRef = useRef();
 
-
   const submitHandler = (event) => {
-      event.prevent.Default();
+    event.prevent.Default();
 
-      const enteredFirstName = firstNameRef.current.value;
-      const enteredLastName = lastNameRef.current.value;
-      const enteredEmail = emailClientRef.current.value;
-      const enteredPassword1 = password1ClientRef.current.value;
-      const enteredPassword2 = password2ClientRef.current.value;
+    const enteredFirstName = firstNameRef.current.value;
+    const enteredLastName = lastNameRef.current.value;
+    const enteredEmail = emailClientRef.current.value;
+    const enteredPassword1 = password1ClientRef.current.value;
+    const enteredPassword2 = password2ClientRef.current.value;
 
-      const enteredFirstNameIsValid = !isEmpty(enteredFirstName);
-      const enteredLastNameIsValid = !isEmpty(enteredLastName);
-      const enteredEmailIsValid = !isEmpty(enteredEmail);
-      const enteredPasswordLength = !isNotSevenChars(enteredPassword1);
-      const enteredConfirmPassword = !notEqualPasswords(enteredPassword1, enteredPassword2);
+    const enteredFirstNameIsValid = !isEmpty(enteredFirstName);
+    const enteredLastNameIsValid = !isEmpty(enteredLastName);
+    const enteredEmailIsValid = !isEmpty(enteredEmail);
+    const enteredPasswordLength = !isNotSevenChars(enteredPassword1);
+    const enteredConfirmPassword =
+      enteredPasswordLength &&
+      !notEqualPasswords(enteredPassword1, enteredPassword2);
 
+    setFormInputsValidity({
+      firstName: enteredFirstNameIsValid,
+      lastName: enteredLastNameIsValid,
+      email: enteredEmailIsValid,
+      password: enteredConfirmPassword,
+    });
 
+    const formIsValid =
+      enteredFirstNameIsValid &&
+      enteredLastNameIsValud &&
+      enteredEmailIsValid &&
+      enteredConfirmPassword;
+
+      if(!formIsValid){
+        return;
+      }
+
+      props.onConfirm({
+        firstName: enteredFirstName,
+        lastName: enteredLastName,
+        email: enteredEmail,
+        password: enteredPassword1,
+      });
   };
+
+  const firstNameControlClasses = `${classes.control} ${
+    formInputsValidity.firstName ? "" : classes.invalid
+  }`;
+  const lastNameControlClasses = `${classes.control} ${
+    formInputsValidity.lastName ? "" : classes.invalid
+  }`;
+  const emailControlClasses = `${classes.control} ${
+    formInputsValidity.email ? "" : classes.invalid
+  }`;
+  const password1ControlClasses = `${classes.control} ${
+    formInputsValidity.password ? "" : classes.invalid
+  }`;
+  const password2ControlClasses = `${classes.control} ${
+    formInputsValidity.password ? "" : classes.invalid
+  }`;
 
   const SignupModalContent = (
     <React.Fragment>
