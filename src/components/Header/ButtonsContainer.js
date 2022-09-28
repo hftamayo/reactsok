@@ -44,7 +44,7 @@ const ButtonsContainer = (props) => {
       {loginIsShown && <Login onClose={hideLoginHandler} />}
       {signupIsShown && <Signup onClose={hideSignupHandler} />}      
       <nav className={classes.nav}>
-        {authCtx.isLoggedIn ? (
+        {isLoggedIn ? (
           <div className={classes.btncontainer}>
             <HeaderButton
               onClick={requestLogoutHandler}
