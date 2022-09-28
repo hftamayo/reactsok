@@ -16,7 +16,6 @@ const Signup = (props) => {
   const [errorOnSaveMessage, setErrorOnSaveMessage] = useState("");
   //const cartCtx = useContext(CartContext);
 
-
   const errorOnSignupHandler = (errorDescription) => {
     setErrorOnSaveMessage(errorDescription);
     setIsErrorOnSave(true);
@@ -25,18 +24,9 @@ const Signup = (props) => {
   const signupHandler = async () => {
     setIsSaving(true);
     //showSpinner = true
-    const enteredFirstname = firstNameValue;
-    const enteredLastname = lastNameValue;
-    const enteredEmail = emailClientValue;
-    const enteredPassword = passwordClientValue;
 
-    const newClientData = {
-      //firstname: enteredFirstname,
-      //lastname: enteredLastname,
-      email: enteredEmail,
-      password: enteredPassword,
-      returnSecureToken: true,
-    };
+    //getting data from SignUpForm
+    //use the variable newClientData
 
     const response = await fetch(SIGNUP_URL, {
       method: "POST",
@@ -76,7 +66,7 @@ const Signup = (props) => {
 
   const didSaveModalContent = (
     <React.Fragment>
-      <p>User account created, welcome!</p>
+      <p>User account created, please use the login option</p>
       <div className={classes.actions}>
         <button className={classes.button} onClick={props.onClose}>
           Close
@@ -91,7 +81,7 @@ const Signup = (props) => {
         <HeaderButton
           onClick={signupHandler}
           userIcon={1}
-          requestedLabel="Login"
+          requestedLabel="Save"
         />
         <HeaderButton
           onClick={props.onClose}
@@ -102,77 +92,15 @@ const Signup = (props) => {
     </React.Fragment>
   );
 
-  const modalActions = (
+  const modalButtonActions = (
     <div className={classes.actions}>{!isCanceling ? SignupButtons : ""}</div>
   );
 
   const SignupModalContent = (
     <React.Fragment>
-      <input
-        onChange={firstNameValueHandler}
-        id="firstname"
-        required
-        label="First Name"
-        type="text"
-        value={firstNameValue}
-        //isValid={emailIsValid}
-        //value={emailState.value}
-        //onChange={emailChangeHandler}
-        //onBlur={validateEmailHandler}
-      />
-      <input
-        onChange={lastNameValueHandler}
-        id="lastname"
-        required
-        label="Last Name"
-        type="text"
-        value={lastNameValue}
-        //isValid={emailIsValid}
-        //value={emailState.value}
-        //onChange={emailChangeHandler}
-        //onBlur={validateEmailHandler}
-      />
-      <input
-        onChange={emailClientValueHandler}
-        id="email"
-        required
-        label="E-Mail"
-        type="email"
-        autodata="off"
-        value={emailClientValue}
-        //isValid={emailIsValid}
-        //value={emailState.value}
-        //onChange={emailChangeHandler}
-        //onBlur={validateEmailHandler}
-      />
-      <input
-        onChange={passwordClientValueHandler}
-        id="paswword"
-        required
-        label="Password"
-        type="password"
-        autodata="new-password"
-        minlength="7"
-        value={passwordClientValue}
-        //isValid={passwordIsValid}
-        //value={passwordState.value}
-        //onChange={passwordChangeHandler}
-        //onBlur={validatePasswordHandler}
-      />
-      <input
-        //ref={passwordInputRef}
-        id="paswword2"
-        required
-        label="Confirm-Password"
-        type="password"
-        autodata="new-password"
-        minlength="7"
-        //isValid={passwordIsValid}
-        //value={passwordState.value}
-        //onChange={passwordChangeHandler}
-        //onBlur={validatePasswordHandler}
-      />
-      {modalActions}
+      /* SignUpForm */
+
+      {modalButtonActions}
     </React.Fragment>
   );
 
