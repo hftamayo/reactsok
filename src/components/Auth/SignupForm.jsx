@@ -1,7 +1,5 @@
 import React, { useState, useRef } from "react";
-import Modal from "../UI/Modal/Modal";
 import classes from "./Login.module.css";
-import HeaderButton from "../UI/Buttons/HeaderButton";
 
 const isEmpty = (value) => value.trim() === "";
 const isNotSevenChars = (value) => value.trim().length !== 7;
