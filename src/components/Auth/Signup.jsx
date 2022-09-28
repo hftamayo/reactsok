@@ -98,8 +98,7 @@ const Signup = (props) => {
 
   const SignupModalContent = (
     <React.Fragment>
-      /* SignUpForm */
-
+      <SignupForm />
       {modalButtonActions}
     </React.Fragment>
   );
