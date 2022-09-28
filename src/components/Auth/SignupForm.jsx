@@ -10,7 +10,8 @@ const SignupForm = (props) => {
     firstName: true,
     lastName: true,
     email: true,
-    password: true,
+    password1: true,
+    password2: true,
   });
 
   const firstNameRef = useRef();
@@ -40,7 +41,8 @@ const SignupForm = (props) => {
       firstName: enteredFirstNameIsValid,
       lastName: enteredLastNameIsValid,
       email: enteredEmailIsValid,
-      password: enteredConfirmPassword,
+      password1: enteredConfirmPassword,
+      password2: enteredConfirmPassword,
     });
 
     const formIsValid =
@@ -57,7 +59,8 @@ const SignupForm = (props) => {
       firstName: enteredFirstName,
       lastName: enteredLastName,
       email: enteredEmail,
-      password: enteredPassword1,
+      password1: enteredPassword1,
+      password2: enteredPassword2,
     });
   };
 
@@ -71,10 +74,10 @@ const SignupForm = (props) => {
     formInputsValidity.email ? "" : classes.invalid
   }`;
   const password1ControlClasses = `${classes.control} ${
-    formInputsValidity.password ? "" : classes.invalid
+    formInputsValidity.password1 ? "" : classes.invalid
   }`;
   const password2ControlClasses = `${classes.control} ${
-    formInputsValidity.password ? "" : classes.invalid
+    formInputsValidity.password2 ? "" : classes.invalid
   }`;
 
   return (
