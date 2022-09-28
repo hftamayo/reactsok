@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from "react";
+import React from "react";
 import classes from "./Header.module.css";
 import ButtonsContainer from "./ButtonsContainer";
 
