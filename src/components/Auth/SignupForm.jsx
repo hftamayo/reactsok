@@ -51,16 +51,16 @@ const SignupForm = (props) => {
       enteredEmailIsValid &&
       enteredConfirmPassword;
 
-      if(!formIsValid){
-        return;
-      }
+    if (!formIsValid) {
+      return;
+    }
 
-      props.onConfirm({
-        firstName: enteredFirstName,
-        lastName: enteredLastName,
-        email: enteredEmail,
-        password: enteredPassword1,
-      });
+    props.onConfirm({
+      firstName: enteredFirstName,
+      lastName: enteredLastName,
+      email: enteredEmail,
+      password: enteredPassword1,
+    });
   };
 
   const firstNameControlClasses = `${classes.control} ${
@@ -79,88 +79,101 @@ const SignupForm = (props) => {
     formInputsValidity.password ? "" : classes.invalid
   }`;
 
-  const SignupModalContent = (
-    <React.Fragment>
-      <input
-        onChange={firstNameValueHandler}
-        id="firstname"
-        required
-        label="First Name"
-        type="text"
-        value={firstNameValue}
-        //isValid={emailIsValid}
-        //value={emailState.value}
-        //onChange={emailChangeHandler}
-        //onBlur={validateEmailHandler}
-      />
-      <input
-        onChange={lastNameValueHandler}
-        id="lastname"
-        required
-        label="Last Name"
-        type="text"
-        value={lastNameValue}
-        //isValid={emailIsValid}
-        //value={emailState.value}
-        //onChange={emailChangeHandler}
-        //onBlur={validateEmailHandler}
-      />
-      <input
-        onChange={emailClientValueHandler}
-        id="email"
-        required
-        label="E-Mail"
-        type="email"
-        autodata="off"
-        value={emailClientValue}
-        //isValid={emailIsValid}
-        //value={emailState.value}
-        //onChange={emailChangeHandler}
-        //onBlur={validateEmailHandler}
-      />
-      <input
-        onChange={passwordClientValueHandler}
-        id="paswword"
-        required
-        label="Password"
-        type="password"
-        autodata="new-password"
-        minlength="7"
-        value={passwordClientValue}
-        //isValid={passwordIsValid}
-        //value={passwordState.value}
-        //onChange={passwordChangeHandler}
-        //onBlur={validatePasswordHandler}
-      />
-      <input
-        //ref={passwordInputRef}
-        id="paswword2"
-        required
-        label="Confirm-Password"
-        type="password"
-        autodata="new-password"
-        minlength="7"
-        //isValid={passwordIsValid}
-        //value={passwordState.value}
-        //onChange={passwordChangeHandler}
-        //onBlur={validatePasswordHandler}
-      />
-      {modalActions}
-    </React.Fragment>
-  );
-
   return (
-    <Modal onClose={props.onClose}>
-      {!isCanceling &&
-        !isSaving &&
-        !isErrorOnSave &&
-        !didSave &&
-        SignupModalContent}
-      {isSaving && isSavingModalContent}
-      {isErrorOnSave && errorOnSavingModalContent}
-      {!isSaving && didSave && didSaveModalContent}
-    </Modal>
+    <form className={classes.form} onSubmit={confirmHandler}>
+      <div className={firstNameControlClasses}>
+        <label htmlFor="firstName">First Name</label>
+        <input
+          onChange={firstNameValueHandler}
+          id="firstname"
+          required
+          label="First Name"
+          type="text"
+          value={firstNameValue}
+          //isValid={emailIsValid}
+          //value={emailState.value}
+          //onChange={emailChangeHandler}
+          //onBlur={validateEmailHandler}
+        />
+        {!formInputsValidity.firstName && (
+          <p>Please enter a valid first name</p>
+        )}
+      </div>
+
+      <div className={lastNameControlClasses}>
+        <label htmlFor="lastName">Last Name</label>
+        <input
+          onChange={lastNameValueHandler}
+          id="lastname"
+          required
+          label="Last Name"
+          type="text"
+          value={lastNameValue}
+          //isValid={emailIsValid}
+          //value={emailState.value}
+          //onChange={emailChangeHandler}
+          //onBlur={validateEmailHandler}
+        />
+        {!formInputsValidity.lastName && <p>Please enter a valid last name</p>}
+      </div>
+
+      <div className={emailControlClasses}>
+        <label htmlFor="email">E-mail</label>
+        <input
+          onChange={emailClientValueHandler}
+          id="email"
+          required
+          label="E-Mail"
+          type="email"
+          autodata="off"
+          value={emailClientValue}
+          //isValid={emailIsValid}
+          //value={emailState.value}
+          //onChange={emailChangeHandler}
+          //onBlur={validateEmailHandler}
+        />
+        {!formInputsValidity.email && <p>Please enter a valid Email</p>}
+      </div>
+
+      <div className={password1ControlClasses}>
+        <label htmlFor="password1">Password</label>
+        <input
+          onChange={password1ClientValueHandler}
+          id="paswword1"
+          required
+          label="Password"
+          type="password"
+          autodata="new-password"
+          minlength="7"
+          value={password1ClientValue}
+          //isValid={passwordIsValid}
+          //value={passwordState.value}
+          //onChange={passwordChangeHandler}
+          //onBlur={validatePasswordHandler}
+        />
+        {!formInputsValidity.password && <p>Please enter a valid Password</p>}
+      </div>
+
+      <div className={password2ControlClasses}>
+        <label htmlFor="password2">Password Confirmation</label>
+        <input
+          onChange={password2ClientValueHandler}
+          id="paswword2"
+          required
+          label="Password"
+          type="password"
+          autodata="new-password"
+          minlength="7"
+          value={passwordClientValue}
+          //isValid={passwordIsValid}
+          //value={passwordState.value}
+          //onChange={passwordChangeHandler}
+          //onBlur={validatePasswordHandler}
+        />
+        {!formInputsValidity.password && <p>Please enter a valid Password</p>}
+      </div>
+    </form>
   );
 };
 
-export default Signup;
+export default SignupForm;
