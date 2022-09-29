@@ -47,7 +47,7 @@ const SignupForm = (props) => {
 
     const formIsValid =
       enteredFirstNameIsValid &&
-      enteredLastNameIsValud &&
+      enteredLastNameIsValid &&
       enteredEmailIsValid &&
       enteredConfirmPassword;
 
@@ -81,16 +81,15 @@ const SignupForm = (props) => {
   }`;
 
   return (
-    <form className={classes.form} onSubmit={confirmHandler}>
+    <form className={classes.form} onSubmit={submitHandler}>
       <div className={firstNameControlClasses}>
         <label htmlFor="firstName">First Name</label>
         <input
-          onChange={firstNameValueHandler}
           id="firstname"
           required
           label="First Name"
           type="text"
-          value={firstNameValue}
+          ref={firstNameRef}
           //isValid={emailIsValid}
           //value={emailState.value}
           //onChange={emailChangeHandler}
@@ -104,12 +103,11 @@ const SignupForm = (props) => {
       <div className={lastNameControlClasses}>
         <label htmlFor="lastName">Last Name</label>
         <input
-          onChange={lastNameValueHandler}
           id="lastname"
           required
           label="Last Name"
           type="text"
-          value={lastNameValue}
+          ref={lastNameRef}
           //isValid={emailIsValid}
           //value={emailState.value}
           //onChange={emailChangeHandler}
@@ -121,13 +119,12 @@ const SignupForm = (props) => {
       <div className={emailControlClasses}>
         <label htmlFor="email">E-mail</label>
         <input
-          onChange={emailClientValueHandler}
           id="email"
           required
           label="E-Mail"
           type="email"
           autodata="off"
-          value={emailClientValue}
+          ref={emailClientRef}
           //isValid={emailIsValid}
           //value={emailState.value}
           //onChange={emailChangeHandler}
@@ -139,14 +136,13 @@ const SignupForm = (props) => {
       <div className={password1ControlClasses}>
         <label htmlFor="password1">Password</label>
         <input
-          onChange={password1ClientValueHandler}
           id="paswword1"
           required
           label="Password"
           type="password"
           autodata="new-password"
           minlength="7"
-          value={password1ClientValue}
+          ref={password1ClientRef}
           //isValid={passwordIsValid}
           //value={passwordState.value}
           //onChange={passwordChangeHandler}
@@ -158,14 +154,13 @@ const SignupForm = (props) => {
       <div className={password2ControlClasses}>
         <label htmlFor="password2">Password Confirmation</label>
         <input
-          onChange={password2ClientValueHandler}
           id="paswword2"
           required
           label="Password"
           type="password"
           autodata="new-password"
           minlength="7"
-          value={passwordClientValue}
+          ref={password2ClientRef}
           //isValid={passwordIsValid}
           //value={passwordState.value}
           //onChange={passwordChangeHandler}
