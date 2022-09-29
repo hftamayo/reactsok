@@ -116,10 +116,7 @@ const Login = (props) => {
         label="E-Mail"
         type="email"
         autodata="off"
-        //isValid={emailIsValid}
-        //value={emailState.value}
-        //onChange={emailChangeHandler}
-        //onBlur={validateEmailHandler}
+
       />
       <Input
         onChange={passwordValueHandler}
@@ -127,10 +124,6 @@ const Login = (props) => {
         label="Password"
         type="password"
         autodata="new-password"
-        //isValid={passwordIsValid}
-        //value={passwordState.value}
-        //onChange={passwordChangeHandler}
-        //onBlur={validatePasswordHandler}
       />
       {modalActions}
     </Fragment>
