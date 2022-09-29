@@ -52,9 +52,9 @@ const Login = (props) => {
       errorOnValidateHandler(response.data);
     } else {
       const expirationTime = new Date(
-        new Date().getTime() + +data.expiresIn * 1000
+        new Date().getTime() + +response.data.expiresIn * 1000
       );
-      authCtx.login(data.idToken, expirationTime.toISOString());
+      authCtx.login(response.data.idToken, expirationTime.toISOString());
       setIsValidating(false);
       setIsCanceling(false);
       setDidValidate(true);      
