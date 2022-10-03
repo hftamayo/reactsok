@@ -1,8 +1,9 @@
-import React, { useRef, useImperativeHandle } from 'react';
+import React, { useRef, useImperativeHandle, useState } from 'react';
 import classes from './Input.module.css';
 
 const Input = React.forwardRef((props, ref) => {
   const inputRef = useRef();
+  const [autoFocus, setAutoFocus] = useState(false);
 
   const activate = () => {
     inputRef.current.focus();
@@ -29,6 +30,7 @@ const Input = React.forwardRef((props, ref) => {
           onChange={props.onChange}
           onBlur={props.onBlur}
           autoComplete={props.autodata}
+          focusRequested={props.setAutoFocus}
         />
       </div>
     );

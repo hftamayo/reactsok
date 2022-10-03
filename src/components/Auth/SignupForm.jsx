@@ -34,9 +34,10 @@ const SignupForm = (props) => {
     const enteredLastNameIsValid = !isEmpty(enteredLastName);
     const enteredEmailIsValid = !isEmpty(enteredEmail);
     const enteredPasswordLength = !isNotSevenChars(enteredPassword1);
-    const enteredConfirmPassword =
-      enteredPasswordLength &&
-      !notEqualPasswords(enteredPassword1, enteredPassword2);
+    const enteredConfirmPassword = !notEqualPasswords(
+      enteredPassword1,
+      enteredPassword2
+    );
 
     setFormInputsValidity({
       firstName: enteredFirstNameIsValid,
@@ -50,6 +51,7 @@ const SignupForm = (props) => {
       enteredFirstNameIsValid &&
       enteredLastNameIsValid &&
       enteredEmailIsValid &&
+      enteredPasswordLength &&
       enteredConfirmPassword;
 
     if (!formIsValid) {
@@ -83,14 +85,15 @@ const SignupForm = (props) => {
 
   return (
     <form className={classes.form} onSubmit={submitHandler}>
+      <h3>Create New Account</h3>
       <div className={firstNameControlClasses}>
-        <label htmlFor="firstName">First Name</label>
         <Input
           id="firstname"
           required
           label="First Name"
           type="text"
           ref={firstNameRef}
+          setAutoFocus="true"
           //isValid={emailIsValid}
           //value={emailState.value}
           //onChange={emailChangeHandler}
@@ -102,7 +105,6 @@ const SignupForm = (props) => {
       </div>
 
       <div className={lastNameControlClasses}>
-        <label htmlFor="lastName">Last Name</label>
         <Input
           id="lastname"
           required
@@ -118,7 +120,6 @@ const SignupForm = (props) => {
       </div>
 
       <div className={emailControlClasses}>
-        <label htmlFor="email">E-mail</label>
         <Input
           id="email"
           required
@@ -135,39 +136,35 @@ const SignupForm = (props) => {
       </div>
 
       <div className={password1ControlClasses}>
-        <label htmlFor="password1">Password</label>
         <Input
           id="paswword1"
           required
           label="Password"
           type="password"
           autodata="new-password"
-          minlength="7"
           ref={password1ClientRef}
           //isValid={passwordIsValid}
           //value={passwordState.value}
           //onChange={passwordChangeHandler}
           //onBlur={validatePasswordHandler}
         />
-        {!formInputsValidity.password && <p>Please enter a valid Password</p>}
+        {!formInputsValidity.password1 && <p>Please enter a valid Password</p>}
       </div>
 
       <div className={password2ControlClasses}>
-        <label htmlFor="password2">Password Confirmation</label>
         <Input
           id="paswword2"
           required
-          label="Password"
+          label="Re-Type password"
           type="password"
           autodata="new-password"
-          minlength="7"
           ref={password2ClientRef}
           //isValid={passwordIsValid}
           //value={passwordState.value}
           //onChange={passwordChangeHandler}
           //onBlur={validatePasswordHandler}
         />
-        {!formInputsValidity.password && <p>Please enter a valid Password</p>}
+        {!formInputsValidity.password2 && <p>Please enter a valid Password</p>}
       </div>
     </form>
   );
