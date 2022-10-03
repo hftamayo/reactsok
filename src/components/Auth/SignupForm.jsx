@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import Input from "../UI/Input/Input";
 import classes from "./Login.module.css";
 
 const isEmpty = (value) => value.trim() === "";
@@ -84,7 +85,7 @@ const SignupForm = (props) => {
     <form className={classes.form} onSubmit={submitHandler}>
       <div className={firstNameControlClasses}>
         <label htmlFor="firstName">First Name</label>
-        <input
+        <Input
           id="firstname"
           required
           label="First Name"
@@ -102,7 +103,7 @@ const SignupForm = (props) => {
 
       <div className={lastNameControlClasses}>
         <label htmlFor="lastName">Last Name</label>
-        <input
+        <Input
           id="lastname"
           required
           label="Last Name"
@@ -118,7 +119,7 @@ const SignupForm = (props) => {
 
       <div className={emailControlClasses}>
         <label htmlFor="email">E-mail</label>
-        <input
+        <Input
           id="email"
           required
           label="E-Mail"
@@ -135,7 +136,7 @@ const SignupForm = (props) => {
 
       <div className={password1ControlClasses}>
         <label htmlFor="password1">Password</label>
-        <input
+        <Input
           id="paswword1"
           required
           label="Password"
@@ -153,7 +154,7 @@ const SignupForm = (props) => {
 
       <div className={password2ControlClasses}>
         <label htmlFor="password2">Password Confirmation</label>
-        <input
+        <Input
           id="paswword2"
           required
           label="Password"
