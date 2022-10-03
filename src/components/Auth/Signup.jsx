@@ -33,7 +33,7 @@ const Signup = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newClientData),
+      //body: JSON.stringify(newClientData),
     });
 
     //showSpinner = false
@@ -77,18 +77,20 @@ const Signup = (props) => {
 
   const SignupButtons = (
     <React.Fragment>
-      <div className={classes.btncontainer}>
-        <HeaderButton
-          onClick={signupHandler}
-          userIcon={1}
-          requestedLabel="Save"
-        />
-        <HeaderButton
-          onClick={props.onClose}
-          userIcon={0}
-          requestedLabel="Close"
-        />
-      </div>
+      <nav className={classes.nav}>
+        <div className={classes.btncontainer}>
+          <HeaderButton
+            onClick={signupHandler}
+            userIcon={1}
+            requestedLabel="Save"
+          />
+          <HeaderButton
+            onClick={props.onClose}
+            userIcon={0}
+            requestedLabel="Close"
+          />
+        </div>
+      </nav>
     </React.Fragment>
   );
 
