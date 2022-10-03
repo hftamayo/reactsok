@@ -9,6 +9,7 @@
   text-align: center;
 }
 
+/*action buttons*/
 .nav button {
   font: inherit;
   background: #dd860d;
@@ -38,4 +39,10 @@
   /*center the container */
   left: 50%;
   transform: translate(30%, 0);  
+}
+
+/* form objects */
+form h3{
+  font: inherit;
+  color: #490557;
 }
