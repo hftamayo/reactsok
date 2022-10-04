@@ -44,7 +44,6 @@ const SignupForm = (props) => {
       lastName: enteredLastNameIsValid,
       email: enteredEmailIsValid,
       password1: enteredConfirmPassword,
-      password2: enteredConfirmPassword,
     });
 
     const formIsValid =
@@ -58,13 +57,9 @@ const SignupForm = (props) => {
       return;
     }
 
-    props.onConfirm({
-      firstName: enteredFirstName,
-      lastName: enteredLastName,
-      email: enteredEmail,
-      password1: enteredPassword1,
-      password2: enteredPassword2,
-    });
+    const newUser = [enteredFirstName, enteredLastName, enteredEmail, enteredPassword1];
+
+    props.getNewUserData(newUser);
   };
 
   const firstNameControlClasses = `${classes.control} ${

@@ -14,7 +14,13 @@ const Signup = (props) => {
   const [didSave, setDidSave] = useState(false);
   const [isErrorOnSave, setIsErrorOnSave] = useState(false);
   const [errorOnSaveMessage, setErrorOnSaveMessage] = useState("");
+  const [newUserData, setNewUserData] = useState("");
   //const cartCtx = useContext(CartContext);
+
+
+  const gatherNewUserData = (newUser) => {
+    setNewUserData(newUser);
+  }
 
   const errorOnSignupHandler = (errorDescription) => {
     setErrorOnSaveMessage(errorDescription);
@@ -25,15 +31,13 @@ const Signup = (props) => {
     setIsSaving(true);
     //showSpinner = true
 
-    //getting data from SignUpForm
-    //use the variable newClientData
 
     const response = await fetch(SIGNUP_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      //body: JSON.stringify(newClientData),
+      body: JSON.stringify(newUserData),
     });
 
     //showSpinner = false
@@ -100,7 +104,7 @@ const Signup = (props) => {
 
   const SignupModalContent = (
     <React.Fragment>
-      <SignupForm />
+      <SignupForm getNewUserData={getNewUserData}/>
       {modalButtonActions}
     </React.Fragment>
   );
