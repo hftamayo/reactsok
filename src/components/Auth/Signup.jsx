@@ -17,20 +17,18 @@ const Signup = (props) => {
   const [newUserData, setNewUserData] = useState("");
   //const cartCtx = useContext(CartContext);
 
-
-  const gatherNewUserData = (newUser) => {
-    setNewUserData(newUser);
-  }
-
   const errorOnSignupHandler = (errorDescription) => {
     setErrorOnSaveMessage(errorDescription);
     setIsErrorOnSave(true);
   };
 
+  const setNewUserDataHandler = (newUser) => {
+    setNewUserData(newUser);
+  };
+
   const signupHandler = async () => {
     setIsSaving(true);
     //showSpinner = true
-
 
     const response = await fetch(SIGNUP_URL, {
       method: "POST",
@@ -60,11 +58,15 @@ const Signup = (props) => {
         The user account could not be created. Please report the next error:
       </p>
       <p>{errorOnSaveMessage}</p>
-      <div className={classes.actions}>
-        <button className={classes.button} onClick={props.onClose}>
-          Close
-        </button>
-      </div>
+      <nav className={classes.nav}>
+        <div className={classes.btncontainer}>
+          <HeaderButton
+            onClick={props.onClose}
+            userIcon={0}
+            requestedLabel="Close"
+          />
+        </div>
+      </nav>
     </React.Fragment>
   );
 
@@ -104,7 +106,7 @@ const Signup = (props) => {
 
   const SignupModalContent = (
     <React.Fragment>
-      <SignupForm getNewUserData={getNewUserData}/>
+      <SignupForm setNewUserData={setNewUserDataHandler} />
       {modalButtonActions}
     </React.Fragment>
   );
