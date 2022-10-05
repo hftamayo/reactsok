@@ -21,7 +21,7 @@ const SignupForm = (props) => {
   const password1ClientRef = useRef();
   const password2ClientRef = useRef();
 
-  const submitHandler = (event) => {
+  const submitNewUserHandler = (event) => {
     event.prevent.Default();
 
     const enteredFirstName = firstNameRef.current.value;
@@ -80,7 +80,7 @@ const SignupForm = (props) => {
   }`;
 
   return (
-    <form className={classes.form} onSubmit={submitHandler}>
+    <form className={classes.form} onSubmit={submitNewUserHandler}>
       <h3>Create New Account</h3>
       <div className={firstNameControlClasses}>
         <Input

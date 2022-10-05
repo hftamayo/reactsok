@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useState } from "react";
 import Modal from "../UI/Modal/Modal";
 import classes from "./Login.module.css";
 import HeaderButton from "../UI/Buttons/HeaderButton";
@@ -7,7 +7,7 @@ import SignupForm from "./SignupForm";
 const Signup = (props) => {
   const FB_KEY = process.env.SOK_FBASE_API_KEY;
   const SIGNUP_URL =
-    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key={FB_KEY}";
+    `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FB_KEY}`;
 
   const [isCanceling, setIsCanceling] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
