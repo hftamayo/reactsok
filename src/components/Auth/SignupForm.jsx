@@ -43,7 +43,8 @@ const SignupForm = (props) => {
       firstName: enteredFirstNameIsValid,
       lastName: enteredLastNameIsValid,
       email: enteredEmailIsValid,
-      password1: enteredConfirmPassword,
+      password1: enteredPasswordLength,
+      password2: enteredConfirmPassword,
     });
 
     const formIsValid =
@@ -89,6 +90,7 @@ const SignupForm = (props) => {
           label="First Name"
           type="text"
           ref={firstNameRef}
+          autoComplete="off"
           setAutoFocus="true"
           //isValid={emailIsValid}
           //value={emailState.value}
@@ -106,6 +108,7 @@ const SignupForm = (props) => {
           required
           label="Last Name"
           type="text"
+          autoComplete="off"
           ref={lastNameRef}
           //isValid={emailIsValid}
           //value={emailState.value}
@@ -121,7 +124,7 @@ const SignupForm = (props) => {
           required
           label="E-Mail"
           type="email"
-          autodata="off"
+          autoComplete="off"
           ref={emailClientRef}
           //isValid={emailIsValid}
           //value={emailState.value}
@@ -137,7 +140,7 @@ const SignupForm = (props) => {
           required
           label="Password"
           type="password"
-          autodata="new-password"
+          autoComplete="new-password"
           ref={password1ClientRef}
           //isValid={passwordIsValid}
           //value={passwordState.value}
@@ -153,7 +156,7 @@ const SignupForm = (props) => {
           required
           label="Re-Type password"
           type="password"
-          autodata="new-password"
+          autoComplete="new-password"
           ref={password2ClientRef}
           //isValid={passwordIsValid}
           //value={passwordState.value}
