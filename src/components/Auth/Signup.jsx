@@ -6,8 +6,7 @@ import SignupForm from "./SignupForm";
 
 const Signup = (props) => {
   const FB_KEY = process.env.SOK_FBASE_API_KEY;
-  const SIGNUP_URL =
-    `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FB_KEY}`;
+  const SIGNUP_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FB_KEY}`;
 
   const [isCanceling, setIsCanceling] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
@@ -16,38 +15,6 @@ const Signup = (props) => {
   const [errorOnSaveMessage, setErrorOnSaveMessage] = useState("");
   const [newUserData, setNewUserData] = useState("");
   //const cartCtx = useContext(CartContext);
-
-  const errorOnSignupHandler = (errorDescription) => {
-    setErrorOnSaveMessage(errorDescription);
-    setIsErrorOnSave(true);
-  };
-
-  const setNewUserDataHandler = (newUser) => {
-    setNewUserData(newUser);
-  };
-
-  const signupHandler = async () => {
-    setIsSaving(true);
-    //showSpinner = true
-
-    const response = await fetch(SIGNUP_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUserData),
-    });
-
-    //showSpinner = false
-    if (!response.ok) {
-      errorOnSignupHandler(response.data);
-    } else {
-      setIsSaving(false);
-      setIsCanceling(false);
-      setDidSave(true);
-      //cartCtx.clearCart();
-    }
-  };
 
   const isSavingModalContent = <p>Saving new user...</p>;
   /* incluir transaccion para verificar si es exitoso o hubo algun error */
@@ -81,12 +48,23 @@ const Signup = (props) => {
     </React.Fragment>
   );
 
+  const SignupModalContent = (
+    <React.Fragment>
+      <SignupForm setNewUserData={setNewUserDataHandler} />
+      {modalButtonActions}
+    </React.Fragment>
+  );
+
+  const modalButtonActions = (
+    <div className={classes.actions}>{!isCanceling ? SignupButtons : ""}</div>
+  );
+
   const SignupButtons = (
     <React.Fragment>
       <nav className={classes.nav}>
         <div className={classes.btncontainer}>
           <HeaderButton
-            onClick={signupHandler}
+            //onClick={signupHandler}
             userIcon={1}
             requestedLabel="Save"
           />
@@ -100,16 +78,37 @@ const Signup = (props) => {
     </React.Fragment>
   );
 
-  const modalButtonActions = (
-    <div className={classes.actions}>{!isCanceling ? SignupButtons : ""}</div>
-  );
+  const errorOnSignupHandler = (errorDescription) => {
+    setErrorOnSaveMessage(errorDescription);
+    setIsErrorOnSave(true);
+  };
 
-  const SignupModalContent = (
-    <React.Fragment>
-      <SignupForm setNewUserData={setNewUserDataHandler} />
-      {modalButtonActions}
-    </React.Fragment>
-  );
+  const setNewUserDataHandler = (newUser) => {
+    setNewUserData(newUser);
+  };
+
+  const signupHandler = async () => {
+    setIsSaving(true);
+    //showSpinner = true
+
+    const response = await fetch(SIGNUP_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUserData),
+    });
+
+    //showSpinner = false
+    if (!response.ok) {
+      errorOnSignupHandler(response.data);
+    } else {
+      setIsSaving(false);
+      setIsCanceling(false);
+      setDidSave(true);
+      //cartCtx.clearCart();
+    }
+  };
 
   return (
     <Modal onClose={props.onClose}>

@@ -61,7 +61,7 @@ const SignupForm = (props) => {
     const newUser = [enteredFirstName, enteredLastName, enteredEmail, enteredPassword1];
     console.log("Data desde SignupForm" + newUser);
 
-    props.setNewUserData(newUser);
+    //props.setNewUserData(newUser);
   };
 
   const firstNameControlClasses = `${classes.control} ${
