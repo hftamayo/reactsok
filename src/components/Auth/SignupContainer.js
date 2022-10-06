@@ -4,7 +4,6 @@ import classes from "./Login.module.css";
 import Signup from "./Signup";
 
 const SignupContainer = (props) => {
-
   const [isCanceling, setIsCanceling] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [didSave, setDidSave] = useState(false);
@@ -45,7 +44,7 @@ const SignupContainer = (props) => {
 
   const SignupModalContent = (
     <React.Fragment>
-      <Signup />
+      <Signup onError={errorOnSignupHandler} onSuccess={didSaveModalContent} />
     </React.Fragment>
   );
 
