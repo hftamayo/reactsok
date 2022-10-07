@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Modal from "../UI/Modal/Modal";
 import classes from "./Login.module.css";
+import Input from "../UI/Input/Input";
 
-const SignupForm = (props) => {
-  const FB_KEY = process.env.SOK_FBASE_API_KEY;
-  const SIGNUP_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FB_KEY}`;
+const FB_KEY = process.env.SOK_FBASE_API_KEY;
+const SIGNUP_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FB_KEY}`;
 
-  const isEmpty = (value) => value.trim() === "";
-  const isNotSevenChars = (value) => value.trim().length !== 7;
-  const notEqualPasswords = (value1, value2) => value1.trim() === value2.trim();
+const isEmpty = (value) => value.trim() === "";
+const isNotSevenChars = (value) => value.trim().length !== 7;
+const notEqualPasswords = (value1, value2) => value1.trim() === value2.trim();
+
+const Signup = (props) => {
   
   const [isCanceling, setIsCanceling] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
@@ -77,7 +79,7 @@ const SignupForm = (props) => {
   };
 
   const submitNewUserHandler = (event) => {
-    event.prevent.Default();
+    event.preventDefault();
 
     const enteredFirstName = firstNameRef.current.value;
     const enteredLastName = lastNameRef.current.value;
@@ -292,4 +294,4 @@ const SignupForm = (props) => {
   );
 };
 
-export default SignupForm;
+export default Signup;
