@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import Modal from "../UI/Modal/Modal";
 import classes from "./Login.module.css";
+import HeaderButton from "../UI/Buttons/HeaderButton";
 import Input from "../UI/Input/Input";
 
 const FB_KEY = process.env.SOK_FBASE_API_KEY;
@@ -11,7 +12,6 @@ const isNotSevenChars = (value) => value.trim().length !== 7;
 const notEqualPasswords = (value1, value2) => value1.trim() === value2.trim();
 
 const Signup = (props) => {
-  
   const [isCanceling, setIsCanceling] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [didSave, setDidSave] = useState(false);
@@ -33,7 +33,7 @@ const Signup = (props) => {
   const password2ClientRef = useRef();
 
   const [newUserData, setNewUserData] = useState("");
-  //const cartCtx = useContext(CartContext);  
+  //const cartCtx = useContext(CartContext);
 
   const isSavingModalContent = <p>Saving new user...</p>;
   /* incluir transaccion para verificar si es exitoso o hubo algun error */
@@ -67,20 +67,12 @@ const Signup = (props) => {
     </React.Fragment>
   );
 
-  const SignupModalContent = (
-    <React.Fragment>
-      <Signup onError={errorOnSignupHandler} onSuccess={didSaveModalContent} />
-    </React.Fragment>
-  );
-
   const errorOnSignupHandler = (errorDescription) => {
     setErrorOnSaveMessage(errorDescription);
     setIsErrorOnSave(true);
   };
 
-  const submitNewUserHandler = (event) => {
-    event.preventDefault();
-
+  const validateNewUserDataHandler = () => {
     const enteredFirstName = firstNameRef.current.value;
     const enteredLastName = lastNameRef.current.value;
     const enteredEmail = emailClientRef.current.value;
@@ -123,7 +115,8 @@ const Signup = (props) => {
     ];
     console.log("Data desde SignupForm" + newUser);
 
-    //props.setNewUserData(newUser);
+    setNewUserData(newUser);
+    setIsSaving(true);
   };
 
   const firstNameControlClasses = `${classes.control} ${
@@ -142,37 +135,8 @@ const Signup = (props) => {
     formInputsValidity.password2 ? "" : classes.invalid
   }`;
 
-  const modalButtonActions = (
-    <div className={classes.actions}>{!isCanceling ? SignupButtons : ""}</div>
-  );
-
-  const SignupButtons = (
-    <React.Fragment>
-      <nav className={classes.nav}>
-        <div className={classes.btncontainer}>
-          <HeaderButton
-            onClick={signupHandler}
-            userIcon={1}
-            requestedLabel="Save"
-          />
-          <HeaderButton
-            onClick={props.onClose}
-            userIcon={0}
-            requestedLabel="Close"
-          />
-        </div>
-      </nav>
-    </React.Fragment>
-  );
-
-  const setNewUserDataHandler = (newUser) => {
-    setNewUserData(newUser);
-  };
-
-  const signupHandler = async () => {
-    setIsSaving(true);
+  const saveUserDataHandler = async () => {
     //showSpinner = true
-
     const response = await fetch(SIGNUP_URL, {
       method: "POST",
       headers: {
@@ -192,93 +156,10 @@ const Signup = (props) => {
     }
   };
 
-  const SignUpModalContent = (
-    <form className={classes.form} onSubmit={submitNewUserHandler}>
-      <h3>Create New Account</h3>
-      <div className={firstNameControlClasses}>
-        <Input
-          id="firstname"
-          required
-          label="First Name"
-          type="text"
-          ref={firstNameRef}
-          autoComplete="off"
-          setAutoFocus="true"
-          //isValid={emailIsValid}
-          //value={emailState.value}
-          //onChange={emailChangeHandler}
-          //onBlur={validateEmailHandler}
-        />
-        {!formInputsValidity.firstName && (
-          <p>Please enter a valid first name</p>
-        )}
-      </div>
-
-      <div className={lastNameControlClasses}>
-        <Input
-          id="lastname"
-          required
-          label="Last Name"
-          type="text"
-          autoComplete="off"
-          ref={lastNameRef}
-          //isValid={emailIsValid}
-          //value={emailState.value}
-          //onChange={emailChangeHandler}
-          //onBlur={validateEmailHandler}
-        />
-        {!formInputsValidity.lastName && <p>Please enter a valid last name</p>}
-      </div>
-
-      <div className={emailControlClasses}>
-        <Input
-          id="email"
-          required
-          label="E-Mail"
-          type="email"
-          autoComplete="off"
-          ref={emailClientRef}
-          //isValid={emailIsValid}
-          //value={emailState.value}
-          //onChange={emailChangeHandler}
-          //onBlur={validateEmailHandler}
-        />
-        {!formInputsValidity.email && <p>Please enter a valid Email</p>}
-      </div>
-
-      <div className={password1ControlClasses}>
-        <Input
-          id="paswword1"
-          required
-          label="Password"
-          type="password"
-          autoComplete="new-password"
-          ref={password1ClientRef}
-          //isValid={passwordIsValid}
-          //value={passwordState.value}
-          //onChange={passwordChangeHandler}
-          //onBlur={validatePasswordHandler}
-        />
-        {!formInputsValidity.password1 && <p>Please enter a valid Password</p>}
-      </div>
-
-      <div className={password2ControlClasses}>
-        <Input
-          id="paswword2"
-          required
-          label="Re-Type password"
-          type="password"
-          autoComplete="new-password"
-          ref={password2ClientRef}
-          //isValid={passwordIsValid}
-          //value={passwordState.value}
-          //onChange={passwordChangeHandler}
-          //onBlur={validatePasswordHandler}
-        />
-        {!formInputsValidity.password2 && <p>Please enter a valid Password</p>}
-      </div>
-    </form>
-  );  
+  const signupHandler = () => {
+    validateNewUserDataHandler();
+    isSaving && saveUserDataHandler();
+  };
 
   return (
     <Modal onClose={props.onClose}>
@@ -293,5 +174,115 @@ const Signup = (props) => {
     </Modal>
   );
 };
+
+const SignupButtons = (
+  <React.Fragment>
+    <nav className={classes.nav}>
+      <div className={classes.btncontainer}>
+        <HeaderButton
+          onClick={signupHandler()}
+          userIcon={1}
+          requestedLabel="Save"
+        />
+        <HeaderButton
+          onClick={props.onClose}
+          userIcon={0}
+          requestedLabel="Close"
+        />
+      </div>
+    </nav>
+  </React.Fragment>
+);
+
+const modalButtonActions = (
+  <div className={classes.actions}>{!isCanceling ? SignupButtons : ""}</div>
+);
+
+const SignupModalContent = (
+  <form className={classes.form}>
+    <h3>Create New Account</h3>
+    <div className={firstNameControlClasses}>
+      <Input
+        id="firstname"
+        required
+        label="First Name"
+        type="text"
+        ref={firstNameRef}
+        autoComplete="off"
+        setAutoFocus="true"
+        //isValid={emailIsValid}
+        //value={emailState.value}
+        //onChange={emailChangeHandler}
+        //onBlur={validateEmailHandler}
+      />
+      {!formInputsValidity.firstName && <p>Please enter a valid first name</p>}
+    </div>
+
+    <div className={lastNameControlClasses}>
+      <Input
+        id="lastname"
+        required
+        label="Last Name"
+        type="text"
+        autoComplete="off"
+        ref={lastNameRef}
+        //isValid={emailIsValid}
+        //value={emailState.value}
+        //onChange={emailChangeHandler}
+        //onBlur={validateEmailHandler}
+      />
+      {!formInputsValidity.lastName && <p>Please enter a valid last name</p>}
+    </div>
+
+    <div className={emailControlClasses}>
+      <Input
+        id="email"
+        required
+        label="E-Mail"
+        type="email"
+        autoComplete="off"
+        ref={emailClientRef}
+        //isValid={emailIsValid}
+        //value={emailState.value}
+        //onChange={emailChangeHandler}
+        //onBlur={validateEmailHandler}
+      />
+      {!formInputsValidity.email && <p>Please enter a valid Email</p>}
+    </div>
+
+    <div className={password1ControlClasses}>
+      <Input
+        id="paswword1"
+        required
+        label="Password"
+        type="password"
+        autoComplete="new-password"
+        ref={password1ClientRef}
+        //isValid={passwordIsValid}
+        //value={passwordState.value}
+        //onChange={passwordChangeHandler}
+        //onBlur={validatePasswordHandler}
+      />
+      {!formInputsValidity.password1 && <p>Please enter a valid Password</p>}
+    </div>
+
+    <div className={password2ControlClasses}>
+      <Input
+        id="paswword2"
+        required
+        label="Re-Type password"
+        type="password"
+        autoComplete="new-password"
+        ref={password2ClientRef}
+        //isValid={passwordIsValid}
+        //value={passwordState.value}
+        //onChange={passwordChangeHandler}
+        //onBlur={validatePasswordHandler}
+      />
+      {!formInputsValidity.password2 && <p>Please enter a valid Password</p>}
+    </div>
+    {modalButtonActions}
+  </form>
+);
 
 export default Signup;
