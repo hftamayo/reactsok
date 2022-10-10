@@ -1,7 +1,7 @@
 import React, { useContext, Fragment, useState } from "react";
 import HeaderButton from "../UI/Buttons/HeaderButton";
 import Login from "../Auth/Login";
-import SignupContainer from "../Auth/Signup";
+import SignUp from "../Auth/SignUp";
 import AuthContext from "../store/auth-context";
 import classes from "./Header.module.css";
 
@@ -42,7 +42,7 @@ const ButtonsContainer = (props) => {
   return (
     <Fragment>
       {loginIsShown && <Login onClose={hideLoginHandler} />}
-      {signupIsShown && <SignupContainer onClose={hideSignupHandler} />}      
+      {signupIsShown && <SignUp onClose={hideSignupHandler} />}      
       <nav className={classes.nav}>
         {isLoggedIn ? (
           <div className={classes.btncontainer}>
