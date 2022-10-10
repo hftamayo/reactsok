@@ -109,7 +109,7 @@ const SignUp = (props) => {
       <nav className={classes.nav}>
         <div className={classes.btncontainer}>
           <HeaderButton
-            onClick={signupHandler()}
+            onClick={signupHandler}
             userIcon={1}
             requestedLabel="Save"
           />
@@ -198,7 +198,7 @@ const SignUp = (props) => {
         !didSave &&
         SignupModalContent}
       {isSaving && isSavingModalContent}
-      {isErrorOnSave && errorOnSavingModalContent}
+      {!isSaving && isErrorOnSave && errorOnSavingModalContent}
       {!isSaving && didSave && didSaveModalContent}
     </Modal>
   );
