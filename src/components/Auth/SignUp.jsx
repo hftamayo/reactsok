@@ -4,8 +4,9 @@ import HeaderButton from "../UI/Buttons/HeaderButton";
 import Input from "../UI/Input/Input";
 import classes from "./Login.module.css";
 
-const FIREBASE_KEY = `${process.env.REACT_APP_SOK_FBASE_API_KEY}`;
-const SIGNUP_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FIREBASE_KEY}`;
+//const FIREBASE_KEY = `${process.env.REACT_APP_SOK_FBASE_API_KEY}`;
+//const SIGNUP_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FIREBASE_KEY}`;
+const SIGNUP_URL = "https://movieserp-default-rtdb.firebaseio.com/subscribers.json";
 
 const SignUp = (props) => {
   const [firstNameValue, setFirstNameValue] = useState("");
