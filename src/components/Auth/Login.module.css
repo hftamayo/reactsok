@@ -36,9 +36,10 @@
 
 .btncontainer {
   display: flex;
-  /*center the container */
-  left: 50%;
-  transform: translate(30%, 0);  
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;  
 }
 
 /* message for user's interaction */
