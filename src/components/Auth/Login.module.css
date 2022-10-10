@@ -41,8 +41,10 @@
   transform: translate(30%, 0);  
 }
 
-/* form objects */
-form h3{
+/* message for user's interaction */
+.usrmessage{
   font: inherit;
+  font-size: 1.2em; /* equals to 20px */
   color: #490557;
+  text-align: center;
 }

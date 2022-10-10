@@ -4,8 +4,13 @@ import HeaderButton from "../UI/Buttons/HeaderButton";
 import Input from "../UI/Input/Input";
 import classes from "./Login.module.css";
 
+const IS_SAVING_USER = "Requesting new user creation, please wait...";
+const SAVE_USER_SUCCESS = "The User Account has been Created, please go to the Login option";
+const SAVE_USER_ERROR = "An unexpected error has been occured, Please notify to tech support the next error:";
+
 //const FIREBASE_KEY = `${process.env.REACT_APP_SOK_FBASE_API_KEY}`;
 //const SIGNUP_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FIREBASE_KEY}`;
+
 const SIGNUP_URL = "https://movieserp-default-rtdb.firebaseio.com/subscribers.json";
 
 const SignUp = (props) => {
@@ -74,12 +79,12 @@ const SignUp = (props) => {
     }
   };
 
-  const isSavingModalContent = <p>Saving new user...</p>;
+  const isSavingModalContent = <p className={classes.usrmessage}>{IS_SAVING_USER}</p>;
   /* incluir transaccion para verificar si es exitoso o hubo algun error */
 
   const errorOnSavingModalContent = (
     <React.Fragment>
-      <p>The user account could not be created. Please try again later</p>
+      <p className={classes.usrmessage}>{SAVE_USER_ERROR}</p>
       <nav className={classes.nav}>
         <div className={classes.btncontainer}>
           <HeaderButton
@@ -94,7 +99,7 @@ const SignUp = (props) => {
 
   const didSaveModalContent = (
     <React.Fragment>
-      <p>User account created, welcome!</p>
+      <p className={classes.usrmessage}>{SAVE_USER_SUCCESS}</p>
       <nav className={classes.nav}>
         <div className={classes.btncontainer}>
           <HeaderButton
