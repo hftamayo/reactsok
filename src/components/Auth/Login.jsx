@@ -57,13 +57,32 @@ const Login = (props) => {
     });
     if (!response.ok) {
       errorOnValidateHandler(response.data);
-    } else {
-      let validCredentials = response.find(
-        (subscriber) => subscriber.email === emailValue
-      );
-      validCredentials &&
-        (setIsValidating(false), setIsCanceling(false), setDidValidate(true));
-      /*
+    }
+    const subscribersRawData = response.json();
+
+    const subscribersData = [];
+
+    for (const key in subscribersRawData) {
+      subscribersData.push({
+        id: key,
+        email: subscribersRawData[key].email,
+        password: subscribersRawData[key].password,
+      });
+    }
+
+    let validCredentials = subscribersData.find(
+      (subscriber) => subscriber.email === emailValue
+    );
+
+    console.log(validCredentials);
+
+    setIsValidating(false);
+
+    !validCredentials
+      ? errorOnValidateHandler()
+      : setIsCanceling(false) && setDidValidate(true);
+
+    /*
       const expirationTime = new Date(
         new Date().getTime() + +response.data.expiresIn * 1000
       );
@@ -72,7 +91,6 @@ const Login = (props) => {
       setIsCanceling(false);
       setDidValidate(true);
             */
-    }
   };
 
   const isValidatingModalContent = <p>Validating Credentials...</p>;
