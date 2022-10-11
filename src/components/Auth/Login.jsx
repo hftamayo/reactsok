@@ -6,9 +6,13 @@ import HeaderButton from "../UI/Buttons/HeaderButton";
 import AuthContext from "../store/auth-context";
 
 const Login = (props) => {
-  const FB_KEY = process.env.SOK_FBASE_API_KEY;
-  const SIGNIN_KEY =
+  //const FB_KEY = process.env.SOK_FBASE_API_KEY;
+  /* const SIGNIN_KEY =
     "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={FB_KEY}";
+    */
+  const LOGIN_URL =
+    "https://movieserp-default-rtdb.firebaseio.com/subscribers.json";
+
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
 
@@ -41,23 +45,33 @@ const Login = (props) => {
       returnSecureToken: true,
     };
 
-    const response = await fetch(SIGNIN_KEY, {
+    const response = await fetch(LOGIN_URL, {
+      method: "GET",
+      /*
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(inputCredentials),
+      */
     });
-    if (!response.email) {
+    if (!response.ok) {
       errorOnValidateHandler(response.data);
     } else {
+      let validCredentials = response.find(
+        (subscriber) => subscriber.email === emailValue
+      );
+      validCredentials &&
+        (setIsValidating(false), setIsCanceling(false), setDidValidate(true));
+      /*
       const expirationTime = new Date(
         new Date().getTime() + +response.data.expiresIn * 1000
       );
       authCtx.login(response.data.idToken, expirationTime.toISOString());
       setIsValidating(false);
       setIsCanceling(false);
-      setDidValidate(true);      
+      setDidValidate(true);
+            */
     }
   };
 
@@ -116,7 +130,6 @@ const Login = (props) => {
         label="E-Mail"
         type="email"
         autodata="off"
-
       />
       <Input
         onChange={passwordValueHandler}
