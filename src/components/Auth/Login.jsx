@@ -131,18 +131,20 @@ const Login = (props) => {
 
   const loginButtons = (
     <Fragment>
-      <div className={classes.btncontainer}>
-        <HeaderButton
-          onClick={validateCredentialsHandler}
-          userIcon={1}
-          requestedLabel="Login"
-        />
-        <HeaderButton
-          onClick={props.onClose}
-          userIcon={0}
-          requestedLabel="Close"
-        />
-      </div>
+      <nav className={classes.nav}>
+        <div className={classes.btncontainer}>
+          <HeaderButton
+            onClick={validateCredentialsHandler}
+            userIcon={1}
+            requestedLabel="Login"
+          />
+          <HeaderButton
+            onClick={props.onClose}
+            userIcon={0}
+            requestedLabel="Close"
+          />
+        </div>
+      </nav>
     </Fragment>
   );
 
