@@ -1,4 +1,4 @@
-import React, { useContext, useState, Fragment } from "react";
+import { useContext, useState, Fragment } from "react";
 import Modal from "../UI/Modal/Modal";
 import classes from "./Login.module.css";
 import Input from "../UI/Input/Input";
