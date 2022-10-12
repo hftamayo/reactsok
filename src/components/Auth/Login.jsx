@@ -5,6 +5,10 @@ import Input from "../UI/Input/Input";
 import HeaderButton from "../UI/Buttons/HeaderButton";
 import AuthContext from "../store/auth-context";
 
+const IS_VALIDATING = "Validating Credentials...";
+const INVALID_CREDS = "User or Password incorrect, please verify";
+const VALID_CREDS = "Credentials verified, welcome!";
+
 const Login = (props) => {
   //const FB_KEY = process.env.SOK_FBASE_API_KEY;
   /* const SIGNIN_KEY =
@@ -93,29 +97,35 @@ const Login = (props) => {
             */
   };
 
-  const isValidatingModalContent = <p>Validating Credentials...</p>;
+  const isValidatingModalContent = (
+    <p className={classes.usrmessage}>{IS_VALIDATING}</p>
+  );
   /* incluir transaccion para verificar si es exitoso o hubo algun error */
 
   const errorOnValidateModalContent = (
     <Fragment>
-      <p>User or Password incorrect, please verify</p>
+      <p className={classes.usrmessage}>{INVALID_CREDS}</p>
       <p>{errorOnInputCredentials}</p>
-      <div className={classes.actions}>
-        <button className={classes.button} onClick={props.onClose}>
-          Close
-        </button>
-      </div>
+      <nav className={classes.nav}>
+        <div className={classes.btncontainer}>
+          <button className={classes.button} onClick={props.onClose}>
+            Close
+          </button>
+        </div>
+      </nav>
     </Fragment>
   );
 
   const didValidateModalContent = (
     <Fragment>
-      <p>Credentials verified, welcome!</p>
-      <div className={classes.actions}>
-        <button className={classes.button} onClick={props.onClose}>
-          Close
-        </button>
-      </div>
+      <p className={classes.usrmessage}>{VALID_CREDS}</p>
+      <nav className={classes.nav}>
+        <div className={classes.btncontainer}>
+          <button className={classes.button} onClick={props.onClose}>
+            Close
+          </button>
+        </div>
+      </nav>
     </Fragment>
   );
 
