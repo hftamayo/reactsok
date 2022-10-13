@@ -25,6 +25,7 @@ const Login = (props) => {
   const [didValidate, setDidValidate] = useState(false);
   const [errorOnInputCredentials, setErrorOnInputCredentials] = useState(false);
   const [isErrorOnValidate, setIsErrorOnValidate] = useState(false);
+
   const authCtx = useContext(AuthContext);
 
   const emailValueHandler = (event) => {
@@ -41,8 +42,16 @@ const Login = (props) => {
   };
 
   const successValidateHandler = () => {
+    authCtx.onValidSession();    
     setIsCanceling(false);
     setDidValidate(true);
+  };
+
+  const setSessionHandler = () => {
+/*     const expirationTime = new Date(
+      new Date().getTime() + +response.data.expiresIn * 1000
+    );
+    authCtx.login(response.data.idToken, expirationTime.toISOString()); */
   };
 
   const validateCredentialsHandler = async () => {
@@ -86,16 +95,12 @@ const Login = (props) => {
 
     setIsValidating(false);
 
-    !validCredentials ? errorOnValidateHandler() : successValidateHandler();
+    !validCredentials
+      ? errorOnValidateHandler()
+      : successValidateHandler();
 
     /*
-      const expirationTime = new Date(
-        new Date().getTime() + +response.data.expiresIn * 1000
-      );
-      authCtx.login(response.data.idToken, expirationTime.toISOString());
-      setIsValidating(false);
-      setIsCanceling(false);
-      setDidValidate(true);
+
             */
   };
 
@@ -176,11 +181,7 @@ const Login = (props) => {
 
   return (
     <Modal onClose={props.onClose}>
-      {!isCanceling &&
-        !isValidating &&
-        !isErrorOnValidate &&
-        !didValidate &&
-        LoginModalContent}
+      {!isCanceling && !isValidating && !didValidate && LoginModalContent}
       {isValidating && isValidatingModalContent}
       {isErrorOnValidate && errorOnValidateModalContent}
       {didValidate && didValidateModalContent}
