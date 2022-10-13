@@ -75,7 +75,7 @@ const Login = (props) => {
     }
 
     let validCredentials = subscribersData.find(
-      (subscriber) => subscriber.email === emailValue
+      (subscriber) => subscriber.email === emailValue && subscriber.password === passwordValue,
     );
 
     setIsValidating(false);
