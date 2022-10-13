@@ -62,7 +62,7 @@ const Login = (props) => {
     if (!response.ok) {
       errorOnValidateHandler(response.data);
     }
-    const subscribersRawData = response.json();
+    const subscribersRawData = await response.json();
 
     const subscribersData = [];
 
@@ -77,8 +77,6 @@ const Login = (props) => {
     let validCredentials = subscribersData.find(
       (subscriber) => subscriber.email === emailValue
     );
-
-    console.log(validCredentials);
 
     setIsValidating(false);
 
