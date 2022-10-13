@@ -40,6 +40,11 @@ const Login = (props) => {
     setIsErrorOnValidate(true);
   };
 
+  const successValidateHandler = () => {
+    setIsCanceling(false);
+    setDidValidate(true);
+  };
+
   const validateCredentialsHandler = async () => {
     setIsValidating(true);
     //showSpinner = true
@@ -75,14 +80,13 @@ const Login = (props) => {
     }
 
     let validCredentials = subscribersData.find(
-      (subscriber) => subscriber.email === emailValue && subscriber.password === passwordValue,
+      (subscriber) =>
+        subscriber.email === emailValue && subscriber.password === passwordValue
     );
 
     setIsValidating(false);
 
-    !validCredentials
-      ? errorOnValidateHandler()
-      : setIsCanceling(false) && setDidValidate(true);
+    !validCredentials ? errorOnValidateHandler() : successValidateHandler();
 
     /*
       const expirationTime = new Date(
@@ -179,7 +183,7 @@ const Login = (props) => {
         LoginModalContent}
       {isValidating && isValidatingModalContent}
       {isErrorOnValidate && errorOnValidateModalContent}
-      {!isValidating && didValidate && didValidateModalContent}
+      {didValidate && didValidateModalContent}
     </Modal>
   );
 };
