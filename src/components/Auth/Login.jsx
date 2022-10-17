@@ -10,10 +10,6 @@ const INVALID_CREDS = "User or Password incorrect, please verify";
 const VALID_CREDS = "Credentials verified, welcome!";
 
 const Login = (props) => {
-  //const FB_KEY = process.env.SOK_FBASE_API_KEY;
-  /* const SIGNIN_KEY =
-    "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={FB_KEY}";
-    */
   const LOGIN_URL =
     "https://movieserp-default-rtdb.firebaseio.com/subscribers.json";
 
@@ -42,16 +38,9 @@ const Login = (props) => {
   };
 
   const successValidateHandler = () => {
-    authCtx.onValidSession();    
+    authCtx.onValidSession();
     setIsCanceling(false);
     setDidValidate(true);
-  };
-
-  const setSessionHandler = () => {
-/*     const expirationTime = new Date(
-      new Date().getTime() + +response.data.expiresIn * 1000
-    );
-    authCtx.login(response.data.idToken, expirationTime.toISOString()); */
   };
 
   const validateCredentialsHandler = async () => {
@@ -65,13 +54,6 @@ const Login = (props) => {
 
     const response = await fetch(LOGIN_URL, {
       method: "GET",
-      /*
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(inputCredentials),
-      */
     });
     if (!response.ok) {
       errorOnValidateHandler(response.data);
@@ -95,19 +77,12 @@ const Login = (props) => {
 
     setIsValidating(false);
 
-    !validCredentials
-      ? errorOnValidateHandler()
-      : successValidateHandler();
-
-    /*
-
-            */
+    !validCredentials ? errorOnValidateHandler() : successValidateHandler();
   };
 
   const isValidatingModalContent = (
     <p className={classes.usrmessage}>{IS_VALIDATING}</p>
   );
-  /* incluir transaccion para verificar si es exitoso o hubo algun error */
 
   const errorOnValidateModalContent = (
     <Fragment>
