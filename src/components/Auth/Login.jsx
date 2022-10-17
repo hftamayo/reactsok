@@ -156,7 +156,7 @@ const Login = (props) => {
 
   return (
     <Modal onClose={props.onClose}>
-      {!isCanceling && !isValidating && !didValidate && LoginModalContent}
+      {!isCanceling && !isValidating && !isErrorOnValidate && !didValidate && LoginModalContent}
       {isValidating && isValidatingModalContent}
       {isErrorOnValidate && errorOnValidateModalContent}
       {didValidate && didValidateModalContent}
