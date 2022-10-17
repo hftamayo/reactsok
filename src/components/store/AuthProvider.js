@@ -8,7 +8,6 @@ export const AuthProvider = (props) => {
 
   const loginTmpHandler = () => {
     setIsLoggedIn(true);
-    console.log("estado de la flag isLoggedIn: " + isLoggedIn);
   }
 
   return (
