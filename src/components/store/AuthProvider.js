@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
+import AuthContext from "./auth-context";
 
-const AuthContext = React.createContext({
-  isLoggedIn: false,  
-  onValidSession: () => {},
-});
 
-export const AuthContextProvider = (props) => {
+export const AuthProvider = (props) => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -14,15 +11,16 @@ export const AuthContextProvider = (props) => {
     console.log("estado de la flag isLoggedIn: " + isLoggedIn);
   }
 
-  const contextValue = {
-    onValidSession: loginTmpHandler,
-  };
-
-  return(
-    <AuthContext.Provider value={contextValue}>
+  return (
+    <AuthContext.Provider
+      value={{
+        isLoggedIn: isLoggedIn,
+         onValidSession: loginTmpHandler,
+      }}
+    >
       {props.children}
     </AuthContext.Provider>
   );
 };
 
-export default AuthContext;
+export default AuthProvider;
