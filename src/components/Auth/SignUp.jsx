@@ -8,9 +8,6 @@ const IS_SAVING_USER = "Requesting new user creation, please wait...";
 const SAVE_USER_SUCCESS = "The User Account has been Created, please go to the Login option";
 const SAVE_USER_ERROR = "An unexpected error has been occured, Please notify to tech support the next error:";
 
-//const FIREBASE_KEY = `${process.env.REACT_APP_SOK_FBASE_API_KEY}`;
-//const SIGNUP_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FIREBASE_KEY}`;
-
 const SIGNUP_URL = "https://movieserp-default-rtdb.firebaseio.com/subscribers.json";
 
 const SignUp = (props) => {
@@ -23,7 +20,6 @@ const SignUp = (props) => {
   const [isSaving, setIsSaving] = useState(false);
   const [didSave, setDidSave] = useState(false);
   const [isErrorOnSave, setIsErrorOnSave] = useState(false);
-  //const cartCtx = useContext(CartContext);
 
   const firstNameValueHandler = (event) => {
     setFirstNameValue(event.target.value);
@@ -75,12 +71,10 @@ const SignUp = (props) => {
       setIsSaving(false);
       setIsCanceling(false);
       setDidSave(true);
-      //cartCtx.clearCart();
     }
   };
 
   const isSavingModalContent = <p className={classes.usrmessage}>{IS_SAVING_USER}</p>;
-  /* incluir transaccion para verificar si es exitoso o hubo algun error */
 
   const errorOnSavingModalContent = (
     <React.Fragment>
