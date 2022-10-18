@@ -13,8 +13,13 @@ Web based application for links, notes and reminders administration, includes cl
 1. FrontEnd: React JS (Redux), TypeScript
 2. BackEnd: Node.JS, Docker on AWS ECK
 3. Data Layer: MongoDB
+4. App architecture: MicroServices
+5. Code Testing: Jest
 
 ### `Stable Version`
 1. FrontEnd: React JS (Redux), Formik, TypeScript
-2. BackEnd: Node.JS, Docker on AWS ECK
+2. BackEnd: Go, Docker on AWS ECK
 3. Data Layer: Redis Enterprise
+4. App architecture: MicroServices
+5. Code Testing: Playwright
+6. Application pentesting
