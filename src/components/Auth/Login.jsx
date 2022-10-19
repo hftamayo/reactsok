@@ -142,6 +142,7 @@ const Login = (props) => {
         label="E-Mail"
         type="email"
         autodata="off"
+        focus={true}        
       />
       <Input
         onChange={passwordValueHandler}
