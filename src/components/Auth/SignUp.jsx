@@ -137,7 +137,6 @@ const SignUp = (props) => {
         label="First Name"
         type="text"
         value={firstNameValue}
-        focus={true}
         //isValid={emailIsValid}
         //value={emailState.value}
         //onChange={emailChangeHandler}
