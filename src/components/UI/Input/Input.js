@@ -29,6 +29,7 @@ const Input = React.forwardRef((props, ref) => {
           onChange={props.onChange}
           onBlur={props.onBlur}
           autoComplete={props.autodata}
+          autoFocus={props.focus}          
         />
       </div>
     );
