@@ -80,6 +80,30 @@ const Login = (props) => {
     !validCredentials ? errorOnValidateHandler() : successValidateHandler();
   };
 
+  const userMessagesModalContent = (messageType) => {
+    let showMessage = "";
+    if (messageType == 1) {
+      showMessage = IS_VALIDATING;
+    } else if (messageType == 2) {
+      showMessage = INVALID_CREDS;
+    } else {
+      showMessage = VALID_CREDS;
+    }
+    return (
+      <Fragment>
+        <p className={classes.usrmessage}>{showMessage}</p>
+        messageType != 1 &&
+        <nav className={classes.nav}>
+          <div className={classes.btncontainer}>
+            <button className={classes.button} onClick={props.onClose}>
+              Close
+            </button>
+          </div>
+        </nav>
+      </Fragment>
+    );
+  };
+
   const isValidatingModalContent = (
     <p className={classes.usrmessage}>{IS_VALIDATING}</p>
   );
@@ -157,7 +181,11 @@ const Login = (props) => {
 
   return (
     <Modal onClose={props.onClose}>
-      {!isCanceling && !isValidating && !isErrorOnValidate && !didValidate && LoginModalContent}
+      {!isCanceling &&
+        !isValidating &&
+        !isErrorOnValidate &&
+        !didValidate &&
+        LoginModalContent}
       {isValidating && isValidatingModalContent}
       {isErrorOnValidate && errorOnValidateModalContent}
       {didValidate && didValidateModalContent}
