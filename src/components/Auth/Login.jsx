@@ -71,7 +71,7 @@ const Login = (props) => {
         subscriber.email === emailValue && subscriber.password === passwordValue
     );
 
-    //setIsValidating(false);
+    setIsValidating(false);
 
     !validCredentials
       ? setIncidentMessage("User or password invalids") &&
