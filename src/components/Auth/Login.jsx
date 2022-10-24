@@ -34,6 +34,8 @@ const Login = (props) => {
   const updateActionHandler = (newAction) => {
     if (newAction === "validating") {
       setIsValidating(true);
+    } else if (newAction === "notValidating") {
+      setIsValidating(false);
     } else if (newAction === "errorOnValidation") {
       setErrorOnInputCredentials(true);
     } else if (newAction === "validCreds") {
@@ -71,7 +73,7 @@ const Login = (props) => {
         subscriber.email === emailValue && subscriber.password === passwordValue
     );
 
-    setIsValidating(false);
+    updateActionHandler("notValidating");
 
     !validCredentials
       ? setIncidentMessage("User or password invalids") &&
@@ -92,14 +94,14 @@ const Login = (props) => {
     return (
       <Fragment>
         <p className={classes.usrmessage}>{showMessage}</p>
-        messageType != 1 &&
+        {messageType != 1 &&
         <nav className={classes.nav}>
           <div className={classes.btncontainer}>
             <button className={classes.button} onClick={props.onClose}>
               Close
             </button>
           </div>
-        </nav>
+        </nav>}
       </Fragment>
     );
   };
@@ -146,7 +148,10 @@ const Login = (props) => {
 
   return (
     <Modal onClose={props.onClose}>
-      {!isValidating && !errorOnInputCredentials && !didValidate && LoginModalContent}
+      {!isValidating &&
+        !errorOnInputCredentials &&
+        !didValidate &&
+        LoginModalContent}
       {isValidating && userMessagesModalContent(1)}
       {errorOnInputCredentials && userMessagesModalContent(2)}
       {didValidate && userMessagesModalContent(3)}
