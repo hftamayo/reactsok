@@ -38,8 +38,10 @@ const Login = (props) => {
       setIsValidating(false);
     } else if (newAction === "errorOnValidation") {
       setErrorOnInputCredentials(true);
+      setIncidentMessage("User or password invalids");
     } else if (newAction === "validCreds") {
       setDidValidate(true);
+      setIncidentMessage("Login successful")      
       authCtx.onValidSession();
     }
     //update global logfile: mySuperLogComponent(incidentMessage);
@@ -76,10 +78,8 @@ const Login = (props) => {
     updateActionHandler("notValidating");
 
     !validCredentials
-      ? setIncidentMessage("User or password invalids") &&
-        updateActionHandler("errorOnValidation")
-      : setIncidentMessage("Login successful") &&
-        updateActionHandler("validCreds");
+      ? updateActionHandler("errorOnValidation")
+      : updateActionHandler("validCreds");
   };
 
   const userMessagesModalContent = (messageType) => {
@@ -94,14 +94,15 @@ const Login = (props) => {
     return (
       <Fragment>
         <p className={classes.usrmessage}>{showMessage}</p>
-        {messageType != 1 &&
-        <nav className={classes.nav}>
-          <div className={classes.btncontainer}>
-            <button className={classes.button} onClick={props.onClose}>
-              Close
-            </button>
-          </div>
-        </nav>}
+        {messageType !== 1 && (
+          <nav className={classes.nav}>
+            <div className={classes.btncontainer}>
+              <button className={classes.button} onClick={props.onClose}>
+                Close
+              </button>
+            </div>
+          </nav>
+        )}
       </Fragment>
     );
   };
