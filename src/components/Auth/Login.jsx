@@ -16,11 +16,10 @@ const Login = (props) => {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
 
-  const [isCanceling, setIsCanceling] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
   const [didValidate, setDidValidate] = useState(false);
   const [errorOnInputCredentials, setErrorOnInputCredentials] = useState(false);
-  const [isErrorOnValidate, setIsErrorOnValidate] = useState(false);
+  const [incidentMessage, setIncidentMessage] = useState("");
 
   const authCtx = useContext(AuthContext);
 
@@ -32,31 +31,32 @@ const Login = (props) => {
     setPasswordValue(event.target.value);
   };
 
-  const errorOnValidateHandler = (errorDescription) => {
-    setErrorOnInputCredentials(errorDescription);
-    setIsErrorOnValidate(true);
-  };
-
-  const successValidateHandler = () => {
-    authCtx.onValidSession();
-    setIsCanceling(false);
-    setDidValidate(true);
+  const updateActionHandler = (newAction) => {
+    if (newAction === "validating") {
+      setIsValidating(true);
+    } else if (newAction === "notValidating") {
+      setIsValidating(false);
+    } else if (newAction === "errorOnValidation") {
+      setErrorOnInputCredentials(true);
+      setIncidentMessage("User or password invalids");
+    } else if (newAction === "validCreds") {
+      setDidValidate(true);
+      setIncidentMessage("Login successful");
+      authCtx.onValidSession();
+    }
+    //update global logfile: mySuperLogComponent(incidentMessage);
   };
 
   const validateCredentialsHandler = async () => {
-    setIsValidating(true);
+    updateActionHandler("validating");
     //showSpinner = true
-    const inputCredentials = {
-      enteredEmail: emailValue,
-      enteredPassword: passwordValue,
-      returnSecureToken: true,
-    };
 
     const response = await fetch(LOGIN_URL, {
       method: "GET",
     });
     if (!response.ok) {
-      errorOnValidateHandler(response.data);
+      setIncidentMessage("Communication error with the data repository") &&
+        updateActionHandler("errorOnValidation");
     }
     const subscribersRawData = await response.json();
 
@@ -75,41 +75,37 @@ const Login = (props) => {
         subscriber.email === emailValue && subscriber.password === passwordValue
     );
 
-    setIsValidating(false);
+    updateActionHandler("notValidating");
 
-    !validCredentials ? errorOnValidateHandler() : successValidateHandler();
+    !validCredentials
+      ? updateActionHandler("errorOnValidation")
+      : updateActionHandler("validCreds");
   };
 
-  const isValidatingModalContent = (
-    <p className={classes.usrmessage}>{IS_VALIDATING}</p>
-  );
-
-  const errorOnValidateModalContent = (
-    <Fragment>
-      <p className={classes.usrmessage}>{INVALID_CREDS}</p>
-      <p>{errorOnInputCredentials}</p>
-      <nav className={classes.nav}>
-        <div className={classes.btncontainer}>
-          <button className={classes.button} onClick={props.onClose}>
-            Close
-          </button>
-        </div>
-      </nav>
-    </Fragment>
-  );
-
-  const didValidateModalContent = (
-    <Fragment>
-      <p className={classes.usrmessage}>{VALID_CREDS}</p>
-      <nav className={classes.nav}>
-        <div className={classes.btncontainer}>
-          <button className={classes.button} onClick={props.onClose}>
-            Close
-          </button>
-        </div>
-      </nav>
-    </Fragment>
-  );
+  const userMessagesModalContent = (messageType) => {
+    let showMessage = "";
+    if (messageType === 1) {
+      showMessage = IS_VALIDATING;
+    } else if (messageType === 2) {
+      showMessage = INVALID_CREDS;
+    } else if (messageType === 3) {
+      showMessage = VALID_CREDS;
+    }
+    return (
+      <Fragment>
+        <p className={classes.usrmessage}>{showMessage}</p>
+        {messageType !== 1 && (
+          <nav className={classes.nav}>
+            <div className={classes.btncontainer}>
+              <button className={classes.button} onClick={props.onClose}>
+                Close
+              </button>
+            </div>
+          </nav>
+        )}
+      </Fragment>
+    );
+  };
 
   const loginButtons = (
     <Fragment>
@@ -130,10 +126,6 @@ const Login = (props) => {
     </Fragment>
   );
 
-  const modalActions = (
-    <div className={classes.actions}>{!isCanceling ? loginButtons : ""}</div>
-  );
-
   const LoginModalContent = (
     <Fragment>
       <Input
@@ -151,16 +143,19 @@ const Login = (props) => {
         type="password"
         autodata="new-password"
       />
-      {modalActions}
+      <div className={classes.actions}>{loginButtons}</div>
     </Fragment>
   );
 
   return (
     <Modal onClose={props.onClose}>
-      {!isCanceling && !isValidating && !isErrorOnValidate && !didValidate && LoginModalContent}
-      {isValidating && isValidatingModalContent}
-      {isErrorOnValidate && errorOnValidateModalContent}
-      {didValidate && didValidateModalContent}
+      {!isValidating &&
+        !errorOnInputCredentials &&
+        !didValidate &&
+        LoginModalContent}
+      {isValidating && userMessagesModalContent(1)}
+      {errorOnInputCredentials && userMessagesModalContent(2)}
+      {didValidate && userMessagesModalContent(3)}
     </Modal>
   );
 };
