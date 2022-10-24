@@ -41,7 +41,7 @@ const Login = (props) => {
       setIncidentMessage("User or password invalids");
     } else if (newAction === "validCreds") {
       setDidValidate(true);
-      setIncidentMessage("Login successful")      
+      setIncidentMessage("Login successful");
       authCtx.onValidSession();
     }
     //update global logfile: mySuperLogComponent(incidentMessage);
