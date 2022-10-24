@@ -32,11 +32,11 @@ const Login = (props) => {
   };
 
   const updateActionHandler = (newAction) => {
-    if (newAction == "validating") {
+    if (newAction === "validating") {
       setIsValidating(true);
-    } else if (newAction == "errorOnValidation") {
+    } else if (newAction === "errorOnValidation") {
       setErrorOnInputCredentials(true);
-    } else if (newAction == "validCreds") {
+    } else if (newAction === "validCreds") {
       setDidValidate(true);
       authCtx.onValidSession();
     }
@@ -82,11 +82,11 @@ const Login = (props) => {
 
   const userMessagesModalContent = (messageType) => {
     let showMessage = "";
-    if (messageType == 1) {
+    if (messageType === 1) {
       showMessage = IS_VALIDATING;
-    } else if (messageType == 2) {
+    } else if (messageType === 2) {
       showMessage = INVALID_CREDS;
-    } else if (messageType == 3) {
+    } else if (messageType === 3) {
       showMessage = VALID_CREDS;
     }
     return (
