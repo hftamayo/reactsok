@@ -1,25 +1,27 @@
-import React, { useState, useRef } from "react";
+import React, { useState, Fragment } from "react";
 import Modal from "../UI/Modal/Modal";
-import HeaderButton from "../UI/Buttons/HeaderButton";
-import Input from "../UI/Input/Input";
 import classes from "./Login.module.css";
+import Input from "../UI/Input/Input";
+import HeaderButton from "../UI/Buttons/HeaderButton";
 
 const IS_SAVING_USER = "Requesting new user creation, please wait...";
-const SAVE_USER_SUCCESS = "The User Account has been Created, please go to the Login option";
-const SAVE_USER_ERROR = "An unexpected error has been occured, Please notify to tech support the next error:";
-
-const SIGNUP_URL = "https://movieserp-default-rtdb.firebaseio.com/subscribers.json";
+const SAVE_USER_SUCCESS =
+  "The User Account has been Created, please go to the Login option";
+const SAVE_USER_ERROR = "An unexpected error has been occured, Please verify";
 
 const SignUp = (props) => {
+  const SIGNUP_URL =
+    "https://movieserp-default-rtdb.firebaseio.com/subscribers.json";
+
   const [firstNameValue, setFirstNameValue] = useState("");
   const [lastNameValue, setLastNameValue] = useState("");
   const [emailClientValue, setEmailClientValue] = useState("");
   const [passwordClientValue, setPasswordClientValue] = useState("");
 
-  const [isCanceling, setIsCanceling] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
+  const [isValidating, setIsValidating] = useState(false);
   const [didSave, setDidSave] = useState(false);
   const [isErrorOnSave, setIsErrorOnSave] = useState(false);
+  const [incidentMessage, setIncidentMessage] = useState("");  
 
   const firstNameValueHandler = (event) => {
     setFirstNameValue(event.target.value);
@@ -37,12 +39,24 @@ const SignUp = (props) => {
     setPasswordClientValue(event.target.value);
   };
 
-  const errorOnSignupHandler = () => {
-    setIsErrorOnSave(true);
+  const updateActionHandler = (newAction) => {
+    if (newAction === "validating") {
+      setIsValidating(true);
+    } else if (newAction === "notValidating") {
+      setIsValidating(false);
+    } else if (newAction === "errorOnSave") {
+      setIsErrorOnSave(true);
+      setIncidentMessage("Unexpected error on saving");
+    } else if (newAction === "okOnSave") {
+      setDidSave(true);
+      setIncidentMessage("New user data saved");
+    }
+    //update global logfile: mySuperLogComponent(incidentMessage);
   };
 
   const signupHandler = async () => {
-    setIsSaving(true);
+    updateActionHandler("validating");
+
     const enteredFirstname = firstNameValue;
     const enteredLastname = lastNameValue;
     const enteredEmail = emailClientValue;
@@ -63,51 +77,42 @@ const SignUp = (props) => {
       body: JSON.stringify(newClientData),
     });
 
+    updateActionHandler("notValidating");
+
     if (!response.ok) {
-      setIsErrorOnSave(true);
-      setIsSaving(false);
-      errorOnSignupHandler();
+      updateActionHandler("errorOnSave");
     } else {
-      setIsSaving(false);
-      setIsCanceling(false);
-      setDidSave(true);
+      updateActionHandler("okOnSave");
     }
   };
 
-  const isSavingModalContent = <p className={classes.usrmessage}>{IS_SAVING_USER}</p>;
+  const userMessagesModalContent = (messageType) => {
+    let showMessage = "";
+    if (messageType === 1) {
+      showMessage = IS_SAVING_USER;
+    } else if (messageType === 2) {
+      showMessage = SAVE_USER_ERROR;
+    } else if (messageType === 3) {
+      showMessage = SAVE_USER_SUCCESS;
+    }
+    return (
+      <Fragment>
+        <p className={classes.usrmessage}>{showMessage}</p>
+        {messageType !== 1 && (
+          <nav className={classes.nav}>
+            <div className={classes.btncontainer}>
+              <button className={classes.button} onClick={props.onClose}>
+                Close
+              </button>
+            </div>
+          </nav>
+        )}
+      </Fragment>
+    );
+  };
 
-  const errorOnSavingModalContent = (
-    <React.Fragment>
-      <p className={classes.usrmessage}>{SAVE_USER_ERROR}</p>
-      <nav className={classes.nav}>
-        <div className={classes.btncontainer}>
-          <HeaderButton
-            onClick={props.onClose}
-            userIcon={0}
-            requestedLabel="Close"
-          />
-        </div>
-      </nav>
-    </React.Fragment>
-  );
-
-  const didSaveModalContent = (
-    <React.Fragment>
-      <p className={classes.usrmessage}>{SAVE_USER_SUCCESS}</p>
-      <nav className={classes.nav}>
-        <div className={classes.btncontainer}>
-          <HeaderButton
-            onClick={props.onClose}
-            userIcon={0}
-            requestedLabel="Close"
-          />
-        </div>
-      </nav>
-    </React.Fragment>
-  );
-
-  const SignupButtons = (
-    <React.Fragment>
+  const signUpButtons = (
+    <Fragment>
       <nav className={classes.nav}>
         <div className={classes.btncontainer}>
           <HeaderButton
@@ -122,15 +127,11 @@ const SignUp = (props) => {
           />
         </div>
       </nav>
-    </React.Fragment>
-  );
-
-  const modalActions = (
-    <div className={classes.actions}>{!isCanceling ? SignupButtons : ""}</div>
+    </Fragment>
   );
 
   const SignupModalContent = (
-    <React.Fragment>
+    <Fragment>
       <Input
         onChange={firstNameValueHandler}
         id="firstname"
@@ -189,20 +190,19 @@ const SignUp = (props) => {
         //onChange={passwordChangeHandler}
         //onBlur={validatePasswordHandler}
       />
-      {modalActions}
-    </React.Fragment>
+      <div className={classes.actions}>{signUpButtons}</div>
+    </Fragment>
   );
 
   return (
     <Modal onClose={props.onClose}>
-      {!isCanceling &&
-        !isSaving &&
+      {!isValidating &&
         !isErrorOnSave &&
         !didSave &&
         SignupModalContent}
-      {isSaving && isSavingModalContent}
-      {!isSaving && isErrorOnSave && errorOnSavingModalContent}
-      {!isSaving && didSave && didSaveModalContent}
+      {isValidating && userMessagesModalContent(1)}
+      {isErrorOnSave && userMessagesModalContent(2)}
+      {didSave && userMessagesModalContent(3)}
     </Modal>
   );
 };
