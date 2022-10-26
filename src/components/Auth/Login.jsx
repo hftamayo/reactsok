@@ -133,7 +133,7 @@ const Login = (props) => {
         id="email"
         label="E-Mail"
         type="email"
-        autodata="off"
+        complete="off"
         focus={true}
       />
       <Input
@@ -141,7 +141,7 @@ const Login = (props) => {
         id="paswword"
         label="Password"
         type="password"
-        autodata="new-password"
+        complete="new-password"
       />
       <div className={classes.actions}>{loginButtons}</div>
     </Fragment>
