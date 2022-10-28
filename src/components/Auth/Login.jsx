@@ -141,6 +141,7 @@ const Login = (props) => {
         label="E-Mail"
         type="email"
         complete="off"
+        info="Use your registered email"
         focus={true}
       />
       <Input
@@ -149,6 +150,7 @@ const Login = (props) => {
         label="Password"
         type="password"
         complete="new-password"
+        info="Type your password following our guidelines"
       />
       <div className={classes.actions}>{loginButtons}</div>
     </Fragment>
