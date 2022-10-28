@@ -5,12 +5,6 @@ import Input from "../UI/Input/Input";
 import HeaderButton from "../UI/Buttons/HeaderButton";
 import AuthContext from "../store/auth-context";
 
-import FormValidation, {
-  required,
-  email,
-  passwordPattern,
-} from "../utils/FormValidation";
-
 const IS_VALIDATING = "Validating Credentials...";
 const INVALID_CREDS = "User or Password incorrect, please verify";
 const VALID_CREDS = "Credentials verified, welcome!";
@@ -18,7 +12,6 @@ const VALID_CREDS = "Credentials verified, welcome!";
 const Login = (props) => {
   const LOGIN_URL =
     "https://movieserp-default-rtdb.firebaseio.com/subscribers.json";
-
 
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
@@ -144,6 +137,7 @@ const Login = (props) => {
         info="Use your registered email"
         focus={true}
       />
+
       <Input
         onChange={passwordValueHandler}
         id="paswword"
