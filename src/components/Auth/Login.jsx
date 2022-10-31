@@ -14,7 +14,14 @@ const Login = (props) => {
     "https://movieserp-default-rtdb.firebaseio.com/subscribers.json";
 
   const [emailValue, setEmailValue] = useState("");
+  const [emailValueTouched, setEmailValueTouched] = useState(false);
+  const enteredEmailIsValid = emailValue.trim() !== "";
+  const emailIsInvalid = !enteredEmailIsValid && emailValueTouched;
+
   const [passwordValue, setPasswordValue] = useState("");
+  const [passwordValueTouched, setPasswordValueTouched] = useState(false);
+  const enteredPasswordIsValid = passwordValue.trim() !== "";
+  const passwordIsInvalid = !enteredPasswordIsValid && passwordValueTouched;
 
   const [isValidating, setIsValidating] = useState(false);
   const [didValidate, setDidValidate] = useState(false);
@@ -23,13 +30,32 @@ const Login = (props) => {
 
   const authCtx = useContext(AuthContext);
 
+  let formIsValid = false;
+
+  if (enteredEmailIsValid && enteredPasswordIsValid) {
+    formIsValid = true;
+  }
+
   const emailValueHandler = (event) => {
     setEmailValue(event.target.value);
+  };
+
+  const emailValueBlurHandler = (event) => {
+    setEmailValueTouched(true);
   };
 
   const passwordValueHandler = (event) => {
     setPasswordValue(event.target.value);
   };
+
+  const passwordValueBlurHandler = (event) => {
+    setPasswordValueTouched(true);
+  };
+
+  const errorClasses =
+    emailIsInvalid || passwordIsInvalid
+      ? "form-control invalid"
+      : "form-control";
 
   const updateActionHandler = (newAction) => {
     if (newAction === "validating") {
@@ -50,6 +76,8 @@ const Login = (props) => {
   const validateCredentialsHandler = async () => {
     updateActionHandler("validating");
     //showSpinner = true
+
+    setEmailValueTouched(true);
 
     const response = await fetch(LOGIN_URL, {
       method: "GET",
@@ -130,6 +158,7 @@ const Login = (props) => {
     <Fragment>
       <Input
         onChange={emailValueHandler}
+        onBlur={emailValueBlurHandler}
         id="email"
         label="E-Mail"
         type="email"
@@ -137,9 +166,13 @@ const Login = (props) => {
         info="Use your registered email"
         focus={true}
       />
+      {emailInputIsInvalid && (
+        <p className="error-text">Your input email is invalid, please check</p>
+      )}
 
       <Input
         onChange={passwordValueHandler}
+        onBlur={passwordValueBlurHandler}
         id="paswword"
         label="Password"
         type="password"
