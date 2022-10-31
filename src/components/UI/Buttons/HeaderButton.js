@@ -24,7 +24,7 @@ const HeaderButton = (props) => {
   }, []);
 
   return (
-    <button className={btnClasses} onClick={props.onClick} disabled={props.enable}>
+    <button className={btnClasses} onClick={props.onClick}>
       <span className={classes.icon}>
         {userIcon === 1 ? <UserIcon /> : (userIcon === 2 ? <SignupIcon /> : <CloseIcon />)}
       </span>
