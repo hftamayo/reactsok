@@ -52,7 +52,7 @@ const Login = (props) => {
     setPasswordValueTouched(true);
   };
 
-  const errorClasses =
+  const formClasses =
     emailIsInvalid || passwordIsInvalid
       ? "form-control invalid"
       : "form-control";
@@ -78,6 +78,11 @@ const Login = (props) => {
     //showSpinner = true
 
     setEmailValueTouched(true);
+    setPasswordValueTouched(true);
+
+    if (!enteredEmailIsValid || !enteredPasswordIsValid) {
+      return;
+    }
 
     const response = await fetch(LOGIN_URL, {
       method: "GET",
@@ -104,6 +109,10 @@ const Login = (props) => {
     );
 
     updateActionHandler("notValidating");
+    setEmailValue("");
+    setEmailValueTouched(false);
+    setPasswordValue("");
+    setPasswordValueTouched(false);
 
     !validCredentials
       ? updateActionHandler("errorOnValidation")
@@ -156,6 +165,7 @@ const Login = (props) => {
 
   const LoginModalContent = (
     <Fragment>
+      <div className={formClasses}>
       <Input
         onChange={emailValueHandler}
         onBlur={emailValueBlurHandler}
@@ -166,7 +176,7 @@ const Login = (props) => {
         info="Use your registered email"
         focus={true}
       />
-      {emailInputIsInvalid && (
+      {emailIsInvalid && (
         <p className="error-text">Your input email is invalid, please check</p>
       )}
 
@@ -179,6 +189,10 @@ const Login = (props) => {
         complete="new-password"
         info="Type your password following our guidelines"
       />
+      {passwordIsInvalid && (
+        <p className="error-text">Your password is invalid, please check</p>
+      )}      
+      </div>
       <div className={classes.actions}>{loginButtons}</div>
     </Fragment>
   );
