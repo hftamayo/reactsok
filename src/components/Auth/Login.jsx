@@ -52,11 +52,6 @@ const Login = (props) => {
     setPasswordValueTouched(true);
   };
 
-  const formClasses =
-    emailIsInvalid || passwordIsInvalid
-      ? "form-control invalid"
-      : "form-control";
-
   const updateActionHandler = (newAction) => {
     if (newAction === "validating") {
       setIsValidating(true);
@@ -165,7 +160,6 @@ const Login = (props) => {
 
   const LoginModalContent = (
     <Fragment>
-      <div className={formClasses}>
       <Input
         onChange={emailValueHandler}
         onBlur={emailValueBlurHandler}
@@ -177,7 +171,9 @@ const Login = (props) => {
         focus={true}
       />
       {emailIsInvalid && (
-        <p className="error-text">Your input email is invalid, please check</p>
+        <p className={classes.errorText}>
+          Your input email is invalid, please check
+        </p>
       )}
 
       <Input
@@ -190,9 +186,8 @@ const Login = (props) => {
         info="Type your password following our guidelines"
       />
       {passwordIsInvalid && (
-        <p className="error-text">Your password is invalid, please check</p>
-      )}      
-      </div>
+        <p className={classes.errorText}>Your password is invalid, please check</p>
+      )}
       <div className={classes.actions}>{loginButtons}</div>
     </Fragment>
   );
