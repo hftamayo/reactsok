@@ -150,6 +150,7 @@ const Login = (props) => {
         <div className={classes.btncontainer}>
           <HeaderButton
             onClick={validateCredentialsHandler}
+            enable={!formIsValid}
             userIcon={1}
             requestedLabel="Login"
           />
