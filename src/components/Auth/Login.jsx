@@ -16,8 +16,9 @@ const Login = (props) => {
     "https://movieserp-default-rtdb.firebaseio.com/subscribers.json";
 
   const [emailValue, setEmailValue] = useState("");
-  const [emailIsInvalid, setEmailIsInvalid] = useState(false);
-  const [emailInvalidMsg, setEmailInvalidMsg] = useState("");
+  const [emailValueTouched, setEmailValueTouched] = useState(false);
+  const enteredEmailIsValid = emailValue.trim() !== "";
+  const emailIsInvalid = !enteredEmailIsValid && emailValueTouched;
 
   const [passwordValue, setPasswordValue] = useState("");
   const [passwordValueTouched, setPasswordValueTouched] = useState(false);
@@ -33,18 +34,17 @@ const Login = (props) => {
 
   let formIsValid = false;
 
-  /*   if (enteredEmailIsValid && enteredPasswordIsValid) {
+    if (enteredEmailIsValid && enteredPasswordIsValid) {
     formIsValid = true;
-  } */
+  }
 
   const emailValueHandler = (event) => {
     setEmailValue(event.target.value);
-
-    if (emailValue.trim() === "") {
-      setEmailInvalidMsg(EMPTY_FIELD);
-      setEmailIsInvalid(true);
-    }
   };
+
+  const emailValueBlurHandler = (event) => {
+    setEmailValueTouched(true);
+  };  
 
   const passwordValueHandler = (event) => {
     setPasswordValue(event.target.value);
@@ -53,11 +53,6 @@ const Login = (props) => {
   const passwordValueBlurHandler = (event) => {
     setPasswordValueTouched(true);
   };
-
-  const formClasses =
-    emailIsInvalid || passwordIsInvalid
-      ? "form-control invalid"
-      : "form-control";
 
   const updateActionHandler = (newAction) => {
     if (newAction === "validating") {
@@ -79,11 +74,12 @@ const Login = (props) => {
     updateActionHandler("validating");
     //showSpinner = true
 
+    setEmailValueTouched(true);
     setPasswordValueTouched(true);
 
-    /*     if (!enteredEmailIsValid || !enteredPasswordIsValid) {
+     if (!enteredEmailIsValid || !enteredPasswordIsValid) {
       return;
-    } */
+    }
 
     const response = await fetch(LOGIN_URL, {
       method: "GET",
@@ -110,7 +106,8 @@ const Login = (props) => {
     );
 
     updateActionHandler("notValidating");
-
+    setEmailValue("");
+    setEmailValueTouched(false);    
     setPasswordValue("");
     setPasswordValueTouched(false);
 
@@ -165,7 +162,6 @@ const Login = (props) => {
 
   const LoginModalContent = (
     <Fragment>
-      <div className={formClasses}>
       <Input
         onChange={emailValueHandler}
         onBlur={emailValueHandler}
@@ -177,7 +173,7 @@ const Login = (props) => {
         focus={true}
       />
       {emailIsInvalid && (
-        <p className="error-text">Your input email is invalid, please check</p>
+        <p className={classes.errorText}>Your input email is invalid, please check</p>
       )}
 
       <Input
@@ -190,9 +186,8 @@ const Login = (props) => {
         info="Type your password following our guidelines"
       />
       {passwordIsInvalid && (
-        <p className="error-text">Your password is invalid, please check</p>
+        <p className={classes.errorText}>Your password is invalid, please check</p>
       )}      
-      </div>
       <div className={classes.actions}>{loginButtons}</div>
     </Fragment>
   );
