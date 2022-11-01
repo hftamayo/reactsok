@@ -164,7 +164,7 @@ const Login = (props) => {
     <Fragment>
       <Input
         onChange={emailValueHandler}
-        onBlur={emailValueHandler}
+        onBlur={emailValueBlurHandler}
         id="email"
         label="E-Mail"
         type="email"
