@@ -176,7 +176,9 @@ const Login = (props) => {
         info="Use your registered email"
         focus={true}
       />
-      {emailIsInvalid && <p className={classes.errorText}>Invalid Email, please check</p>}
+      {emailIsInvalid && (
+        <p className="error-text">Your input email is invalid, please check</p>
+      )}
 
       <Input
         onChange={passwordValueHandler}
