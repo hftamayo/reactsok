@@ -34,7 +34,7 @@ const Login = (props) => {
 
   let formIsValid = false;
 
-    if (enteredEmailIsValid && enteredPasswordIsValid) {
+    if (emailIsInvalid && passwordIsInvalid) {
     formIsValid = true;
   }
 
@@ -71,15 +71,16 @@ const Login = (props) => {
   };
 
   const validateCredentialsHandler = async () => {
-    updateActionHandler("validating");
-    //showSpinner = true
 
     setEmailValueTouched(true);
     setPasswordValueTouched(true);
 
-     if (!enteredEmailIsValid || !enteredPasswordIsValid) {
+    if (!enteredEmailIsValid || !enteredPasswordIsValid) {
       return;
-    }
+    }    
+
+    updateActionHandler("validating");
+    //showSpinner = true    
 
     const response = await fetch(LOGIN_URL, {
       method: "GET",
