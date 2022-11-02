@@ -10,20 +10,23 @@ const INVALID_CREDS = "User or Password incorrect, please verify";
 const VALID_CREDS = "Credentials verified, welcome!";
 const EMPTY_FIELD = "Blank data is not allowed, please check";
 const INVALID_EMAIL = "Please type a valid email format: <user>@<domain>";
+const EMAIL_PATTERN = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
 
 const Login = (props) => {
   const LOGIN_URL =
     "https://movieserp-default-rtdb.firebaseio.com/subscribers.json";
 
+  const [displayErrorMessage, setDisplayErrorMessage] = useState("");
+
   const [emailValue, setEmailValue] = useState("");
   const [emailValueTouched, setEmailValueTouched] = useState(false);
-  const enteredEmailIsValid = emailValue.trim() !== "";
-  const emailIsInvalid = !enteredEmailIsValid && emailValueTouched;
+  const [enteredEmailValidation, setEnteredEmailValidation] = useState(false);
+  const emailIsInvalid = !enteredEmailValidation && emailValueTouched;
 
   const [passwordValue, setPasswordValue] = useState("");
   const [passwordValueTouched, setPasswordValueTouched] = useState(false);
-  const enteredPasswordIsValid = passwordValue.trim() !== "";
-  const passwordIsInvalid = !enteredPasswordIsValid && passwordValueTouched;
+  const [enteredPasswordValidation, setEnteredPasswordValidation] = useState(false);
+  const passwordIsInvalid = !enteredPasswordValidation && passwordValueTouched;
 
   const [isValidating, setIsValidating] = useState(false);
   const [didValidate, setDidValidate] = useState(false);
@@ -34,20 +37,36 @@ const Login = (props) => {
 
   let formIsValid = false;
 
-    if (emailIsInvalid && passwordIsInvalid) {
+  if (!emailIsInvalid && !passwordIsInvalid) {
     formIsValid = true;
   }
 
+  const validateFields = (fieldName) => {
+    if (fieldName === "email") {
+      //no blank allowed
+      if(emailValue.trim() !== '' || EMAIL_PATTERN.test(emailValue)){
+        setEnteredEmailValidation(true);
+      }
+    } 
+    if (fieldName === "password") {
+      if(passwordValue.trim() !== ''){
+        setEnteredPasswordValidation(true);
+      }
+    }
+  };
+
   const emailValueHandler = (event) => {
     setEmailValue(event.target.value);
+    validateFields("email");
   };
 
   const emailValueBlurHandler = (event) => {
     setEmailValueTouched(true);
-  };  
+  };
 
   const passwordValueHandler = (event) => {
     setPasswordValue(event.target.value);
+    validateFields("password");
   };
 
   const passwordValueBlurHandler = (event) => {
@@ -71,16 +90,15 @@ const Login = (props) => {
   };
 
   const validateCredentialsHandler = async () => {
-
     setEmailValueTouched(true);
     setPasswordValueTouched(true);
 
-    if (!enteredEmailIsValid || !enteredPasswordIsValid) {
+    if (!formIsValid) {
       return;
-    }    
+    }
 
     updateActionHandler("validating");
-    //showSpinner = true    
+    //showSpinner = true
 
     const response = await fetch(LOGIN_URL, {
       method: "GET",
@@ -108,7 +126,7 @@ const Login = (props) => {
 
     updateActionHandler("notValidating");
     setEmailValue("");
-    setEmailValueTouched(false);    
+    setEmailValueTouched(false);
     setPasswordValue("");
     setPasswordValueTouched(false);
 
@@ -174,7 +192,7 @@ const Login = (props) => {
         focus={true}
       />
       {emailIsInvalid && (
-        <p className={classes.errorText}>Your input email is invalid, please check</p>
+        <p className={classes.errorText}>{displayErrorMessage}</p>
       )}
 
       <Input
@@ -187,8 +205,8 @@ const Login = (props) => {
         info="Type your password following our guidelines"
       />
       {passwordIsInvalid && (
-        <p className={classes.errorText}>Your password is invalid, please check</p>
-      )}      
+        <p className={classes.errorText}>{displayErrorMessage}</p>
+      )}
       <div className={classes.actions}>{loginButtons}</div>
     </Fragment>
   );
