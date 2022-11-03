@@ -9,9 +9,9 @@ const IS_VALIDATING = "Validating Credentials...";
 const INVALID_CREDS = "User or Password incorrect, please verify";
 const VALID_CREDS = "Credentials verified, welcome!";
 const EMPTY_FIELD = "Blank data is not allowed, please check";
-const INVALID_EMAIL = "Please type a valid email format: <firstname>.<lastname>@<valid domain>";
+const INVALID_EMAIL = "Please type a valid business email: <firstname>.<lastname>@<valid domain>";
 const EMAIL_PATTERN =
-  /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
+  /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@](?!yahoo.com)(?!outlook.com)[a-z]{3,9}[\.][a-z]{2,5}/g;
 
 const Login = (props) => {
   const LOGIN_URL =
