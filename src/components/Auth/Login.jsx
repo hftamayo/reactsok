@@ -44,17 +44,23 @@ const Login = (props) => {
 
   const validateFields = (fieldName) => {
     if (fieldName === "email") {
+      console.log("validando email");
       if(emailValue.trim() !== '' || EMAIL_PATTERN.test(emailValue)){
+        console.log("el email es valido");        
         setEnteredEmailValidation(true);
       } else {
+        console.log("el email no es valido");
         setEnteredEmailValidation(false);
         setDisplayEmailErrorMessage(EMPTY_FIELD);
       }
     } 
     if (fieldName === "password") {
+      console.log("validando password");
       if(passwordValue.trim() !== ''){
+        console.log("el password es valido");
         setEnteredPasswordValidation(true);
       } else {
+        console.log("el password es invalido")
         setEnteredPasswordValidation(false);
         setDisplayPasswordErrorMessage(EMPTY_FIELD);
       }
@@ -63,20 +69,20 @@ const Login = (props) => {
 
   const emailValueHandler = (event) => {
     setEmailValue(event.target.value);
-    validateFields("email");
   };
 
   const emailValueBlurHandler = (event) => {
     setEmailValueTouched(true);
+    validateFields("email");    
   };
 
   const passwordValueHandler = (event) => {
     setPasswordValue(event.target.value);
-    validateFields("password");
   };
 
   const passwordValueBlurHandler = (event) => {
     setPasswordValueTouched(true);
+    validateFields("password");    
   };
 
   const updateActionHandler = (newAction) => {
@@ -195,7 +201,7 @@ const Login = (props) => {
         type="email"
         complete="off"
         info="Use your registered email"
-        focus={true}
+        //focus={true}
       />
       {emailIsInvalid && (
         <p className={classes.errorText}>{displayEmailErrorMessage}</p>
