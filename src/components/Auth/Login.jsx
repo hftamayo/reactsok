@@ -10,14 +10,16 @@ const INVALID_CREDS = "User or Password incorrect, please verify";
 const VALID_CREDS = "Credentials verified, welcome!";
 const EMPTY_FIELD = "Blank data is not allowed, please check";
 const INVALID_EMAIL = "Please type a valid email format: <user>@<domain>";
-const EMAIL_PATTERN = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
+const EMAIL_PATTERN =
+  /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
 
 const Login = (props) => {
   const LOGIN_URL =
     "https://movieserp-default-rtdb.firebaseio.com/subscribers.json";
 
   const [displayEmailErrorMessage, setDisplayEmailErrorMessage] = useState("");
-  const [displayPasswordErrorMessage, setDisplayPasswordErrorMessage] = useState("");
+  const [displayPasswordErrorMessage, setDisplayPasswordErrorMessage] =
+    useState("");
 
   const [emailValue, setEmailValue] = useState("");
   const [emailValueTouched, setEmailValueTouched] = useState(false);
@@ -26,7 +28,8 @@ const Login = (props) => {
 
   const [passwordValue, setPasswordValue] = useState("");
   const [passwordValueTouched, setPasswordValueTouched] = useState(false);
-  const [enteredPasswordValidation, setEnteredPasswordValidation] = useState(false);
+  const [enteredPasswordValidation, setEnteredPasswordValidation] =
+    useState(false);
   const passwordIsInvalid = !enteredPasswordValidation && passwordValueTouched;
 
   const [isValidating, setIsValidating] = useState(false);
@@ -45,22 +48,29 @@ const Login = (props) => {
   const validateFields = (fieldName) => {
     if (fieldName === "email") {
       console.log("validando email");
-      if(emailValue.trim() !== '' || EMAIL_PATTERN.test(emailValue)){
-        console.log("el email es valido");        
-        setEnteredEmailValidation(true);
+      if (emailValue.trim() !== "") {
+        let pattern = EMAIL_PATTERN.test(emailValue);
+        if (pattern) {
+          console.log("el email paso los 2 niveles de validacion");
+          setEnteredEmailValidation(true);
+        } else {
+          console.log("email no tiene un patron valido");
+          setEnteredEmailValidation(false);
+          setDisplayEmailErrorMessage(INVALID_EMAIL);
+        }
       } else {
-        console.log("el email no es valido");
+        console.log("email esta en blanco");
         setEnteredEmailValidation(false);
         setDisplayEmailErrorMessage(EMPTY_FIELD);
       }
-    } 
+    }
     if (fieldName === "password") {
       console.log("validando password");
-      if(passwordValue.trim() !== ''){
+      if (passwordValue.trim() !== "") {
         console.log("el password es valido");
         setEnteredPasswordValidation(true);
       } else {
-        console.log("el password es invalido")
+        console.log("el password es invalido");
         setEnteredPasswordValidation(false);
         setDisplayPasswordErrorMessage(EMPTY_FIELD);
       }
@@ -73,7 +83,7 @@ const Login = (props) => {
 
   const emailValueBlurHandler = (event) => {
     setEmailValueTouched(true);
-    validateFields("email");    
+    validateFields("email");
   };
 
   const passwordValueHandler = (event) => {
@@ -82,7 +92,7 @@ const Login = (props) => {
 
   const passwordValueBlurHandler = (event) => {
     setPasswordValueTouched(true);
-    validateFields("password");    
+    validateFields("password");
   };
 
   const updateActionHandler = (newAction) => {
