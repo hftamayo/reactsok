@@ -16,7 +16,8 @@ const Login = (props) => {
   const LOGIN_URL =
     "https://movieserp-default-rtdb.firebaseio.com/subscribers.json";
 
-  const [displayErrorMessage, setDisplayErrorMessage] = useState("");
+  const [displayEmailErrorMessage, setDisplayEmailErrorMessage] = useState("");
+  const [displayPasswordErrorMessage, setDisplayPasswordErrorMessage] = useState("");
 
   const [emailValue, setEmailValue] = useState("");
   const [emailValueTouched, setEmailValueTouched] = useState(false);
@@ -43,14 +44,19 @@ const Login = (props) => {
 
   const validateFields = (fieldName) => {
     if (fieldName === "email") {
-      //no blank allowed
       if(emailValue.trim() !== '' || EMAIL_PATTERN.test(emailValue)){
         setEnteredEmailValidation(true);
+      } else {
+        setEnteredEmailValidation(false);
+        setDisplayEmailErrorMessage(EMPTY_FIELD);
       }
     } 
     if (fieldName === "password") {
       if(passwordValue.trim() !== ''){
         setEnteredPasswordValidation(true);
+      } else {
+        setEnteredPasswordValidation(false);
+        setDisplayPasswordErrorMessage(EMPTY_FIELD);
       }
     }
   };
@@ -192,7 +198,7 @@ const Login = (props) => {
         focus={true}
       />
       {emailIsInvalid && (
-        <p className={classes.errorText}>{displayErrorMessage}</p>
+        <p className={classes.errorText}>{displayEmailErrorMessage}</p>
       )}
 
       <Input
@@ -205,7 +211,7 @@ const Login = (props) => {
         info="Type your password following our guidelines"
       />
       {passwordIsInvalid && (
-        <p className={classes.errorText}>{displayErrorMessage}</p>
+        <p className={classes.errorText}>{displayPasswordErrorMessage}</p>
       )}
       <div className={classes.actions}>{loginButtons}</div>
     </Fragment>
