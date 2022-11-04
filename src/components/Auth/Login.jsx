@@ -21,6 +21,7 @@ const Login = (props) => {
   const [displayPasswordErrorMessage, setDisplayPasswordErrorMessage] =
     useState("");
 
+  const [formIsValid, setFormIsValid] = useState(1);
   const [emailValue, setEmailValue] = useState("");
   const [emailValueTouched, setEmailValueTouched] = useState(false);
   const [enteredEmailValidation, setEnteredEmailValidation] = useState(false);
@@ -39,41 +40,38 @@ const Login = (props) => {
 
   const authCtx = useContext(AuthContext);
 
-  let formIsValid = false;
-
-  if (!emailIsInvalid && !passwordIsInvalid) {
-    formIsValid = true;
-  }
-
   const validateFields = (fieldName) => {
     if (fieldName === "email") {
-      console.log("validando email");
+      console.log("validating email");
       if (emailValue.trim() !== "") {
         let pattern = EMAIL_PATTERN.test(emailValue);
         if (pattern) {
-          console.log("el email paso los 2 niveles de validacion");
+          console.log("input email has succedded the 2 levels of validation");
           setEnteredEmailValidation(true);
+          setFormIsValid(formIsValid + 1);
         } else {
-          console.log("email no tiene un patron valido");
+          console.log("invalid email pattern");
           setEnteredEmailValidation(false);
           setDisplayEmailErrorMessage(INVALID_EMAIL);
         }
       } else {
-        console.log("email esta en blanco");
+        console.log("blank email");
         setEnteredEmailValidation(false);
         setDisplayEmailErrorMessage(EMPTY_FIELD);
       }
     }
     if (fieldName === "password") {
-      console.log("validando password");
+      console.log("validating password");
       if (passwordValue.trim() !== "") {
-        console.log("el password es valido");
+        console.log("input passwod is valid");
         setEnteredPasswordValidation(true);
+        setFormIsValid(formIsValid + 1);
       } else {
-        console.log("el password es invalido");
+        console.log("invalid password");
         setEnteredPasswordValidation(false);
         setDisplayPasswordErrorMessage(EMPTY_FIELD);
       }
+      console.log("level of formIsValid: " + formIsValid);
     }
   };
 
@@ -112,13 +110,6 @@ const Login = (props) => {
   };
 
   const validateCredentialsHandler = async () => {
-    setEmailValueTouched(true);
-    setPasswordValueTouched(true);
-
-    if (!formIsValid) {
-      return;
-    }
-
     updateActionHandler("validating");
     //showSpinner = true
 
@@ -187,7 +178,7 @@ const Login = (props) => {
       <nav className={classes.nav}>
         <div className={classes.btncontainer}>
           <HeaderButton
-            onClick={validateCredentialsHandler}
+            onClick={formIsValid ===3 ? validateCredentialsHandler : undefined }
             userIcon={1}
             requestedLabel="Login"
           />
