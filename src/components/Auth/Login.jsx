@@ -9,7 +9,8 @@ const IS_VALIDATING = "Validating Credentials...";
 const INVALID_CREDS = "User or Password incorrect, please verify";
 const VALID_CREDS = "Credentials verified, welcome!";
 const EMPTY_FIELD = "Blank data is not allowed, please check";
-const INVALID_EMAIL = "Please type a valid business email: <firstname>.<lastname>@<valid domain>";
+const INVALID_EMAIL =
+  "Please type a valid business email: <firstname>.<lastname>@<valid domain>";
 const EMAIL_PATTERN =
   /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@](?!yahoo.com)(?!outlook.com)[a-z]{3,9}[\.][a-z]{2,5}/g;
 
@@ -20,8 +21,8 @@ const Login = (props) => {
   const [displayEmailErrorMessage, setDisplayEmailErrorMessage] = useState("");
   const [displayPasswordErrorMessage, setDisplayPasswordErrorMessage] =
     useState("");
-
   const [formIsValid, setFormIsValid] = useState(1);
+
   const [emailValue, setEmailValue] = useState("");
   const [emailValueTouched, setEmailValueTouched] = useState(false);
   const [enteredEmailValidation, setEnteredEmailValidation] = useState(false);
@@ -48,16 +49,18 @@ const Login = (props) => {
         if (pattern) {
           console.log("input email has succedded the 2 levels of validation");
           setEnteredEmailValidation(true);
-          setFormIsValid(formIsValid + 1);
+          return 1;
         } else {
           console.log("invalid email pattern");
           setEnteredEmailValidation(false);
           setDisplayEmailErrorMessage(INVALID_EMAIL);
+          return 0;
         }
       } else {
         console.log("blank email");
         setEnteredEmailValidation(false);
         setDisplayEmailErrorMessage(EMPTY_FIELD);
+        return 0;
       }
     }
     if (fieldName === "password") {
@@ -65,13 +68,13 @@ const Login = (props) => {
       if (passwordValue.trim() !== "") {
         console.log("input passwod is valid");
         setEnteredPasswordValidation(true);
-        setFormIsValid(formIsValid + 1);
+        return 1;
       } else {
         console.log("invalid password");
         setEnteredPasswordValidation(false);
         setDisplayPasswordErrorMessage(EMPTY_FIELD);
+        return 0;
       }
-      console.log("level of formIsValid: " + formIsValid);
     }
   };
 
@@ -81,7 +84,8 @@ const Login = (props) => {
 
   const emailValueBlurHandler = (event) => {
     setEmailValueTouched(true);
-    validateFields("email");
+    let emailResult = validateFields("email");
+    setFormIsValid(formIsValid + emailResult);
   };
 
   const passwordValueHandler = (event) => {
@@ -90,7 +94,8 @@ const Login = (props) => {
 
   const passwordValueBlurHandler = (event) => {
     setPasswordValueTouched(true);
-    validateFields("password");
+    let passwordResult = validateFields("password");
+    setFormIsValid(formIsValid + passwordResult);
   };
 
   const updateActionHandler = (newAction) => {
@@ -178,7 +183,7 @@ const Login = (props) => {
       <nav className={classes.nav}>
         <div className={classes.btncontainer}>
           <HeaderButton
-            onClick={formIsValid ===3 ? validateCredentialsHandler : undefined }
+            onClick={formIsValid === 3 ? validateCredentialsHandler : undefined}
             userIcon={1}
             requestedLabel="Login"
           />
