@@ -4,8 +4,10 @@ import Login from "../Auth/Login";
 import SignUp from "../Auth/SignUp";
 import AuthContext from "../store/auth-context";
 import classes from "./Header.module.css";
+import { useTranslation } from "react-i18next";
 
 const ButtonsContainer = (props) => {
+  const { t } = useTranslation();
   const authCtx = useContext(AuthContext);
 
   const isLoggedIn = authCtx.isLoggedIn;
@@ -49,7 +51,7 @@ const ButtonsContainer = (props) => {
             <HeaderButton
               onClick={requestLogoutHandler}
               userIcon={1}
-              requestedLabel="Logout"
+              requestedLabel={t('logoutButton')}
             />
           </div>
         ) : (
@@ -57,12 +59,12 @@ const ButtonsContainer = (props) => {
             <HeaderButton
               onClick={showLoginHandler}
               userIcon={1}
-              requestedLabel="Login"
+              requestedLabel={t('loginButton')}
             />
             <HeaderButton
               onClick={showSignupHandler}
               userIcon={2}
-              requestedLabel="SignUp"
+              requestedLabel={t('signupButton')}
             />
           </div>
         )}
