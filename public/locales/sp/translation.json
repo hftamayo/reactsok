@@ -1,6 +1,15 @@
 {
     "Welcome": {
-        "text": "bienvenidos usuarios",
-        "description": "bienvenidos a la mejor aplicacion del planeta Tierra"
+        "text": "welcome users",
+        "description": "Welcome to the best application on earth"
+    },
+    "loginButton": {
+        "text": "Credenciales"
+    },
+    "signupButton": {
+        "text": "Registrar"
+    },
+    "logoutButton": {
+        "text": "Cerrar Sesion"
     }
 }
