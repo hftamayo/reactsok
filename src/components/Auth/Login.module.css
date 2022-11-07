@@ -49,3 +49,8 @@
   color: #490557;
   text-align: center;
 }
+
+/* user input errors */
+.errorText {
+  color: #b40e0e;
+}
