@@ -1,0 +1,30 @@
+{
+  "loginButton": {
+    "text": "Login"
+  },
+  "signupButton": {
+    "text": "SignUp"
+  },
+  "logoutButton": {
+    "text": "Logout"
+  },
+  "closeButton": {
+    "text": "Close"
+  },
+
+  "lblEmail": {
+    "text": "E-Mail",
+    "info": "Use your registered email"
+  },
+  "lblPassword": {
+    "text": "Password",
+    "info": "Type your password following our guidelines"
+  },
+  "loginFormErrors":{
+      "is_validating": "Validating Credentials...",
+      "invalid_creds": "User or Password incorrect, please verify",
+      "valid_creds": "Credentials verified, welcome!",
+      "empty_field": "Blank data is not allowed, please check",
+      "invalid_email": "Please type a valid business email: <firstname>.<lastname>@<valid domain>"
+  }
+}

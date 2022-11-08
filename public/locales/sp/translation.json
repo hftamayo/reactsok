@@ -1,0 +1,31 @@
+{
+    "loginButton": {
+      "text": "Conectar"
+    },
+    "signupButton": {
+      "text": "Registrar"
+    },
+    "logoutButton": {
+      "text": "Cerrar Sesion"
+    },
+    "closeButton": {
+      "text": "Cerrar"
+    },
+  
+    "lblEmail": {
+      "text": "Correo Elect",
+      "info": "Utilice una cuenta de correo registrada"
+    },
+    "lblPassword": {
+      "text": "Palabra Clave",
+      "info": "Utilice las recomendaciones de claves"
+    },
+    "loginFormErrors":{
+        "is_validating": "Validando credenciales...",
+        "invalid_creds": "Correo o clave equivocados, verifique",
+        "valid_creds": "Credenciales validadas, bienvenidos",
+        "empty_field": "Datos en blanco no permitidos, verifique",
+        "invalid_email": "Utilice correos en el formato: <nombre>.<apellido>@<dominio empresial>"
+    }
+  }
+  

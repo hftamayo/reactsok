@@ -4,19 +4,21 @@ import classes from "./Login.module.css";
 import Input from "../UI/Input/Input";
 import HeaderButton from "../UI/Buttons/HeaderButton";
 import AuthContext from "../store/auth-context";
+import { useTranslation } from "react-i18next";
 
-const IS_VALIDATING = "Validating Credentials...";
-const INVALID_CREDS = "User or Password incorrect, please verify";
-const VALID_CREDS = "Credentials verified, welcome!";
-const EMPTY_FIELD = "Blank data is not allowed, please check";
-const INVALID_EMAIL =
-  "Please type a valid business email: <firstname>.<lastname>@<valid domain>";
 const EMAIL_PATTERN =
   /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@](?!yahoo.com)(?!outlook.com)[a-z]{3,9}[\.][a-z]{2,5}/g;
 
 const Login = (props) => {
+  const { t } = useTranslation();
   const LOGIN_URL =
     "https://movieserp-default-rtdb.firebaseio.com/subscribers.json";
+
+  const IS_VALIDATING = t('loginFormErrors.is_validating');
+  const INVALID_CREDS = t('loginFormErrors.invalid_creds');
+  const VALID_CREDS = t('loginFormErrors.valid_creds');
+  const EMPTY_FIELD = t('loginFormErrors.empty_field');
+  const INVALID_EMAIL = t('loginFormErrors.invalid_email');
 
   const [displayEmailErrorMessage, setDisplayEmailErrorMessage] = useState("");
   const [displayPasswordErrorMessage, setDisplayPasswordErrorMessage] =
@@ -169,7 +171,7 @@ const Login = (props) => {
           <nav className={classes.nav}>
             <div className={classes.btncontainer}>
               <button className={classes.button} onClick={props.onClose}>
-                Close
+                {t("closeButton.text")}
               </button>
             </div>
           </nav>
@@ -185,12 +187,12 @@ const Login = (props) => {
           <HeaderButton
             onClick={formIsValid === 3 ? validateCredentialsHandler : undefined}
             userIcon={1}
-            requestedLabel="Login"
+            requestedLabel={t("loginButton.text")}
           />
           <HeaderButton
             onClick={props.onClose}
             userIcon={0}
-            requestedLabel="Close"
+            requestedLabel={t("closeButton.text")}
           />
         </div>
       </nav>
@@ -203,10 +205,10 @@ const Login = (props) => {
         onChange={emailValueHandler}
         onBlur={emailValueBlurHandler}
         id="email"
-        label="E-Mail"
+        label={t("lblEmail.text")}
         type="email"
         complete="off"
-        info="Use your registered email"
+        info={t("lblEmail.info")}
         //focus={true}
       />
       {emailIsInvalid && (
@@ -217,10 +219,10 @@ const Login = (props) => {
         onChange={passwordValueHandler}
         onBlur={passwordValueBlurHandler}
         id="paswword"
-        label="Password"
+        label={t("lblPassword.text")}
         type="password"
         complete="new-password"
-        info="Type your password following our guidelines"
+        info={t("lblPassword.info")}
       />
       {passwordIsInvalid && (
         <p className={classes.errorText}>{displayPasswordErrorMessage}</p>
