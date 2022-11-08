@@ -59,12 +59,12 @@ const ButtonsContainer = (props) => {
             <HeaderButton
               onClick={showLoginHandler}
               userIcon={1}
-              requestedLabel={t('loginButton')}
+              requestedLabel={t('loginButton.text')}
             />
             <HeaderButton
               onClick={showSignupHandler}
               userIcon={2}
-              requestedLabel={t('signupButton')}
+              requestedLabel={t('signupButton.text')}
             />
           </div>
         )}

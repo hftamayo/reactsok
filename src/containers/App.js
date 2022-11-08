@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+import i18n from "../i18n";
 import Sok from "../components/Sok";
 
 const App = () => {
