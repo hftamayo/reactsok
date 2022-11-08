@@ -1,15 +1,11 @@
 {
-    "Welcome": {
-        "text": "welcome users",
-        "description": "Welcome to the best application on earth"
-    },
-    "loginButton": {
-        "text": "Login"
-    },
-    "signupButton": {
-        "text": "SignUp"
-    },
-    "logoutButton": {
-        "text": "Logout"
-    }
+  "loginButton": {
+    "text": "Login"
+  },
+  "signupButton": {
+    "text": "SignUp"
+  },
+  "logoutButton": {
+    "text": "Logout"
+  }
 }
