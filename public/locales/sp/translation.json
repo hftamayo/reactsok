@@ -4,7 +4,7 @@
         "description": "Welcome to the best application on earth"
     },
     "loginButton": {
-        "text": "Credenciales"
+        "text": "Conectar"
     },
     "signupButton": {
         "text": "Registrar"
