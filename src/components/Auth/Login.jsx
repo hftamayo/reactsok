@@ -6,12 +6,6 @@ import HeaderButton from "../UI/Buttons/HeaderButton";
 import AuthContext from "../store/auth-context";
 import { useTranslation } from "react-i18next";
 
-const IS_VALIDATING = "Validating Credentials...";
-const INVALID_CREDS = "User or Password incorrect, please verify";
-const VALID_CREDS = "Credentials verified, welcome!";
-const EMPTY_FIELD = "Blank data is not allowed, please check";
-const INVALID_EMAIL =
-  "Please type a valid business email: <firstname>.<lastname>@<valid domain>";
 const EMAIL_PATTERN =
   /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@](?!yahoo.com)(?!outlook.com)[a-z]{3,9}[\.][a-z]{2,5}/g;
 
@@ -19,6 +13,12 @@ const Login = (props) => {
   const { t } = useTranslation();
   const LOGIN_URL =
     "https://movieserp-default-rtdb.firebaseio.com/subscribers.json";
+
+  const IS_VALIDATING = t('loginFormErrors.is_validating');
+  const INVALID_CREDS = t('loginFormErrors.invalid_creds');
+  const VALID_CREDS = t('loginFormErrors.valid_creds');
+  const EMPTY_FIELD = t('loginFormErrors.empty_field');
+  const INVALID_EMAIL = t('loginFormErrors.invalid_email');
 
   const [displayEmailErrorMessage, setDisplayEmailErrorMessage] = useState("");
   const [displayPasswordErrorMessage, setDisplayPasswordErrorMessage] =
