@@ -1,16 +1,10 @@
 /* https://www.davidhu.io/react-spinners/ */
 import ClipLoader from "react-spinners/BounceLoader";
+import classes from "./Spinner.module.css";
 
 function Spinner() {
   return (
-    <div
-      style={{
-        height: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <div className={classes.spinner}>
       <ClipLoader color="#52bfd9" size={100} />
     </div>
   );

@@ -4,11 +4,10 @@ import Sok from "../components/Sok";
 import i18n from "../i18n";
 
 const App = () => {
-
   return (
     <Suspense fallback={<Spinner />}>
       <Sok />
-      </Suspense>      
+    </Suspense>
   );
 };
 export default App;
