@@ -1,20 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import AuthContext from "./auth-context";
 
-
 export const AuthProvider = (props) => {
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const loginTmpHandler = () => {
+  useEffect(() => {
+    const checkSokActiveSession = localStorage.getItem('sokLoggedIn');
+    if (checkSokActiveSession === '1') {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+
+  const logoutHandler = () => {
+    localStorage.removeItem("sokLoggedIn");
+    setIsLoggedIn(false);
+  };
+
+  const loginHandler = () => {
+    localStorage.setItem("sokLoggedIn", "1");
     setIsLoggedIn(true);
-  }
+  };
 
   return (
     <AuthContext.Provider
       value={{
         isLoggedIn: isLoggedIn,
-         onValidSession: loginTmpHandler,
+        onValidSession: loginHandler,
+        onLogout: logoutHandler,
       }}
     >
       {props.children}

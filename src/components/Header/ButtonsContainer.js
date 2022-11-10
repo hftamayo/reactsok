@@ -37,7 +37,7 @@ const ButtonsContainer = (props) => {
     1. products in the cart
     2. orders not placed
     */
-    authCtx.logout();
+    authCtx.onLogout();
   };
 
 
@@ -51,7 +51,7 @@ const ButtonsContainer = (props) => {
             <HeaderButton
               onClick={requestLogoutHandler}
               userIcon={1}
-              requestedLabel={t('logoutButton')}
+              requestedLabel={t('logoutButton.text')}
             />
           </div>
         ) : (
