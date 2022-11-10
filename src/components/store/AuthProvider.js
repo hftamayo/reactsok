@@ -10,6 +10,11 @@ export const AuthProvider = (props) => {
     setIsLoggedIn(true);
   }
 
+  const logoutHandler = () => {
+    localStorage.removeItem("sokLoggedIn");
+    setIsLoggedIn(false);
+  }
+
   return (
     <AuthContext.Provider
       value={{
