@@ -37,7 +37,7 @@ const ButtonsContainer = (props) => {
     1. products in the cart
     2. orders not placed
     */
-    authCtx.logout();
+    authCtx.onLogout();
   };
 
 
