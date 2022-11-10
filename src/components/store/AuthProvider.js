@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AuthContext from "./auth-context";
 
 export const AuthProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkSokActiveSession = localStorage.getItem('sokLoggedIn');
+    if (checkSokActiveSession === '1') {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
 
   const logoutHandler = () => {
     localStorage.removeItem("sokLoggedIn");
