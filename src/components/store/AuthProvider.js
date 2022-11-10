@@ -6,10 +6,6 @@ export const AuthProvider = (props) => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const loginTmpHandler = () => {
-    setIsLoggedIn(true);
-  }
-
   const logoutHandler = () => {
     localStorage.removeItem('sokLoggedIn');
     setIsLoggedIn(false);
