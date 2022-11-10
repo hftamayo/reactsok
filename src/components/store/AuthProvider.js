@@ -11,8 +11,13 @@ export const AuthProvider = (props) => {
   }
 
   const logoutHandler = () => {
-    localStorage.removeItem("sokLoggedIn");
+    localStorage.removeItem('sokLoggedIn');
     setIsLoggedIn(false);
+  }
+
+  const loginHandler = () => {
+    localStorage.setItem('sokLoggedIn', '1');
+    setIsLoggedIn(true);
   }
 
   return (
