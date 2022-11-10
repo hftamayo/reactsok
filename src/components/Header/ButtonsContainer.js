@@ -51,7 +51,7 @@ const ButtonsContainer = (props) => {
             <HeaderButton
               onClick={requestLogoutHandler}
               userIcon={1}
-              requestedLabel={t('logoutButton')}
+              requestedLabel={t('logoutButton.text')}
             />
           </div>
         ) : (
