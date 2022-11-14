@@ -5,9 +5,16 @@ import classes from "./Home.module.css";
 const Dashboard = () => {
   return (
     <div className={classes.home}>
+      <h1>Please choose one of the bellow option</h1>
       <Card>
-        <h1>Welcome Dear User</h1>
+        <h1>Categories</h1>
       </Card>
+      <Card>
+        <h1>Add New Asset</h1>
+      </Card>      
+      <Card>
+        <h1>Inventory</h1>
+      </Card>      
     </div>
   );
 };
