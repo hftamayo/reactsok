@@ -22,6 +22,18 @@ const Dashboard = () => {
             <Link to="/inventory">Inventory</Link>
           </h1>
         </Card>
+
+        <Switch>
+          <Route path="/categories">
+            <Categories />
+          </Route>
+          <Route path="/newasset">
+            <AssetForm />
+          </Route>
+          <Route path="/inventory">
+            <Inventory />
+          </Route>
+        </Switch>
       </BrowserRouter>
     </div>
   );
