@@ -1,20 +1,29 @@
 import React from "react";
+import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import Card from "../UI/Card/Card";
 import classes from "./Home.module.css";
 
 const Dashboard = () => {
   return (
-      <div className={classes.home}>
+    <div className={classes.home}>
+      <BrowserRouter>
         <Card>
-          <h1>Categories</h1>
+          <h1>
+            <Link to="/categories">Categories</Link>
+          </h1>
         </Card>
         <Card>
-          <h1>New Asset</h1>
+          <h1>
+            <Link to="/newasset">New Asset</Link>
+          </h1>
         </Card>
         <Card>
-          <h1>Inventory</h1>
+          <h1>
+            <Link to="/inventory">Inventory</Link>
+          </h1>
         </Card>
-      </div>
+      </BrowserRouter>
+    </div>
   );
 };
 
