@@ -4,18 +4,17 @@ import classes from "./Home.module.css";
 
 const Dashboard = () => {
   return (
-    <div className={classes.home}>
-      <h1>Please choose one of the bellow option</h1>
-      <Card>
-        <h1>Categories</h1>
-      </Card>
-      <Card>
-        <h1>Add New Asset</h1>
-      </Card>      
-      <Card>
-        <h1>Inventory</h1>
-      </Card>      
-    </div>
+      <div className={classes.home}>
+        <Card>
+          <h1>Categories</h1>
+        </Card>
+        <Card>
+          <h1>New Asset</h1>
+        </Card>
+        <Card>
+          <h1>Inventory</h1>
+        </Card>
+      </div>
   );
 };
 
