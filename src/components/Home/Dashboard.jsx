@@ -28,10 +28,10 @@ const Dashboard = () => {
             <Categories />
           </Route>
           <Route path="/newasset">
-            <AssetForm />
+            {/* <AssetForm /> */}
           </Route>
           <Route path="/inventory">
-            <Inventory />
+            {/* <Inventory /> */}
           </Route>
         </Switch>
       </BrowserRouter>
