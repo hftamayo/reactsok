@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import Card from "../UI/Card/Card";
+import ViewCategories from "../Categories/ViewCategories";
+import GlobalProvider from "../store/AuthProvider";
 import classes from "./Home.module.css";
 
 const Dashboard = () => {
@@ -25,14 +27,12 @@ const Dashboard = () => {
 
         <Switch>
           <Route path="/categories">
-            <Categories />
+            <GlobalProvider>
+              <ViewCategories />
+            </GlobalProvider>
           </Route>
-          <Route path="/newasset">
-            {/* <AssetForm /> */}
-          </Route>
-          <Route path="/inventory">
-            {/* <Inventory /> */}
-          </Route>
+          <Route path="/newasset">{/* <AssetForm /> */}</Route>
+          <Route path="/inventory">{/* <Inventory /> */}</Route>
         </Switch>
       </BrowserRouter>
     </div>
