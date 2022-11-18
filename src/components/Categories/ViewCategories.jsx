@@ -7,7 +7,7 @@ const ViewCategories = () => {
     <Fragment>
       {categories.length > 0 ? (
         <Fragment>
-          {categories.map((employee) => (
+          {categories.map((category) => (
             <div key={category.id}>
               <div>
                 <p>{category.name}</p>
@@ -23,3 +23,5 @@ const ViewCategories = () => {
     </Fragment>
   );
 };
+
+export default ViewCategories;
