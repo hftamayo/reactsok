@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Card from "../UI/Card/Card";
 import ViewCategories from "../Categories/ViewCategories";
 import GlobalProvider from "../store/AuthProvider";
@@ -8,33 +8,18 @@ import classes from "./Home.module.css";
 const Dashboard = () => {
   return (
     <div className={classes.home}>
-      <BrowserRouter>
-        <Card>
-          <h1>
-            <Link to="/categories">Categories</Link>
-          </h1>
-        </Card>
-        <Card>
-          <h1>
-            <Link to="/newasset">New Asset</Link>
-          </h1>
-        </Card>
-        <Card>
-          <h1>
-            <Link to="/inventory">Inventory</Link>
-          </h1>
-        </Card>
-
-        <Switch>
-          <Route path="/categories">
+      <Routes>
+        <Route
+          path="/categories"
+          element={
             <GlobalProvider>
               <ViewCategories />
             </GlobalProvider>
-          </Route>
-          <Route path="/newasset">{/* <AssetForm /> */}</Route>
-          <Route path="/inventory">{/* <Inventory /> */}</Route>
-        </Switch>
-      </BrowserRouter>
+          }
+        />
+        <Route path="/newasset" />
+        <Route path="/inventory" />
+      </Routes>
     </div>
   );
 };
