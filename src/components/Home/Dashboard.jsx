@@ -24,14 +24,13 @@ const Dashboard = () => {
             <Link to="/inventory">Inventory</Link>
           </h1>
         </Card>
-
         <Routes>
           <Route
             path="/categories"
             element={
-              <GlobalProvider>
-                <ViewCategories />
-              </GlobalProvider>
+                <GlobalProvider>
+                  <ViewCategories />
+                </GlobalProvider>
             }
           />
           <Route path="/newasset" />
