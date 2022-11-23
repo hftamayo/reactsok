@@ -8,7 +8,7 @@ const Dashboard = () => {
   return (
     <BrowserRouter>
       <header className={classes.header}>
-        <nav>
+        <div>
           <ul>
             <li>
               <Link to="/categories">Categories</Link>
@@ -20,7 +20,7 @@ const Dashboard = () => {
               <Link to="/inventory">Inventory</Link>
             </li>
           </ul>
-        </nav>
+        </div>
       </header>
       <Routes>
         <Route

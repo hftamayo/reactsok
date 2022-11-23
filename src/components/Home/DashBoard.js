@@ -1,7 +1,7 @@
 import ToolBar from './ToolBar';
 import classes from './DashBoard.module.css';
 
-function Layout(props) {
+function DashBoard(props) {
   return (
     <div>
       <ToolBar />
@@ -10,4 +10,4 @@ function Layout(props) {
   );
 }
 
-export default Layout;
+export default DashBoard;
