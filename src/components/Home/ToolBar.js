@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import ViewCategories from "../Categories/ViewCategories";
 import GlobalProvider from "../store/GlobalState";
-import classes from "./Home.module.css";
+import classes from "./DashBoard.module.css";
 
 const Dashboard = () => {
   return (
