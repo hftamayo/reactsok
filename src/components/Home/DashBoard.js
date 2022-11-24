@@ -5,7 +5,7 @@ function DashBoard(props) {
   return (
     <div>
       <ToolBar />
-      <main className={classes.main}>{props.children}</main>
+      <main className={classes.content}>{props.children}</main>
     </div>
   );
 }
