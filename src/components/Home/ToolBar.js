@@ -7,14 +7,14 @@ import classes from "./DashBoard.module.css";
 const Dashboard = () => {
   return (
     <BrowserRouter>
-      <header className={classes.header}>
+      <header className={classes.toolbar}>
         <div>
           <ul>
             <li>
               <Link to="/categories">Categories</Link>
             </li>
             <li>
-              <Link to="/newasset">New Asset</Link>
+              <Link to="/newasset">Assets</Link>
             </li>
             <li>
               <Link to="/inventory">Inventory</Link>

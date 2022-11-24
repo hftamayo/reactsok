@@ -18,22 +18,26 @@
 
 .main {
   margin: 3rem auto;
-  width: 90%;
-  height: 50%;
-  max-width: 40rem;
+  width: 100%;
+  max-width: 90rem;
+  height: 25rem;
+  display: flex;
+  align-items: center;
+  background-color: #252525;  
 }
 
-.header {
-  width: 100%;
-  height: 5rem;
+.toolbar {
+  width: 50%;
+  height: 70%;
+  transform: translate(5%, 280%);
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #77002e;
-  padding: 0 10%;
+  padding: 0 20%;
 }
 
-.header ul {
+.toolbar ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -41,18 +45,18 @@
   align-items: baseline;
 }
 
-.header li {
+.toolbar li {
   margin-left: 3rem;
 }
 
-.header a {
+.toolbar a {
   text-decoration: none;
   font-size: 1.5rem;
-  color: #fcb8d2;
+  color: #000000;
 }
 
-.header a:hover,
-.header a:active,
-.header a.active {
+.toolbar a:hover,
+.toolbar a:active,
+.toolbar a.active {
   color: white;
 }
