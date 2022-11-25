@@ -4,7 +4,7 @@ import ViewCategories from "../Categories/ViewCategories";
 import GlobalProvider from "../store/GlobalState";
 import classes from "./DashBoard.module.css";
 
-const Dashboard = () => {
+const ToolBar = () => {
   return (
     <BrowserRouter>
       <header className={classes.toolbar}>
@@ -39,4 +39,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default ToolBar;
