@@ -25,6 +25,7 @@ const Dashboard = () => {
       <Routes>
         <Route
           path="/categories"
+          exact
           element={
             <GlobalProvider>
               <ViewCategories />
