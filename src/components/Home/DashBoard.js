@@ -1,12 +1,26 @@
-import ToolBar from './ToolBar';
-import classes from './DashBoard.module.css';
+import ToolBar from "./ToolBar";
+import classes from "./DashBoard.module.css";
+import { BrowserRouter } from "react-router-dom";
 
 function DashBoard(props) {
   return (
-    <div>
+    <BrowserRouter>
       <ToolBar />
-      <main className={classes.content}>{props.children}</main>
-    </div>
+      <Routes>
+        <Route path="/" />
+        <Route
+          path="/categories"
+          exact
+          element={
+            <GlobalProvider>
+              <ViewCategories />
+            </GlobalProvider>
+          }
+        />
+        <Route path="/newasset" />
+        <Route path="/inventory" />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
