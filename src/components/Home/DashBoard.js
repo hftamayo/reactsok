@@ -1,13 +1,15 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainLayout from "./MainLayout";
 import ToolBar from "./ToolBar";
-import classes from "./DashBoard.module.css";
-import { BrowserRouter } from "react-router-dom";
+import GlobalProvider from "../store/GlobalState";
+import ViewCategories from "../Categories/ViewCategories";
 
-function DashBoard(props) {
+function DashBoard() {
   return (
     <BrowserRouter>
       <ToolBar />
       <Routes>
-        <Route path="/" />
+        <Route path="/" element={<MainLayout />}>
         <Route
           path="/categories"
           exact
@@ -19,6 +21,7 @@ function DashBoard(props) {
         />
         <Route path="/newasset" />
         <Route path="/inventory" />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
