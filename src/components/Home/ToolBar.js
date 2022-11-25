@@ -1,12 +1,9 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import ViewCategories from "../Categories/ViewCategories";
-import GlobalProvider from "../store/GlobalState";
+import { Link } from "react-router-dom";
 import classes from "./DashBoard.module.css";
 
 const ToolBar = () => {
   return (
-    <BrowserRouter>
       <header className={classes.toolbar}>
         <div>
           <ul>
@@ -22,20 +19,6 @@ const ToolBar = () => {
           </ul>
         </div>
       </header>
-      <Routes>
-        <Route
-          path="/categories"
-          exact
-          element={
-            <GlobalProvider>
-              <ViewCategories />
-            </GlobalProvider>
-          }
-        />
-        <Route path="/newasset" />
-        <Route path="/inventory" />
-      </Routes>
-    </BrowserRouter>
   );
 };
 
