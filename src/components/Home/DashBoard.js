@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import MainLayout from "./MainLayout";
 import ToolBar from "./ToolBar";
 import GlobalProvider from "../store/GlobalState";
@@ -6,7 +6,6 @@ import ViewCategories from "../Categories/ViewCategories";
 
 function DashBoard() {
   return (
-    <BrowserRouter>
       <ToolBar />
       <Routes>
         <Route path="/" element={<MainLayout />}>
@@ -23,7 +22,6 @@ function DashBoard() {
         <Route path="/inventory" />
         </Route>
       </Routes>
-    </BrowserRouter>
   );
 }
 
