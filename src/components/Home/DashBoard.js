@@ -6,22 +6,24 @@ import ViewCategories from "../Categories/ViewCategories";
 
 function DashBoard() {
   return (
+    <div>
       <ToolBar />
       <Routes>
         <Route path="/" element={<MainLayout />}>
-        <Route
-          path="/categories"
-          exact
-          element={
-            <GlobalProvider>
-              <ViewCategories />
-            </GlobalProvider>
-          }
-        />
-        <Route path="/newasset" />
-        <Route path="/inventory" />
+          <Route
+            path="/categories"
+            exact
+            element={
+              <GlobalProvider>
+                <ViewCategories />
+              </GlobalProvider>
+            }
+          />
+          <Route path="/newasset" />
+          <Route path="/inventory" />
         </Route>
       </Routes>
+    </div>
   );
 }
 
