@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import { GlobalContext } from '../store/GlobalState';
 
 export const EditCategory = (route) => {
-  let history = useHistory();
+  let history = useNavigate();
 
   const { categories, editCategory } = useContext(GlobalContext);
 
@@ -28,7 +28,7 @@ export const EditCategory = (route) => {
   const onSubmit = (e) => {
     e.preventDefault();
     editCategory(selectedCategory);
-    history.push("/categories");
+    history("/categories");
   };
 
   const handleOnChange = (categoryKey, newValue) =>
@@ -39,7 +39,7 @@ export const EditCategory = (route) => {
   }
 
   return (
-    <Fragment>
+    <React.Fragment>
       <div className="w-full max-w-sm container mt-20 mx-auto">
         <form onSubmit={onSubmit}>
           <div className="w-full mb-5">
@@ -97,7 +97,7 @@ export const EditCategory = (route) => {
           </div>
         </form>
       </div>
-    </Fragment>
+    </React.Fragment>
   );
 };
 
