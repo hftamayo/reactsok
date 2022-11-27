@@ -1,8 +1,9 @@
 import React, { useContext, Fragment } from "react";
+import { Link } from 'react-router-dom';
 import { GlobalContext } from "../store/GlobalState";
 
 const ViewCategories = () => {
-  const { categories } = useContext(GlobalContext);
+  const { categories, removeCategory } = useContext(GlobalContext);
   return (
     <Fragment>
       {categories.length > 0 ? (
