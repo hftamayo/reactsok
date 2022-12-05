@@ -1,4 +1,4 @@
-const CategoriesReducer = (state, action) => {
+export default function CategoriesReducer(state, action) {
   switch (action.type) {
     case "ADD_CATEGORY":
       return {
@@ -33,5 +33,3 @@ const CategoriesReducer = (state, action) => {
       return state;
   }
 };
-
-export default CategoriesReducer;
