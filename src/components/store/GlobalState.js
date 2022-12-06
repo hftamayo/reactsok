@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState, useReducer } from "react";
 import CategoriesReducer from "./CategoriesReducer";
 
-const AvailableCategories =  {
+const initialState =  {
 /*   const LOGIN_URL =
     "https://movieserp-default-rtdb.firebaseio.com/categories.json";
 
@@ -38,13 +38,13 @@ const AvailableCategories =  {
     },
   ],   */
 
-  loadedCategories: [],
+  categories: [],
 };
 
-export const GlobalContext = createContext(AvailableCategories);
+export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(CategoriesReducer, AvailableCategories);
+  const [state, dispatch] = useReducer(CategoriesReducer, initialState);
 
   function addCategory(category) {
     dispatch({
@@ -70,7 +70,7 @@ export const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
-        categories: state.loadedCategories,
+        categories: state.categories, /* this 2 vars need to have the same name */
         addCategory,
         editCategory,
         removeCategory,
