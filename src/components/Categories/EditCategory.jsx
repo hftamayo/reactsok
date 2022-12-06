@@ -1,10 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 
 import { GlobalContext } from '../store/GlobalState';
 
-export const EditCategory = (route) => {
-  let history = useNavigate();
+export const EditCategory = (props) => {
 
   const { categories, editCategory } = useContext(GlobalContext);
 
@@ -15,15 +14,17 @@ export const EditCategory = (route) => {
     status: "",
   });
 
-  const currentCategoryId = route.match.params.id;
+  let history = useNavigate();
+  let currentCategoryId = useParams();
 
   useEffect(() => {
     const categoryId = currentCategoryId;
     const selectedCategory = categories.find(
-      (currentCategoryTraversal) => currentCategoryTraversal.id === parseInt(categoryId)
+      (category) => category.id === parseInt(categoryId)
     );
     setSelectedCategory(selectedCategory);
   }, [currentCategoryId, categories]);
+
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -66,7 +67,7 @@ export const EditCategory = (route) => {
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:text-gray-600 focus:shadow-outline"
-              value={selectedCategory.location}
+              value={selectedCategory.description}
               onChange={(e) => handleOnChange("description", e.target.value)}
               type="text"
               placeholder="Enter description"
