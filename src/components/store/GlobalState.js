@@ -1,8 +1,8 @@
 import React, { createContext, useEffect, useState, useReducer } from "react";
 import CategoriesReducer from "./CategoriesReducer";
 
-const initialState =  {
-/*   const LOGIN_URL =
+const initialState = {
+  /*   const LOGIN_URL =
     "https://movieserp-default-rtdb.firebaseio.com/categories.json";
 
   const [loadedCategories, setLoadedCategories] = useState([]);
@@ -29,7 +29,7 @@ const initialState =  {
     };
   }, []); */
 
-/*   loadedCategories: [
+  /*   loadedCategories: [
     {
       id: 1,
       name: "Cybersecurity",
@@ -70,7 +70,8 @@ export const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
-        categories: state.categories, /* this 2 vars need to have the same name */
+        categories:
+          state.categories /* this 2 vars need to have the same name */,
         addCategory,
         editCategory,
         removeCategory,
