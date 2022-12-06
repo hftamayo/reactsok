@@ -21,7 +21,7 @@ export default function CategoriesReducer(state, action) {
         categories: updatedCategories,
       };
 
-    case "REMOVE_EMPLOYEE":
+    case "REMOVE_CATEGORY":
       return {
         ...state,
         categories: state.categories.filter(
