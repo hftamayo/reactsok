@@ -1,10 +1,9 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from "react";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
-import { GlobalContext } from '../store/GlobalState';
+import { GlobalContext } from "../store/GlobalState";
 
 export const EditCategory = (props) => {
-
   const { categories, editCategory } = useContext(GlobalContext);
 
   const [selectedCategory, setSelectedCategory] = useState({
@@ -15,16 +14,17 @@ export const EditCategory = (props) => {
   });
 
   let history = useNavigate();
-  let currentCategoryId = useParams();
+  const { id } = useParams(); /* to extract properly the param please use curly brackets and same name from the origin */ 
+  console.log("requested category for edition: " + id);
 
   useEffect(() => {
-    const categoryId = currentCategoryId;
+    const categoryId = id;
     const selectedCategory = categories.find(
       (category) => category.id === parseInt(categoryId)
     );
+    console.log("the selectedCategory is: " + selectedCategory);
     setSelectedCategory(selectedCategory);
-  }, [currentCategoryId, categories]);
-
+  }, [id, categories]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +36,11 @@ export const EditCategory = (props) => {
     setSelectedCategory({ ...selectedCategory, [categoryKey]: newValue });
 
   if (!selectedCategory || !selectedCategory.id) {
-    return <div>Invalid Category ID.</div>;
+    return (
+      <React.Fragment>
+        <div>Invalid Category ID.</div>
+      </React.Fragment>
+    );
   }
 
   return (
