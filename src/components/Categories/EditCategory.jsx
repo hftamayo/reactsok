@@ -78,19 +78,19 @@ export const EditCategory = (props) => {
             />
           </div>
           <div className="w-full  mb-5">
+            <input
+              className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              value={selectedCategory.status}
+              onChange={(e) => handleOnChange("status", e.target.value)}
+              type="checkbox"
+              placeholder="Enter status"
+            />
             <label
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               htmlFor="status"
             >
-              Status
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:text-gray-600 focus:shadow-outline"
-              value={selectedCategory.status}
-              onChange={(e) => handleOnChange("status", e.target.value)}
-              type="text"
-              placeholder="Enter status"
-            />
+              Is Active?
+            </label>            
           </div>
           <div className="flex items-center justify-between">
             <button className="block mt-5 bg-green-400 w-full hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:text-gray-600 focus:shadow-outline">
