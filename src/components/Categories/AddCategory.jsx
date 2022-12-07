@@ -10,7 +10,7 @@ export const AddCategory = () => {
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +36,7 @@ export const AddCategory = () => {
               Name of category
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:text-gray-600"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:text-gray-600 focus:shadow-outline"
               value={name}
               onChange={(e) => setName(e.target.value)}
               type="text"
@@ -59,19 +59,20 @@ export const AddCategory = () => {
             />
           </div>
           <div className="w-full mb-5">
+            <input
+              checked
+              type="checkbox"
+              className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              id="status"
+              value={status}
+              onChange={() => setStatus(!status)}
+            />
             <label
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               htmlFor="status"
             >
-              Active?
+              Is Active?
             </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:text-gray-600"
-              value={status}
-              onChange={(e) => setStatus(e.target.value)}
-              type="text"
-              placeholder="Status"
-            />
           </div>
           <div className="flex items-center justify-between">
             <button className="mt-5 bg-green-400 w-full hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
