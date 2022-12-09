@@ -1,9 +1,22 @@
 import React, { createContext, useEffect, useState, useReducer } from "react";
 import CategoriesReducer from "./CategoriesReducer";
 
-const initialState = {
+import {collection, query, orderBy, onSnapshot} from "firebase/firestore";
+import { db } from "../../containers/firebase";
 
-  categories: [],
+const initialState = {
+  const [categories, setCategories] = useState([]),
+
+  useEffect(() => {
+    const categoriesRef = query(collection(db, 'categories'), orderBy('created', 'desc'))
+    onSnapshot(categoriesRef, (snapshot) => {
+      setCategories(snapshot.docs.map(doc => ({
+        id: doc.id,
+        data: doc.data()
+      })))
+    })
+  }, [])
+
 };
 
 export const GlobalContext = createContext(initialState);
