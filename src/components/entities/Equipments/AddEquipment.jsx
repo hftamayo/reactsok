@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { db } from "../../store/firebase";
+import { toast } from "react-tostify";
 import classes from "./Equipment.module.css";
 
 const initialState = {
@@ -15,13 +16,28 @@ const AddEquipment = () => {
   const [data, setData] = useState({});
 
   const { name, description, brand, status } = state;
+  let history = useNavigate();
 
-  const handleInputChange = () => {};
-
-  const handleSubmit = () => {
-      
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setState({ ...state, [name]: value });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(!name || !email || !contact){
+      toast.error("please provide value in each field");
+    } else {
+      db.child("equipments").push(state, err => {
+        if(err){
+          toast.error(err);
+        } else {
+          toast.success("Equipment added successfully");
+        }
+      });
+      setTimeout(() => history("/equipments"), 500);
+    }
+  };
 
   return (
     <div style={{ marginTop: "100px" }}>
