@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { db } from "../../store/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "./Equipment.module.css";
+import { toast } from "react-toastify";
 
 const ViewEquipments = () => {
   const [data, setData] = useState({});
@@ -19,6 +20,22 @@ const ViewEquipments = () => {
       setData({});
     };
   }, []);
+
+  const onDelete = (id) => {
+    if (
+      window.confirm(
+        "This action can't be rolled back, press OK for confirmation"
+      )
+    ) {
+      db.child(`equipments/${id}`).remove((err) => {
+        if (err) {
+          toast.error(err);
+        } else {
+          toast.success("record deleted sucessfully");
+        }
+      });
+    }
+  };
   return (
     <div style={{ marginTop: "100px" }}>
       <table className="styled-table">
@@ -45,10 +62,15 @@ const ViewEquipments = () => {
                   <Link to={`/edit-equipment/${id}`}>
                     <button className="btn btn-edit">Edit</button>
                   </Link>
-                  <button className="btn btn-delete">Delete</button>
+                  <button
+                    className="btn btn-delete"
+                    onClick={() => onDelete(id)}
+                  >
+                    Delete
+                  </button>
                   <Link to={`/view-equipment/${id}`}>
                     <button className="btn btn-view">Details</button>
-                  </Link>                                    
+                  </Link>
                 </td>
               </tr>
             );
