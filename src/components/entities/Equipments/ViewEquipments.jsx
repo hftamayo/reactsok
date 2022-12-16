@@ -41,6 +41,15 @@ const ViewEquipments = () => {
                 <td>{data[id].description}</td>
                 <td>{data[id].brand}</td>
                 <td>{data[id].status}</td>
+                <td>
+                  <Link to={`/edit-equipment/${id}`}>
+                    <button className="btn btn-edit">Edit</button>
+                  </Link>
+                  <button className="btn btn-delete">Delete</button>
+                  <Link to={`/view-equipment/${id}`}>
+                    <button className="btn btn-view">Details</button>
+                  </Link>                                    
+                </td>
               </tr>
             );
           })}
