@@ -26,19 +26,19 @@ const DetailEquipment = () => {
           <p>Equipment's Details</p>
         </div>
         <div className="container">
-          <strong>ID</strong>
+          <strong>ID: </strong>
           <span>{id}</span>
           <br />
-          <strong>Name</strong>
+          <strong>Name: </strong>
           <span>{equipment.name}</span>
           <br />
-          <strong>Description</strong>
+          <strong>Description: </strong>
           <span>{equipment.description}</span>
           <br />
-          <strong>Brand</strong>
+          <strong>Brand: </strong>
           <span>{equipment.brand}</span>
           <br />
-          <strong>Status</strong>
+          <strong>Status: </strong>
           <span>{equipment.status}</span>
           <br />
           <Link to="/equipments">
