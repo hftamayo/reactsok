@@ -46,6 +46,7 @@ function DashBoard() {
               }
             />
             <Route path="/add-equipment" exact element={<AddEquipment />} />
+            <Route path="/edit-equipment/:id" exact element={<EditEquipment />} />
 
             <Route path="/newasset" />
             <Route path="/inventory" />
