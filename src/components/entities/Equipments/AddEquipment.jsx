@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { db } from "../../store/firebase";
 import { toast } from "react-tostify";
 import classes from "./Equipment.module.css";
@@ -18,6 +18,33 @@ const AddEquipment = () => {
   const { name, description, brand, status } = state;
   let history = useNavigate();
 
+  const { id } = useParams();
+
+  useEffect(() => {
+    db.child("equipments").on("value", (snapshot) => {
+      if (snapshot.val() !== null) {
+        setData({ ...snapshot.val() });
+      } else {
+        setData({});
+      }
+    });
+
+    return () => {
+      setData({});
+    };
+  }, [id]);
+
+  useEffect(() => {
+    if (id) {
+      setState({ ...data[id] });
+    } else {
+      setState({ ...initialState });
+    }
+    return () => {
+      setState({ ...initialState });
+    };
+  }, [id, data]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
@@ -25,16 +52,26 @@ const AddEquipment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(!name || !email || !contact){
+    if (!name || !email || !contact) {
       toast.error("please provide value in each field");
     } else {
-      db.child("equipments").push(state, err => {
-        if(err){
-          toast.error(err);
-        } else {
-          toast.success("Equipment added successfully");
-        }
-      });
+      if (!id) {
+        db.child("equipments").push(state, (err) => {
+          if (err) {
+            toast.error(err);
+          } else {
+            toast.success("Record added successfully");
+          }
+        });
+      } else {
+        db.child(`equipments/${id}`).set(state, (err) => {
+          if (err) {
+            toast.error(err);
+          } else {
+            toast.success("Record updated successfully");
+          }
+        });
+      }
       setTimeout(() => history("/equipments"), 500);
     }
   };
@@ -56,7 +93,7 @@ const AddEquipment = () => {
           id="name"
           name="name"
           placeHolder="Equipment's name"
-          value={name}
+          value={name || ""}
           onChange={handleInputChange}
         />
         <label htmlFor="description">Description</label>
@@ -65,7 +102,7 @@ const AddEquipment = () => {
           id="description"
           name="description"
           placeHolder="Equipment's description"
-          value={description}
+          value={description || ""}
           onChange={handleInputChange}
         />
         <label htmlFor="brand">Brand</label>
@@ -74,7 +111,7 @@ const AddEquipment = () => {
           id="brand"
           name="brand"
           placeHolder="Equipment's brand"
-          value={brand}
+          value={brand || ""}
           onChange={handleInputChange}
         />
         <label htmlFor="status">Status</label>
@@ -83,11 +120,11 @@ const AddEquipment = () => {
           id="status"
           name="status"
           placeHolder="Status"
-          value={status}
+          value={status || ""}
           onChange={handleInputChange}
         />
 
-        <input type="submit" value="Save" />
+        <input type="submit" value={id ? "Update" : "Save"} />
       </form>
     </div>
   );
