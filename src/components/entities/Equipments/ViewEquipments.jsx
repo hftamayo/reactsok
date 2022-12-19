@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../../store/firebase";
+import  fireDb  from "../../store/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "./Equipment.module.css";
 import { toast } from "react-toastify";
@@ -8,7 +8,7 @@ const ViewEquipments = () => {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    db.child("equipments").on("value", (snapshot) => {
+    fireDb.child("equipments").on("value", (snapshot) => {
       if (snapshot.val() !== null) {
         setData({ ...snapshot.val() });
       } else {
@@ -27,7 +27,7 @@ const ViewEquipments = () => {
         "This action can't be rolled back, press OK for confirmation"
       )
     ) {
-      db.child(`equipments/${id}`).remove((err) => {
+      fireDb.child(`equipments/${id}`).remove((err) => {
         if (err) {
           toast.error(err);
         } else {

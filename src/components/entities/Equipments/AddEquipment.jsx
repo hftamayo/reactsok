@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { db } from "../../store/firebase";
+import fireDb  from "../../store/firebase";
 import { toast } from "react-toastify";
 import classes from "./Equipment.module.css";
 
@@ -21,7 +21,7 @@ const AddEquipment = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    db.child("equipments").on("value", (snapshot) => {
+    fireDb.child("equipments").on("value", (snapshot) => {
       if (snapshot.val() !== null) {
         setData({ ...snapshot.val() });
       } else {
@@ -56,7 +56,7 @@ const AddEquipment = () => {
       toast.error("please provide value in each field");
     } else {
       if (!id) {
-        db.child("equipments").push(state, (err) => {
+        fireDb.child("equipments").push(state, (err) => {
           if (err) {
             toast.error(err);
           } else {
@@ -64,7 +64,7 @@ const AddEquipment = () => {
           }
         });
       } else {
-        db.child(`equipments/${id}`).set(state, (err) => {
+        fireDb.child(`equipments/${id}`).set(state, (err) => {
           if (err) {
             toast.error(err);
           } else {
