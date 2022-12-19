@@ -11,6 +11,9 @@ const ToolBar = () => {
               <Link to="/categories">Categories</Link>
             </li>
             <li>
+              <Link to="/equipments">Equipments</Link>
+            </li>            
+            <li>
               <Link to="/newasset">Assets</Link>
             </li>
             <li>
