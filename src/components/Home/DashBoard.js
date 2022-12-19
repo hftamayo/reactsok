@@ -41,7 +41,7 @@ function DashBoard() {
               element={
                 <div>
                   <EquipmentHeader />
-                  <ViewCategories />
+                  <ViewEquipments />
                 </div>
               }
             />
