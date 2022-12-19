@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { db } from "../../store/firebase";
-import { toast } from "react-tostify";
+import { toast } from "react-toastify";
 import classes from "./Equipment.module.css";
 
 const initialState = {
@@ -52,7 +52,7 @@ const AddEquipment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name || !email || !contact) {
+    if (!name || !description || !brand || !status) {
       toast.error("please provide value in each field");
     } else {
       if (!id) {

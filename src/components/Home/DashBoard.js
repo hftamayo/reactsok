@@ -11,8 +11,7 @@ import EquipmentHeader from "../entities/Equipments/EquipmentHeader";
 import ViewEquipments from "../entities/Equipments/ViewEquipments";
 import AddEquipment from "../entities/Equipments/AddEquipment";
 
-import { ToasterContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+/* import { ToastContainer } from "react-toastify"; */
 
 function DashBoard() {
   return (
@@ -34,7 +33,6 @@ function DashBoard() {
             <Route path="/add-category" exact element={<AddCategory />} />
             <Route path="/edit-category/:id" exact element={<EditCategory />} />
 
-            <ToasterContainer position="top-center" />
             <Route
               path="/equipments"
               exact
