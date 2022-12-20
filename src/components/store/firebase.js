@@ -15,10 +15,11 @@ const firebaseConfig = {
   messagingSenderId: "616599114265",
   appId: "1:616599114265:web:0b41fb9fc74559a04cd088",
   measurementId: "G-J5JSZK4LG3",
+  databaseURL: "https://sotiria.firebaseio.com",
 };
 
-const fireDbInstance = initializeApp(firebaseConfig);
-const fireDb = getDatabase(fireDbInstance);
+const app = initializeApp(firebaseConfig);
+const fireDb = getDatabase(app);
 
 /* const analytics = getAnalytics(fireDb);
 const db = getFirestore(fireDb);
