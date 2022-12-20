@@ -1,8 +1,11 @@
-import firebase from "firebase";
-import "firebase/database";
 import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
+
+/* import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore"; 
+import { getDatabase } from "firebase/database";
+*/
 
 const firebaseConfig = {
   apiKey: "AIzaSyB6fBtXeYqMjuj2L_vzO7NSzDMw0lFP06U",
@@ -14,9 +17,12 @@ const firebaseConfig = {
   measurementId: "G-J5JSZK4LG3",
 };
 
-const fireDb = initializeApp(firebaseConfig);
-const analytics = getAnalytics(fireDb);
+const fireDbInstance = initializeApp(firebaseConfig);
+const fireDb = getDatabase(fireDbInstance);
+
+/* const analytics = getAnalytics(fireDb);
 const db = getFirestore(fireDb);
-/* export { fireDb, db };
- */
-export default fireDb.database().ref();
+const fireDb = getDatabase(app);
+export { db }; */
+
+export default {fireDb};
