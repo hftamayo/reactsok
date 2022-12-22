@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { db } from "../../store/firebase";
+import fireDb from "../../store/firebase";
 import classes from "./Equipment.module.css";
 
 const DetailEquipment = () => {
@@ -8,7 +8,7 @@ const DetailEquipment = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    db.child(`equipments/${id}`)
+    fireDb.child(`equipments/${id}`)
       .get()
       .then((snapshot) => {
         if (snapshot.exists()) {
