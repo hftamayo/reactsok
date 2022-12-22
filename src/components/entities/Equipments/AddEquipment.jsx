@@ -92,7 +92,7 @@ const AddEquipment = () => {
           type="text"
           id="name"
           name="name"
-          placeHolder="Equipment's name"
+          placeholder="Equipment's name"
           value={name || ""}
           onChange={handleInputChange}
         />
@@ -101,7 +101,7 @@ const AddEquipment = () => {
           type="text"
           id="description"
           name="description"
-          placeHolder="Equipment's description"
+          placeholder="Equipment's description"
           value={description || ""}
           onChange={handleInputChange}
         />
@@ -110,7 +110,7 @@ const AddEquipment = () => {
           type="text"
           id="brand"
           name="brand"
-          placeHolder="Equipment's brand"
+          placeholder="Equipment's brand"
           value={brand || ""}
           onChange={handleInputChange}
         />
@@ -119,7 +119,7 @@ const AddEquipment = () => {
           type="number"
           id="status"
           name="status"
-          placeHolder="Status"
+          placeholder="Status"
           value={status || ""}
           onChange={handleInputChange}
         />
