@@ -43,20 +43,20 @@ input[type="submit"]:hover {
     text-align: left;
 }
 
-.styled-table th,
-.styled-table td {
+.styled_table th,
+.styled_table td {
     padding: 12px 15px;
 }
 
-.styled-table tbody tr {
+.styled_table tbody tr {
     border-bottom: 1px solid #dddddd;
 }
 
-.styled-table tbody tr:nth-of-type(even){
+.styled_table tbody tr:nth-of-type(even){
     background-color: #f3f3f3;
 }
 
-.styled-table tbody tr:last-of-type {
+.styled_table tbody tr:last-of-type {
     border-bottom: 2px solid #009879;
 }
 
@@ -73,15 +73,15 @@ input[type="submit"]:hover {
     cursor: pointer;
 }
 
-.btn-edit {
+.btn_edit {
     background-color: #008cba;
 }
 
-.btn-delete {
+.btn_delete {
     background-color: #f44336;
 }
 
-.btn-view {
+.btn_view {
     background-color: #e7e7e7;
     color: black;
 }
@@ -96,14 +96,14 @@ input[type="submit"]:hover {
     margin: 0 auto;
 }
 
-.card-header{
+.card_header{
     height: 30%;
     background: #5d6770;
     color: white;
     text-align: center;
 }
 
-.card-header p{
+.card_header p{
     font-size: 20px;
 }
 
