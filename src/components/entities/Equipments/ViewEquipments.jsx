@@ -58,7 +58,7 @@ firebase v9
   };
   return (
     <div style={{ marginTop: "100px" }}>
-      <table className="styled-table">
+      <table className={classes.styled_table}>
         <thead>
           <tr>
             <th style={{ textAlign: "center" }}>No.</th>
@@ -80,16 +80,16 @@ firebase v9
                 <td>{data[id].status}</td>
                 <td>
                   <Link to={`/edit-equipment/${id}`}>
-                    <button className="btn btn-edit">Edit</button>
+                    <button className={classes.btn_edit}>Edit</button>
                   </Link>
                   <button
-                    className="btn btn-delete"
+                    className={classes.btn_delete}
                     onClick={() => onDelete(id)}
                   >
                     Delete
                   </button>
                   <Link to={`/detail-equipment/${id}`}>
-                    <button className="btn btn-view">Details</button>
+                    <button className={classes.btn_view}>Details</button>
                   </Link>
                 </td>
               </tr>

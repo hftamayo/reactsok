@@ -21,11 +21,11 @@ const DetailEquipment = () => {
 
   return (
     <div style={{ marginTop: "150px" }}>
-      <div className="card">
-        <div className="card-header">
+      <div className={classes.card}>
+        <div className={classes.card_header}>
           <p>Equipment's Details</p>
         </div>
-        <div className="container">
+        <div className={classes.container}>
           <strong>ID: </strong>
           <span>{id}</span>
           <br />
@@ -42,7 +42,7 @@ const DetailEquipment = () => {
           <span>{equipment.status}</span>
           <br />
           <Link to="/equipments">
-            <button className="btn btn-edit">Go Back</button>
+            <button className={classes.btn_edit}>Go Back</button>
           </Link>
         </div>
       </div>
