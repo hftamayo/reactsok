@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import fireDb from "../../store/firebase";
-import { ref, child, get } from "firebase/database";
+/* import { ref, child, get } from "firebase/database"; */
 import { Link, useNavigate } from "react-router-dom";
 import classes from "./Equipment.module.css";
 import { toast } from "react-toastify";
@@ -8,17 +8,23 @@ import { toast } from "react-toastify";
 const ViewEquipments = () => {
   const [data, setData] = useState({});
 
-  /*   useEffect(() => {
+     useEffect(() => {
     fireDb.child("equipments").on("value", (snapshot) => {
       if (snapshot.val() !== null) {
         setData({ ...snapshot.val() });
       } else {
         setData({});
       }
-    }); */
+    }); 
+    return () => {
+      setData({});
+    };
+  }, []);    
 
-  useEffect(() => {
-    get(child(fireDb, `equipments`))
+/*
+firebase v9 
+   useEffect(() => {
+    get(child(fireDb, "equipments"))
       .then((snapshot) => {
         if (snapshot.exists()) {
           setData({ ...snapshot.val() });
@@ -34,7 +40,7 @@ const ViewEquipments = () => {
       setData({});
     };
   }, []);
-
+ */
   const onDelete = (id) => {
     if (
       window.confirm(
