@@ -25,7 +25,7 @@ export default {fireDb};
 */
 
 const fireDb = firebase.initializeApp(firebaseConfig);
-const analytics = getAnalytics(fireDb);
+/* const analytics = getAnalytics(fireDb); */
 
 export default fireDb.database().ref();
 
