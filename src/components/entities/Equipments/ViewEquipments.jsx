@@ -80,16 +80,16 @@ firebase v9
                 <td>{data[id].status}</td>
                 <td>
                   <Link to={`/edit-equipment/${id}`}>
-                    <button className={classes.btn_edit}>Edit</button>
+                    <button className={classes.btn + ' ' + classes.btn_edit}>Edit</button>
                   </Link>
                   <button
-                    className={classes.btn_delete}
+                    className={classes.btn + ' ' + classes.btn_delete}
                     onClick={() => onDelete(id)}
                   >
                     Delete
                   </button>
                   <Link to={`/detail-equipment/${id}`}>
-                    <button className={classes.btn_view}>Details</button>
+                    <button className={classes.btn + ' '+classes.btn_view}>Details</button>
                   </Link>
                 </td>
               </tr>
