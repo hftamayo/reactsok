@@ -90,6 +90,7 @@ const AddEquipment = () => {
         <label htmlFor="name">Name</label>
         <input
           type="text"
+          autoFocus={true}
           id="name"
           name="name"
           placeholder="Equipment's name"
