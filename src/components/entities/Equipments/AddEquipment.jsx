@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import fireDb  from "../../store/firebase";
+import fireDb from "../../store/firebase";
 import { toast } from "react-toastify";
 import classes from "./Equipment.module.css";
 
@@ -125,6 +125,11 @@ const AddEquipment = () => {
         />
 
         <input type="submit" value={id ? "Update" : "Save"} />
+        <Link to="/equipments">
+          <button className={classes.btn + " " + classes.btn_edit}>
+            Go Back
+          </button>
+        </Link>
       </form>
     </div>
   );
