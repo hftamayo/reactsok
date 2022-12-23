@@ -28,21 +28,21 @@ const DetailEquipment = () => {
         <div className={classes.container}>
           <strong>ID: </strong>
           <span>{id}</span>
-          <br />
+          <br /><br />
           <strong>Name: </strong>
           <span>{equipment.name}</span>
-          <br />
+          <br /><br />
           <strong>Description: </strong>
           <span>{equipment.description}</span>
-          <br />
+          <br /><br />
           <strong>Brand: </strong>
           <span>{equipment.brand}</span>
-          <br />
+          <br /><br />
           <strong>Status: </strong>
           <span>{equipment.status}</span>
-          <br />
+          <br /><br />
           <Link to="/equipments">
-            <button className={classes.btn_edit}>Go Back</button>
+            <button className={classes.btn + ' ' + classes.btn_edit}>Go Back</button>
           </Link>
         </div>
       </div>
