@@ -13,8 +13,6 @@ import AddEquipment from "../entities/Equipments/AddEquipment";
 import DetailEquipment from "../entities/Equipments/DetailEquipment";
 
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.minimal.css';
-
 
 function DashBoard() {
   return (
