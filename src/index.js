@@ -3,6 +3,7 @@ import App from "./containers/App";
 import { BrowserRouter } from "react-router-dom";
 import "./tailwind.css";
 import "./index.css";
+import 'react-toastify/dist/ReactToastify.css';
 import { AuthProvider } from "./components/store/AuthProvider";
 
 const rootElement = document.getElementById("root");
