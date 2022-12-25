@@ -12,13 +12,16 @@ import ViewEquipments from "../entities/Equipments/ViewEquipments";
 import AddEquipment from "../entities/Equipments/AddEquipment";
 import DetailEquipment from "../entities/Equipments/DetailEquipment";
 
-/* import { ToastContainer } from "react-toastify"; */
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.minimal.css';
+
 
 function DashBoard() {
   return (
     <div>
       <GlobalProvider>
         <ToolBar />
+        <ToastContainer position="top-center" />
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route
@@ -45,8 +48,16 @@ function DashBoard() {
               }
             />
             <Route path="/add-equipment" exact element={<AddEquipment />} />
-            <Route path="/edit-equipment/:id" exact element={<AddEquipment />} />
-            <Route path="/detail-equipment/:id" exact element={<DetailEquipment />} />            
+            <Route
+              path="/edit-equipment/:id"
+              exact
+              element={<AddEquipment />}
+            />
+            <Route
+              path="/detail-equipment/:id"
+              exact
+              element={<DetailEquipment />}
+            />
 
             <Route path="/newasset" />
             <Route path="/inventory" />
