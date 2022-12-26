@@ -12,6 +12,11 @@ import ViewEquipments from "../entities/Equipments/ViewEquipments";
 import AddEquipment from "../entities/Equipments/AddEquipment";
 import DetailEquipment from "../entities/Equipments/DetailEquipment";
 
+import OsHeader from "../entities/Os/OsHeader";
+import ViewOs from "../entities/Os/ViewOs";
+import FormOs from "../entities/Os/FormOs";
+import DetailOS from "../entities/Os/DetailOs";
+
 import { ToastContainer } from "react-toastify";
 
 function DashBoard() {
@@ -56,6 +61,42 @@ function DashBoard() {
               exact
               element={<DetailEquipment />}
             />
+
+            <Route
+              path="/equipments"
+              exact
+              element={
+                <div>
+                  <EquipmentHeader />
+                  <ViewEquipments />
+                </div>
+              }
+            />
+            <Route path="/add-equipment" exact element={<AddEquipment />} />
+            <Route
+              path="/edit-equipment/:id"
+              exact
+              element={<AddEquipment />}
+            />
+            <Route
+              path="/detail-equipment/:id"
+              exact
+              element={<DetailEquipment />}
+            />
+
+            <Route
+              path="/oses"
+              exact
+              element={
+                <div>
+                  <OsHeader />
+                  <ViewOs />
+                </div>
+              }
+            />
+            <Route path="/add-os" exact element={<FormOs />} />
+            <Route path="/edit-os/:id" exact element={<FormOs />} />
+            <Route path="/detail-os/:id" exact element={<DetailOs />} />
 
             <Route path="/newasset" />
             <Route path="/inventory" />
