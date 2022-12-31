@@ -15,7 +15,7 @@ import DetailEquipment from "../entities/Equipments/DetailEquipment";
 import OsHeader from "../entities/Os/OsHeader";
 import ViewOs from "../entities/Os/ViewOs";
 import FormOs from "../entities/Os/FormOs";
-import DetailOS from "../entities/Os/DetailOs";
+import DetailOs from "../entities/Os/DetailOs";
 
 import { ToastContainer } from "react-toastify";
 
