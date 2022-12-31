@@ -7,21 +7,21 @@ import classes from "../Cruds.module.css";
 const initialState = {
   name: "",
   description: "",
-  brand: "",
   status: "",
+  equipment: "",
 };
 
-const AddEquipment = () => {
+const AddOs = () => {
   const [state, setState] = useState(initialState);
   const [data, setData] = useState({});
 
-  const { name, description, brand, status } = state;
+  const { name, description, status, equipment } = state;
   let history = useNavigate();
 
   const { id } = useParams();
 
   useEffect(() => {
-    fireDb.child("equipments").on("value", (snapshot) => {
+    fireDb.child("opsystems").on("value", (snapshot) => {
       if (snapshot.val() !== null) {
         setData({ ...snapshot.val() });
       } else {
@@ -52,11 +52,11 @@ const AddEquipment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name || !description || !brand || !status) {
+    if (!name || !description || !status || !equipment) {
       toast.error("please provide value in each field");
     } else {
       if (!id) {
-        fireDb.child("equipments").push(state, (err) => {
+        fireDb.child("opsystems").push(state, (err) => {
           if (err) {
             toast.error(err);
           } else {
@@ -64,7 +64,7 @@ const AddEquipment = () => {
           }
         });
       } else {
-        fireDb.child(`equipments/${id}`).set(state, (err) => {
+        fireDb.child(`opsystems/${id}`).set(state, (err) => {
           if (err) {
             toast.error(err);
           } else {
@@ -72,7 +72,7 @@ const AddEquipment = () => {
           }
         });
       }
-      setTimeout(() => history("/equipments"), 500);
+      setTimeout(() => history("/oses"), 500);
     }
   };
 
@@ -93,7 +93,7 @@ const AddEquipment = () => {
           autoFocus={true}
           id="name"
           name="name"
-          placeholder="Equipment's name"
+          placeholder="Op System's name"
           value={name || ""}
           onChange={handleInputChange}
         />
@@ -102,17 +102,8 @@ const AddEquipment = () => {
           type="text"
           id="description"
           name="description"
-          placeholder="Equipment's description"
+          placeholder="Op System's description"
           value={description || ""}
-          onChange={handleInputChange}
-        />
-        <label htmlFor="brand">Brand</label>
-        <input
-          type="text"
-          id="brand"
-          name="brand"
-          placeholder="Equipment's brand"
-          value={brand || ""}
           onChange={handleInputChange}
         />
         <label htmlFor="status">Status</label>
@@ -124,9 +115,17 @@ const AddEquipment = () => {
           value={status || ""}
           onChange={handleInputChange}
         />
-
+        <label htmlFor="equipment">Installed on</label>
+        <input
+          type="text"
+          id="equipment"
+          name="equipment"
+          placeholder="Installed on"
+          value={equipment || ""}
+          onChange={handleInputChange}
+        />
         <input type="submit" value={id ? "Update" : "Save"} />
-        <Link to="/equipments">
+        <Link to="/oses">
           <button className={classes.btn + " " + classes.btn_edit}>
             Go Back
           </button>
@@ -136,4 +135,4 @@ const AddEquipment = () => {
   );
 };
 
-export default AddEquipment;
+export default AddOs;
