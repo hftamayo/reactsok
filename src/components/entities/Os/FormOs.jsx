@@ -11,6 +11,7 @@ const initialState = {
   equipment: "",
 };
 
+
 const AddOs = () => {
   const [state, setState] = useState(initialState);
   const [data, setData] = useState({});
@@ -116,14 +117,19 @@ const AddOs = () => {
           onChange={handleInputChange}
         />
         <label htmlFor="equipment">Installed on</label>
-        <input
-          type="text"
+        <select value={equipment || ""} onChange={handleInputChange}>
+          <option value="Windows">Windows</option>
+          <option value="Linux">Linux</option>
+          <option value="Mac">Mac</option>          
+        </select>
+
+{/*            type="text"
           id="equipment"
           name="equipment"
           placeholder="Installed on"
           value={equipment || ""}
-          onChange={handleInputChange}
-        />
+          onChange={handleInputChange}  */}
+
         <input type="submit" value={id ? "Update" : "Save"} />
         <Link to="/oses">
           <button className={classes.btn + " " + classes.btn_edit}>
