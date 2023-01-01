@@ -9,8 +9,13 @@ import EditCategory from "../Categories/EditCategory";
 
 import EquipmentHeader from "../entities/Equipments/EquipmentHeader";
 import ViewEquipments from "../entities/Equipments/ViewEquipments";
-import AddEquipment from "../entities/Equipments/AddEquipment";
+import FormEquipment from "../entities/Equipments/FormEquipment";
 import DetailEquipment from "../entities/Equipments/DetailEquipment";
+
+import OsHeader from "../entities/Os/OsHeader";
+import ViewOs from "../entities/Os/ViewOs";
+import FormOs from "../entities/Os/FormOs";
+import DetailOs from "../entities/Os/DetailOs";
 
 import { ToastContainer } from "react-toastify";
 
@@ -45,17 +50,53 @@ function DashBoard() {
                 </div>
               }
             />
-            <Route path="/add-equipment" exact element={<AddEquipment />} />
+            <Route path="/add-equipment" exact element={<FormEquipment />} />
             <Route
               path="/edit-equipment/:id"
               exact
-              element={<AddEquipment />}
+              element={<FormEquipment />}
             />
             <Route
               path="/detail-equipment/:id"
               exact
               element={<DetailEquipment />}
             />
+
+            <Route
+              path="/equipments"
+              exact
+              element={
+                <div>
+                  <EquipmentHeader />
+                  <ViewEquipments />
+                </div>
+              }
+            />
+            <Route path="/add-equipment" exact element={<FormEquipment />} />
+            <Route
+              path="/edit-equipment/:id"
+              exact
+              element={<FormEquipment />}
+            />
+            <Route
+              path="/detail-equipment/:id"
+              exact
+              element={<DetailEquipment />}
+            />
+
+            <Route
+              path="/oses"
+              exact
+              element={
+                <div>
+                  <OsHeader />
+                  <ViewOs />
+                </div>
+              }
+            />
+            <Route path="/add-os" exact element={<FormOs />} />
+            <Route path="/edit-os/:id" exact element={<FormOs />} />
+            <Route path="/detail-os/:id" exact element={<DetailOs />} />
 
             <Route path="/newasset" />
             <Route path="/inventory" />

@@ -5,11 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 import classes from "../Cruds.module.css";
 import { toast } from "react-toastify";
 
-const ViewEquipments = () => {
+const ViewOs = () => {
   const [data, setData] = useState({});
 
      useEffect(() => {
-    fireDb.child("equipments").on("value", (snapshot) => {
+    fireDb.child("opsystems").on("value", (snapshot) => {
       if (snapshot.val() !== null) {
         setData({ ...snapshot.val() });
       } else {
@@ -47,7 +47,7 @@ firebase v9
         "This action can't be rolled back, press OK for confirmation"
       )
     ) {
-      fireDb.child(`equipments/${id}`).remove((err) => {
+      fireDb.child(`opsystems/${id}`).remove((err) => {
         if (err) {
           toast.error(err);
         } else {
@@ -64,7 +64,7 @@ firebase v9
             <th style={{ textAlign: "center" }}>No.</th>
             <th style={{ textAlign: "center" }}>Name</th>
             <th style={{ textAlign: "center" }}>Description</th>
-            <th style={{ textAlign: "center" }}>Brand</th>
+            <th style={{ textAlign: "center" }}>Installed on</th>
             <th style={{ textAlign: "center" }}>Status</th>
             <th style={{ textAlign: "center" }}>Operations</th>
           </tr>
@@ -76,10 +76,10 @@ firebase v9
                 <th scope="now">{index + 1}</th>
                 <td>{data[id].name}</td>
                 <td>{data[id].description}</td>
-                <td>{data[id].brand}</td>
+                <td>{data[id].equipment}</td>
                 <td>{data[id].status}</td>
                 <td>
-                  <Link to={`/edit-equipment/${id}`}>
+                  <Link to={`/edit-os/${id}`}>
                     <button className={classes.btn + ' ' + classes.btn_edit}>Edit</button>
                   </Link>
                   <button
@@ -88,7 +88,7 @@ firebase v9
                   >
                     Delete
                   </button>
-                  <Link to={`/detail-equipment/${id}`}>
+                  <Link to={`/detail-os/${id}`}>
                     <button className={classes.btn + ' '+classes.btn_view}>Details</button>
                   </Link>
                 </td>
@@ -101,4 +101,4 @@ firebase v9
   );
 };
 
-export default ViewEquipments;
+export default ViewOs;

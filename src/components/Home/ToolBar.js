@@ -14,6 +14,9 @@ const ToolBar = () => {
               <Link to="/equipments">Equipments</Link>
             </li>            
             <li>
+              <Link to="/oses">OpSys</Link>
+            </li>                        
+            <li>
               <Link to="/newasset">Assets</Link>
             </li>
             <li>

@@ -3,18 +3,18 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import fireDb from "../../store/firebase";
 import classes from "../Cruds.module.css";
 
-const DetailEquipment = () => {
-  const [equipment, setEquipment] = useState({});
+const DetailOs = () => {
+  const [data, setData] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
-    fireDb.child(`equipments/${id}`)
+    fireDb.child(`opsystems/${id}`)
       .get()
       .then((snapshot) => {
         if (snapshot.exists()) {
-          setEquipment({ ...snapshot.val() });
+          setData({ ...snapshot.val() });
         } else {
-          setEquipment({});
+          setData({});
         }
       });
   }, [id]);
@@ -23,25 +23,25 @@ const DetailEquipment = () => {
     <div style={{ marginTop: "150px" }}>
       <div className={classes.card}>
         <div className={classes.card_header}>
-          <p>Equipment's Details</p>
+          <p>Operation System's Details</p>
         </div>
         <div className={classes.container}>
           <strong>ID: </strong>
           <span>{id}</span>
           <br /><br />
           <strong>Name: </strong>
-          <span>{equipment.name}</span>
+          <span>{data.name}</span>
           <br /><br />
           <strong>Description: </strong>
-          <span>{equipment.description}</span>
+          <span>{data.description}</span>
           <br /><br />
-          <strong>Brand: </strong>
-          <span>{equipment.brand}</span>
+          <strong>Installed On: </strong>
+          <span>{data.equipment}</span>
           <br /><br />
           <strong>Status: </strong>
-          <span>{equipment.status}</span>
+          <span>{data.status}</span>
           <br /><br />
-          <Link to="/equipments">
+          <Link to="/oses">
             <button className={classes.btn + ' ' + classes.btn_edit}>Go Back</button>
           </Link>
         </div>
@@ -50,4 +50,4 @@ const DetailEquipment = () => {
   );
 };
 
-export default DetailEquipment;
+export default DetailOs;
