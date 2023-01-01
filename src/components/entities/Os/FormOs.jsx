@@ -12,7 +12,7 @@ const initialState = {
 };
 
 
-const AddOs = () => {
+const FormOs = () => {
   const [state, setState] = useState(initialState);
   const [data, setData] = useState({});
 
@@ -118,9 +118,9 @@ const AddOs = () => {
         />
         <label htmlFor="equipment">Installed on</label>
         <select value={equipment || ""} onChange={handleInputChange}>
-          <option value="Windows">Windows</option>
-          <option value="Linux">Linux</option>
-          <option value="Mac">Mac</option>          
+          <option value="dell">Dell CSJ</option>
+          <option value="cpuclon">CPU Clon</option>
+          <option value="unonucel">Unonu Cel</option>          
         </select>
 
 {/*            type="text"
@@ -141,4 +141,4 @@ const AddOs = () => {
   );
 };
 
-export default AddOs;
+export default FormOs;
