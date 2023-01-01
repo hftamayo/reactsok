@@ -50,11 +50,11 @@ function DashBoard() {
                 </div>
               }
             />
-            <Route path="/add-equipment" exact element={<AddEquipment />} />
+            <Route path="/add-equipment" exact element={<FormEquipment />} />
             <Route
               path="/edit-equipment/:id"
               exact
-              element={<AddEquipment />}
+              element={<FormEquipment />}
             />
             <Route
               path="/detail-equipment/:id"
