@@ -8,15 +8,14 @@ const initialState = {
   name: "",
   description: "",
   status: "",
-  equipment: "", 
+  equipment: "",
 };
-
 
 const FormOs = () => {
   const [state, setState] = useState(initialState);
   const [data, setData] = useState({});
 
-  const { name, description, status, equipment } = state; 
+  const { name, description, status, equipment } = state;
   let history = useNavigate();
 
   const { id } = useParams();
@@ -53,8 +52,8 @@ const FormOs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-/*     if (!name || !description || !status || !equipment) { */
-if (!name || !description || !status) {
+    /*     if (!name || !description || !status || !equipment) { */
+    if (!name || !description || !status) {
       toast.error("please provide value in each field");
     } else {
       if (!id) {
@@ -119,13 +118,14 @@ if (!name || !description || !status) {
         />
         <label htmlFor="equipment">Installed on</label>
         {/* <select value={equipment || ""} onChange={handleInputChange}> */}
-        <select name="equipment">
+        <select name="equipment" onChange={handleInputChange}>
+          <option value="">Please choose a value</option>
           <option value="dell">Dell CSJ</option>
           <option value="cpuclon">CPU Clon</option>
-          <option value="unonucel">Unonu Cel</option>          
+          <option value="unonucel">Unonu Cel</option>
         </select>
 
-{/*            type="text"
+        {/*            type="text"
           id="equipment"
           name="equipment"
           placeholder="Installed on"
