@@ -9,7 +9,7 @@ const ViewOs = () => {
   const [data, setData] = useState({});
 
      useEffect(() => {
-    fireDb.child("oses").on("value", (snapshot) => {
+    fireDb.child("opsystems").on("value", (snapshot) => {
       if (snapshot.val() !== null) {
         setData({ ...snapshot.val() });
       } else {
@@ -47,7 +47,7 @@ firebase v9
         "This action can't be rolled back, press OK for confirmation"
       )
     ) {
-      fireDb.child(`oses/${id}`).remove((err) => {
+      fireDb.child(`opsystems/${id}`).remove((err) => {
         if (err) {
           toast.error(err);
         } else {
@@ -76,7 +76,7 @@ firebase v9
                 <th scope="now">{index + 1}</th>
                 <td>{data[id].name}</td>
                 <td>{data[id].description}</td>
-                <td>{data[id].equipmentid}</td>
+                <td>{data[id].equipment}</td>
                 <td>{data[id].status}</td>
                 <td>
                   <Link to={`/edit-os/${id}`}>

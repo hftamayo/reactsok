@@ -8,7 +8,7 @@ const DetailOs = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fireDb.child(`oses/${id}`)
+    fireDb.child(`opsystems/${id}`)
       .get()
       .then((snapshot) => {
         if (snapshot.exists()) {
@@ -36,7 +36,7 @@ const DetailOs = () => {
           <span>{data.description}</span>
           <br /><br />
           <strong>Installed On: </strong>
-          <span>{data.equipmentid}</span>
+          <span>{data.equipment}</span>
           <br /><br />
           <strong>Status: </strong>
           <span>{data.status}</span>
