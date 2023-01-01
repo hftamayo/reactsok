@@ -9,7 +9,7 @@ import EditCategory from "../Categories/EditCategory";
 
 import EquipmentHeader from "../entities/Equipments/EquipmentHeader";
 import ViewEquipments from "../entities/Equipments/ViewEquipments";
-import AddEquipment from "../entities/Equipments/AddEquipment";
+import FormEquipment from "../entities/Equipments/FormEquipment";
 import DetailEquipment from "../entities/Equipments/DetailEquipment";
 
 import OsHeader from "../entities/Os/OsHeader";
@@ -72,11 +72,11 @@ function DashBoard() {
                 </div>
               }
             />
-            <Route path="/add-equipment" exact element={<AddEquipment />} />
+            <Route path="/add-equipment" exact element={<FormEquipment />} />
             <Route
               path="/edit-equipment/:id"
               exact
-              element={<AddEquipment />}
+              element={<FormEquipment />}
             />
             <Route
               path="/detail-equipment/:id"

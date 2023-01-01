@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import fireDb from "../../store/firebase";
-import classes from "./Equipment.module.css";
+import classes from "../Cruds.module.css";
 
 const DetailEquipment = () => {
   const [equipment, setEquipment] = useState({});
