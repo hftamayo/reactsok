@@ -5,11 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 import classes from "../Cruds.module.css";
 import { toast } from "react-toastify";
 
-const ViewOs = () => {
+const ViewCategory = () => {
   const [data, setData] = useState({});
 
      useEffect(() => {
-    fireDb.child("opsystems").on("value", (snapshot) => {
+    fireDb.child("categories").on("value", (snapshot) => {
       if (snapshot.val() !== null) {
         setData({ ...snapshot.val() });
       } else {
@@ -47,7 +47,7 @@ firebase v9
         "This action can't be rolled back, press OK for confirmation"
       )
     ) {
-      fireDb.child(`opsystems/${id}`).remove((err) => {
+      fireDb.child(`categories/${id}`).remove((err) => {
         if (err) {
           toast.error(err);
         } else {
@@ -64,7 +64,6 @@ firebase v9
             <th style={{ textAlign: "center" }}>No.</th>
             <th style={{ textAlign: "center" }}>Name</th>
             <th style={{ textAlign: "center" }}>Description</th>
-            <th style={{ textAlign: "center" }}>Installed on</th>
             <th style={{ textAlign: "center" }}>Status</th>
             <th style={{ textAlign: "center" }}>Operations</th>
           </tr>
@@ -76,10 +75,9 @@ firebase v9
                 <th scope="now">{index + 1}</th>
                 <td>{data[id].name}</td>
                 <td>{data[id].description}</td>
-                <td>{data[id].equipment}</td>
                 <td>{data[id].status}</td>
                 <td>
-                  <Link to={`/edit-os/${id}`}>
+                  <Link to={`/categories/${id}`}>
                     <button className={classes.btn + ' ' + classes.btn_edit}>Edit</button>
                   </Link>
                   <button
@@ -88,7 +86,7 @@ firebase v9
                   >
                     Delete
                   </button>
-                  <Link to={`/detail-os/${id}`}>
+                  <Link to={`/categories/${id}`}>
                     <button className={classes.btn + ' '+classes.btn_view}>Details</button>
                   </Link>
                 </td>
@@ -101,4 +99,4 @@ firebase v9
   );
 };
 
-export default ViewOs;
+export default ViewCategory;
