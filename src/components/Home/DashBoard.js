@@ -63,28 +63,6 @@ function DashBoard() {
             />
 
             <Route
-              path="/equipments"
-              exact
-              element={
-                <div>
-                  <EquipmentHeader />
-                  <ViewEquipments />
-                </div>
-              }
-            />
-            <Route path="/add-equipment" exact element={<FormEquipment />} />
-            <Route
-              path="/edit-equipment/:id"
-              exact
-              element={<FormEquipment />}
-            />
-            <Route
-              path="/detail-equipment/:id"
-              exact
-              element={<DetailEquipment />}
-            />
-
-            <Route
               path="/oses"
               exact
               element={
