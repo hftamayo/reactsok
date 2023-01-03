@@ -8,7 +8,7 @@ const DetailSubCat = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fireDb.child(`subcat/${id}`)
+    fireDb.child(`subcats/${id}`)
       .get()
       .then((snapshot) => {
         if (snapshot.exists()) {
@@ -41,7 +41,7 @@ const DetailSubCat = () => {
           <strong>Status: </strong>
           <span>{data.status}</span>
           <br /><br />
-          <Link to="/subcat">
+          <Link to="/subcats">
             <button className={classes.btn + ' ' + classes.btn_edit}>Go Back</button>
           </Link>
         </div>
