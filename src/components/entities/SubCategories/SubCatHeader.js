@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const OsHeader = () => {
+export const SubCatHeader = () => {
   return (
     <div>
       <div className="flex items-center mt-24 mb-10">
         <div className="flex-grow text-left px-4 py-2 m-2">
-          <h5 className="text-gray-900 font-bold text-xl">Operating System Listing</h5>
+          <h5 className="text-gray-900 font-bold text-xl">Sub-Categories Listing</h5>
         </div>
         <div className="flex-grow text-right px-4 py-2 m-2">
           <Link to="/add-os">
@@ -27,7 +27,7 @@ export const OsHeader = () => {
                 <line x1="12" y1="8" x2="12" y2="16"></line>
                 <line x1="8" y1="12" x2="16" y2="12"></line>
               </svg>
-              <span className="pl-2">Add Operating System</span>
+              <span className="pl-2">Add Sub-Category</span>
             </button>
           </Link>
         </div>
@@ -36,4 +36,4 @@ export const OsHeader = () => {
   );
 };
 
-export default OsHeader;
+export default SubCatHeader;
