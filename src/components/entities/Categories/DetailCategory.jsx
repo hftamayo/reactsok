@@ -3,12 +3,12 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import fireDb from "../../store/firebase";
 import classes from "../Cruds.module.css";
 
-const DetailOs = () => {
+const DetailCategory = () => {
   const [data, setData] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
-    fireDb.child(`opsystems/${id}`)
+    fireDb.child(`categories/${id}`)
       .get()
       .then((snapshot) => {
         if (snapshot.exists()) {
@@ -23,7 +23,7 @@ const DetailOs = () => {
     <div style={{ marginTop: "150px" }}>
       <div className={classes.card}>
         <div className={classes.card_header}>
-          <p>Operation System's Details</p>
+          <p>Categories' Details</p>
         </div>
         <div className={classes.container}>
           <strong>ID: </strong>
@@ -35,13 +35,10 @@ const DetailOs = () => {
           <strong>Description: </strong>
           <span>{data.description}</span>
           <br /><br />
-          <strong>Installed On: </strong>
-          <span>{data.equipment}</span>
-          <br /><br />
           <strong>Status: </strong>
           <span>{data.status}</span>
           <br /><br />
-          <Link to="/oses">
+          <Link to="/categories">
             <button className={classes.btn + ' ' + classes.btn_edit}>Go Back</button>
           </Link>
         </div>
@@ -50,4 +47,4 @@ const DetailOs = () => {
   );
 };
 
-export default DetailOs;
+export default DetailCategory;
