@@ -8,20 +8,20 @@ const initialState = {
   name: "",
   description: "",
   status: "",
-  equipment: "",
+  category: "",
 };
 
-const FormOs = () => {
+const FormCategory = () => {
   const [state, setState] = useState(initialState);
   const [data, setData] = useState({});
 
-  const { name, description, status, equipment } = state;
+  const { name, description, status, category } = state;
   let history = useNavigate();
 
   const { id } = useParams();
 
   useEffect(() => {
-    fireDb.child("opsystems").on("value", (snapshot) => {
+    fireDb.child("subcats").on("value", (snapshot) => {
       if (snapshot.val() !== null) {
         setData({ ...snapshot.val() });
       } else {
@@ -57,7 +57,7 @@ const FormOs = () => {
       toast.error("please provide value in each field");
     } else {
       if (!id) {
-        fireDb.child("opsystems").push(state, (err) => {
+        fireDb.child("subcats").push(state, (err) => {
           if (err) {
             toast.error(err);
           } else {
@@ -65,7 +65,7 @@ const FormOs = () => {
           }
         });
       } else {
-        fireDb.child(`opsystems/${id}`).set(state, (err) => {
+        fireDb.child(`subcats/${id}`).set(state, (err) => {
           if (err) {
             toast.error(err);
           } else {
@@ -73,7 +73,7 @@ const FormOs = () => {
           }
         });
       }
-      setTimeout(() => history("/oses"), 500);
+      setTimeout(() => history("/subcats"), 500);
     }
   };
 
@@ -94,7 +94,7 @@ const FormOs = () => {
           autoFocus={true}
           id="name"
           name="name"
-          placeholder="Op System's name"
+          placeholder="SubCat's name"
           value={name || ""}
           onChange={handleInputChange}
         />
@@ -103,7 +103,7 @@ const FormOs = () => {
           type="text"
           id="description"
           name="description"
-          placeholder="Op System's description"
+          placeholder="SubCat's description"
           value={description || ""}
           onChange={handleInputChange}
         />
@@ -116,13 +116,16 @@ const FormOs = () => {
           value={status || ""}
           onChange={handleInputChange}
         />
-        <label htmlFor="equipment">Installed on</label>
+        <label htmlFor="category">Related to</label>
         {/* <select value={equipment || ""} onChange={handleInputChange}> */}
-        <select name="equipment" onChange={handleInputChange}>
+        <select name="category" onChange={handleInputChange}>
           <option value="">Please choose a value</option>
-          <option value="dell">Dell CSJ</option>
-          <option value="cpuclon">CPU Clon</option>
-          <option value="unonucel">Unonu Cel</option>
+          <option value="infosec">InfoSec</option>
+          <option value="web3">Web 3</option>
+          <option value="backend">BackEnd Dev</option>
+          <option value="frontend">FrontEnd Dev</option>
+          <option value="devops">DevOps</option>
+          <option value="machinelearning">Machine Learning</option>
         </select>
 
         {/*            type="text"
@@ -143,4 +146,4 @@ const FormOs = () => {
   );
 };
 
-export default FormOs;
+export default FormCategory;
