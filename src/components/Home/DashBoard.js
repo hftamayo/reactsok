@@ -104,7 +104,7 @@ function DashBoard() {
               element={<DetailCategory />}
             />
 
-<Route
+            <Route
               path="/subcats"
               exact
               element={
@@ -116,11 +116,7 @@ function DashBoard() {
             />
             <Route path="/add-subcat" exact element={<FormSubCat />} />
             <Route path="/edit-subcat/:id" exact element={<FormSubCat />} />
-            <Route
-              path="/detail-subcat/:id"
-              exact
-              element={<DetailSubCat />}
-            />
+            <Route path="/detail-subcat/:id" exact element={<DetailSubCat />} />
 
             <Route path="/newasset" />
             <Route path="/inventory" />
