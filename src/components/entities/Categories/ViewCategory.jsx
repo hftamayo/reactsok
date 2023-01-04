@@ -77,7 +77,7 @@ firebase v9
                 <td>{data[id].description}</td>
                 <td>{data[id].status}</td>
                 <td>
-                  <Link to={`/categories/${id}`}>
+                  <Link to={`/edit-category/${id}`}>
                     <button className={classes.btn + ' ' + classes.btn_edit}>Edit</button>
                   </Link>
                   <button
@@ -86,7 +86,7 @@ firebase v9
                   >
                     Delete
                   </button>
-                  <Link to={`/categories/${id}`}>
+                  <Link to={`/detail-category/${id}`}>
                     <button className={classes.btn + ' '+classes.btn_view}>Details</button>
                   </Link>
                 </td>
