@@ -88,7 +88,7 @@ firebase v9
                   >
                     Delete
                   </button>
-                  <Link to={`/detail-os/${id}`}>
+                  <Link to={`/detail-subcat/${id}`}>
                     <button className={classes.btn + ' '+classes.btn_view}>Details</button>
                   </Link>
                 </td>
