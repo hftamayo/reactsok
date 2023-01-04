@@ -38,7 +38,7 @@ function DashBoard() {
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route
-              path="/twcats"
+              path="/twcategories"
               exact
               element={
                 <div>
@@ -47,8 +47,8 @@ function DashBoard() {
                 </div>
               }
             />
-            <Route path="/add-twcat" exact element={<AddCategory />} />
-            <Route path="/edit-twcat/:id" exact element={<EditCategory />} />
+            <Route path="/add-twcategory" exact element={<AddCategory />} />
+            <Route path="/edit-twcategory/:id" exact element={<EditCategory />} />
 
             <Route
               path="/equipments"
