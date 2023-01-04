@@ -21,7 +21,7 @@ export const AddCategory = () => {
       status,
     };
     addCategory(newCategory);
-    history("/categories");
+    history("/twcategories");
   };
 
   return (
@@ -80,7 +80,7 @@ export const AddCategory = () => {
             </button>
           </div>
           <div className="text-center mt-4 text-gray-500">
-            <Link to="/categories">Cancel</Link>
+            <Link to="/twcategories">Cancel</Link>
           </div>
         </form>
       </div>
