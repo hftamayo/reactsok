@@ -73,7 +73,7 @@ const FormCategory = () => {
           }
         });
       }
-      setTimeout(() => history("/subcats"), 500);
+      setTimeout(() => history("/subcategories"), 500);
     }
   };
 
@@ -136,7 +136,7 @@ const FormCategory = () => {
           onChange={handleInputChange}  */}
 
         <input type="submit" value={id ? "Update" : "Save"} />
-        <Link to="/oses">
+        <Link to="/subcategories">
           <button className={classes.btn + " " + classes.btn_edit}>
             Go Back
           </button>

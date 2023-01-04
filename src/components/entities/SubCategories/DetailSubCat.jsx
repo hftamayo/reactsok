@@ -41,7 +41,7 @@ const DetailSubCat = () => {
           <strong>Status: </strong>
           <span>{data.status}</span>
           <br /><br />
-          <Link to="/subcats">
+          <Link to="/subcategories">
             <button className={classes.btn + ' ' + classes.btn_edit}>Go Back</button>
           </Link>
         </div>
