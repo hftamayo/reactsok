@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const CategoryHeader = () => {
+export const CategoriesHeader = () => {
   return (
     <div>
       <div className="flex items-center mt-24 mb-10">
@@ -36,4 +36,4 @@ export const CategoryHeader = () => {
   );
 };
 
-export default CategoryHeader;
+export default CategoriesHeader;

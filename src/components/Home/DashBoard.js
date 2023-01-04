@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from "./MainLayout";
 import ToolBar from "./ToolBar";
 import GlobalProvider from "../store/GlobalState";
-import CategoryHeader from "../Categories/CategoryHeader";
+import CategoriesHeader from "../Categories/CategoriesHeader";
 import ViewCategories from "../Categories/ViewCategories";
 import AddCategory from "../Categories/AddCategory";
 import EditCategory from "../Categories/EditCategory";
@@ -42,7 +42,7 @@ function DashBoard() {
               exact
               element={
                 <div>
-                  <CategoryHeader />
+                  <CategoriesHeader />
                   <ViewCategories />
                 </div>
               }
