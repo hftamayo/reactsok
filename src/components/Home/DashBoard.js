@@ -105,7 +105,7 @@ function DashBoard() {
             />
 
             <Route
-              path="/subcats"
+              path="/subcategories"
               exact
               element={
                 <div>
