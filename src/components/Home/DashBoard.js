@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from "./MainLayout";
 import ToolBar from "./ToolBar";
 import GlobalProvider from "../store/GlobalState";
-import CategoryHeader from "../Categories/CategoryHeader";
+import CategoriesHeader from "../Categories/CategoriesHeader";
 import ViewCategories from "../Categories/ViewCategories";
 import AddCategory from "../Categories/AddCategory";
 import EditCategory from "../Categories/EditCategory";
@@ -17,6 +17,16 @@ import ViewOs from "../entities/Os/ViewOs";
 import FormOs from "../entities/Os/FormOs";
 import DetailOs from "../entities/Os/DetailOs";
 
+import CategoryHeader from "../entities/Categories/CategoryHeader";
+import ViewCategory from "../entities/Categories/ViewCategory";
+import FormCategory from "../entities/Categories/FormCategory";
+import DetailCategory from "../entities/Categories/DetailCategory";
+
+import SubCatHeader from "../entities/SubCategories/SubCatHeader";
+import ViewSubCat from "../entities/SubCategories/ViewSubCat";
+import FormSubCat from "../entities/SubCategories/FormSubCat";
+import DetailSubCat from "../entities/SubCategories/DetailSubCat";
+
 import { ToastContainer } from "react-toastify";
 
 function DashBoard() {
@@ -28,39 +38,17 @@ function DashBoard() {
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route
-              path="/categories"
+              path="/twcategories"
               exact
               element={
                 <div>
-                  <CategoryHeader />
+                  <CategoriesHeader />
                   <ViewCategories />
                 </div>
               }
             />
-            <Route path="/add-category" exact element={<AddCategory />} />
-            <Route path="/edit-category/:id" exact element={<EditCategory />} />
-
-            <Route
-              path="/equipments"
-              exact
-              element={
-                <div>
-                  <EquipmentHeader />
-                  <ViewEquipments />
-                </div>
-              }
-            />
-            <Route path="/add-equipment" exact element={<FormEquipment />} />
-            <Route
-              path="/edit-equipment/:id"
-              exact
-              element={<FormEquipment />}
-            />
-            <Route
-              path="/detail-equipment/:id"
-              exact
-              element={<DetailEquipment />}
-            />
+            <Route path="/add-twcategory" exact element={<AddCategory />} />
+            <Route path="/edit-twcategory/:id" exact element={<EditCategory />} />
 
             <Route
               path="/equipments"
@@ -97,6 +85,38 @@ function DashBoard() {
             <Route path="/add-os" exact element={<FormOs />} />
             <Route path="/edit-os/:id" exact element={<FormOs />} />
             <Route path="/detail-os/:id" exact element={<DetailOs />} />
+
+            <Route
+              path="/categories"
+              exact
+              element={
+                <div>
+                  <CategoryHeader />
+                  <ViewCategory />
+                </div>
+              }
+            />
+            <Route path="/add-category" exact element={<FormCategory />} />
+            <Route path="/edit-category/:id" exact element={<FormCategory />} />
+            <Route
+              path="/detail-category/:id"
+              exact
+              element={<DetailCategory />}
+            />
+
+            <Route
+              path="/subcategories"
+              exact
+              element={
+                <div>
+                  <SubCatHeader />
+                  <ViewSubCat />
+                </div>
+              }
+            />
+            <Route path="/add-subcat" exact element={<FormSubCat />} />
+            <Route path="/edit-subcat/:id" exact element={<FormSubCat />} />
+            <Route path="/detail-subcat/:id" exact element={<DetailSubCat />} />
 
             <Route path="/newasset" />
             <Route path="/inventory" />

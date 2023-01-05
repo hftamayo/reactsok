@@ -29,7 +29,7 @@ export const EditCategory = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     editCategory(selectedCategory);
-    history("/categories");
+    history("/twcategories");
   };
 
   const handleOnChange = (categoryKey, newValue) =>
@@ -98,7 +98,7 @@ export const EditCategory = (props) => {
             </button>
           </div>
           <div className="text-center mt-4 text-gray-500">
-            <Link to="/categories">Cancel</Link>
+            <Link to="/twcategories">Cancel</Link>
           </div>
         </form>
       </div>
