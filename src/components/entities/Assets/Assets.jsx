@@ -75,6 +75,28 @@ const Assets = () => {
     action === "Edit" ? openCloseModalEdit() : openCloseModalDelete();
   };
 
+  const newRecord = async () => {
+    fireDb.child("assets").push(state, (err) => {
+      if (err) {
+        toast.error(err);
+      } else {
+        toast.success("Record added successfully");
+      }
+    });
+    openCloseModalInsert()
+  };
+
+  const updateRecord = async () => {
+    fireDb.child(`assets/${id}`).set(state, (err) => {
+      if (err) {
+        toast.error(err);
+      } else {
+        toast.success("Record updated successfully");
+      }
+    });
+    openCloseModalInsert()
+  };  
+
   useEffect(() => {
     fireDb.child("assets").on("value", (snapshot) => {
       if (snapshot.val() !== null) {
@@ -87,6 +109,157 @@ const Assets = () => {
       setData({});
     };
   }, []);
+
+  const bodyInsert = (
+    <div className={styles.modal}>
+      <h3>Adding an Asset</h3>
+      <TextField
+        name="name"
+        className={styles.inputMaterial}
+        label="Name"
+        onChange={handleChange}
+      />
+      <br />
+      <TextField
+        name="description"
+        className={styles.inputMaterial}
+        label="Description"
+        onChange={handleChange}
+      />
+      <br />
+      <TextField
+        name="comments"
+        className={styles.inputMaterial}
+        label="Comments"
+        onChange={handleChange}
+      />
+      <br />
+      <TextField
+        name="commands"
+        className={styles.inputMaterial}
+        label="Commands"
+        onChange={handleChange}
+      />
+      <br />
+      <label htmlFor="status">Status</label>
+      <input
+        type="number"
+        id="status"
+        name="status"
+        placeholder="Status"
+        value={status || ""}
+        onChange={handleChange}
+      />
+      <br />
+      <label htmlFor="opsystem">Related to</label>
+      {/* <select value={equipment || ""} onChange={handleInputChange}> */}
+      <select name="opsystem" onChange={handleChange}>
+        <option value="">Please choose a value</option>
+        <option value="popOS">popOS</option>
+        <option value="Kali">Kali</option>
+        <option value="Android">Android</option>
+      </select>
+      <br />
+      <label htmlFor="subcat">Sub-Category</label>
+      {/* <select value={equipment || ""} onChange={handleInputChange}> */}
+      <select name="subcat" onChange={handleChange}>
+        <option value="">Please choose a value</option>
+        <option value="infosec">InfoSec</option>
+        <option value="web3">Web 3</option>
+        <option value="backend">BackEnd Dev</option>
+        <option value="frontend">FrontEnd Dev</option>
+        <option value="devops">DevOps</option>
+        <option value="machinelearning">Machine Learning</option>
+      </select>
+      <br />
+      <br />
+      <div align="right">
+        <Button color="primary" onClick={() => newRecord()}>
+          Save
+        </Button>
+        <Button onClick={() => openCloseModalInsert()}>Cancelar</Button>
+      </div>
+    </div>
+  );
+
+  const bodyEdit=(
+    <div className={styles.modal}>
+      <h3>Updating Asset Info</h3>
+      <TextField
+        name="name"
+        className={styles.inputMaterial}
+        label="Name"
+        onChange={handleChange}
+        value={selectedAsset && selectedAsset.name}
+      />
+      <br />
+      <TextField
+        name="description"
+        className={styles.inputMaterial}
+        label="Description"
+        onChange={handleChange}
+        value={selectedAsset && selectedAsset.description}        
+      />
+      <br />
+      <TextField
+        name="comments"
+        className={styles.inputMaterial}
+        label="Comments"
+        onChange={handleChange}
+        value={selectedAsset && selectedAsset.comments}        
+      />
+      <br />
+      <TextField
+        name="commands"
+        className={styles.inputMaterial}
+        label="Commands"
+        onChange={handleChange}
+        value={selectedAsset && selectedAsset.commands}        
+      />
+      <br />
+      <label htmlFor="status">Status</label>
+      <input
+        type="number"
+        id="status"
+        name="status"
+        placeholder="Status"
+        value={selectedAsset && selectedAsset.status || ""}
+        onChange={handleChange}
+      />
+      <br />
+      <label htmlFor="opsystem">Related to</label>
+      {/* <select value={equipment || ""} onChange={handleInputChange}> */}
+      <select name="opsystem" onChange={handleChange}>
+        <option value="">Please choose a value</option>
+        <option value="popOS">popOS</option>
+        <option value="Kali">Kali</option>
+        <option value="Android">Android</option>
+      </select>
+      <br />
+      <label htmlFor="subcat">Sub-Category</label>
+      {/* <select value={equipment || ""} onChange={handleInputChange}> */}
+      <select name="subcat" onChange={handleChange}>
+        <option value="">Please choose a value</option>
+        <option value="infosec">InfoSec</option>
+        <option value="web3">Web 3</option>
+        <option value="backend">BackEnd Dev</option>
+        <option value="frontend">FrontEnd Dev</option>
+        <option value="devops">DevOps</option>
+        <option value="machinelearning">Machine Learning</option>
+      </select>
+      <br />
+      <br />
+      <div align="right">
+        <Button color="primary" onClick={() => updateRecord()}>
+          Save
+        </Button>
+        <Button onClick={() => openCloseModalEdit()}>Cancelar</Button>
+      </div>
+    </div>
+  )
+
+
+
 };
 
 export default Assets;
