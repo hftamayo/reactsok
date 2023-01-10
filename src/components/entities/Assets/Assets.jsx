@@ -83,7 +83,7 @@ const Assets = () => {
         toast.success("Record added successfully");
       }
     });
-    openCloseModalInsert()
+    openCloseModalInsert();
   };
 
   const updateRecord = async () => {
@@ -94,8 +94,20 @@ const Assets = () => {
         toast.success("Record updated successfully");
       }
     });
-    openCloseModalInsert()
-  };  
+    openCloseModalInsert();
+  };
+
+  const deleteRecord = async() => {
+    fireDb.child(`assets/${id}`).remove(state, (err) => {
+      if (err) {
+        toast.error(err);
+      } else {
+        toast.success("Record deleted successfully");
+      }
+    });
+    openCloseModalDelete();
+  };
+
 
   useEffect(() => {
     fireDb.child("assets").on("value", (snapshot) => {
@@ -182,7 +194,7 @@ const Assets = () => {
     </div>
   );
 
-  const bodyEdit=(
+  const bodyEdit = (
     <div className={styles.modal}>
       <h3>Updating Asset Info</h3>
       <TextField
@@ -198,7 +210,7 @@ const Assets = () => {
         className={styles.inputMaterial}
         label="Description"
         onChange={handleChange}
-        value={selectedAsset && selectedAsset.description}        
+        value={selectedAsset && selectedAsset.description}
       />
       <br />
       <TextField
@@ -206,7 +218,7 @@ const Assets = () => {
         className={styles.inputMaterial}
         label="Comments"
         onChange={handleChange}
-        value={selectedAsset && selectedAsset.comments}        
+        value={selectedAsset && selectedAsset.comments}
       />
       <br />
       <TextField
@@ -214,7 +226,7 @@ const Assets = () => {
         className={styles.inputMaterial}
         label="Commands"
         onChange={handleChange}
-        value={selectedAsset && selectedAsset.commands}        
+        value={selectedAsset && selectedAsset.commands}
       />
       <br />
       <label htmlFor="status">Status</label>
@@ -223,7 +235,7 @@ const Assets = () => {
         id="status"
         name="status"
         placeholder="Status"
-        value={selectedAsset && selectedAsset.status || ""}
+        value={(selectedAsset && selectedAsset.status) || ""}
         onChange={handleChange}
       />
       <br />
@@ -256,10 +268,22 @@ const Assets = () => {
         <Button onClick={() => openCloseModalEdit()}>Cancelar</Button>
       </div>
     </div>
-  )
+  );
 
-
-
+  const bodyDelete = (
+    <div className={styles.modal}>
+      <p>
+        The bellow asset will be deleted, press OK for confirmation{" "}
+        <b>{selectedAsset && selectedAsset.name}</b> ?{" "}
+      </p>
+      <div align="right">
+        <Button color="secondary" onClick={() => deleteRecord()}>
+          OK
+        </Button>
+        <Button onClick={() => openCloseModalDelete()}>Cancel</Button>
+      </div>
+    </div>
+  );
 };
 
 export default Assets;
