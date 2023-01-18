@@ -97,7 +97,7 @@ const Assets = () => {
     openCloseModalInsert();
   };
 
-  const deleteRecord = async() => {
+  const deleteRecord = async () => {
     fireDb.child(`assets/${id}`).remove(state, (err) => {
       if (err) {
         toast.error(err);
@@ -107,7 +107,6 @@ const Assets = () => {
     });
     openCloseModalDelete();
   };
-
 
   useEffect(() => {
     fireDb.child("assets").on("value", (snapshot) => {
@@ -282,6 +281,31 @@ const Assets = () => {
         </Button>
         <Button onClick={() => openCloseModalDelete()}>Cancel</Button>
       </div>
+    </div>
+  );
+
+  return (
+    <div className="App">
+      <br />
+      <Button onClick={() => openCloseModalInsert()}>New Asset</Button>
+      <br />
+      <br />
+      <TableContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Belongs To</TableCell>
+              <TableCell>SubCategory</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Status</TableCell>                                                        
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   );
 };
