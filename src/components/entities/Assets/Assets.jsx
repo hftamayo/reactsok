@@ -70,7 +70,7 @@ const Assets = () => {
     setModalDelete(!modalDelete);
   };
 
-  const selectAsset = (assect, action) => {
+  const selectAsset = (asset, action) => {
     setSelectedAsset(asset);
     action === "Edit" ? openCloseModalEdit() : openCloseModalDelete();
   };
@@ -312,12 +312,12 @@ const Assets = () => {
                 <TableCell>
                   <Edit
                     className={styles.iconos}
-                    onClick={() => selectedAsset(console, "Edit")}
+                    onClick={() => selectAsset(console, "Edit")}
                   />
                   &nbsp;&nbsp;&nbsp;
                   <Delete
                     className={styles.iconos}
-                    onClick={() => selectedAsset(console, "Delete")}
+                    onClick={() => selectAsset(console, "Delete")}
                   />
                 </TableCell>
               </TableRow>
