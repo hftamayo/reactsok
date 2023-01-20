@@ -303,24 +303,40 @@ const Assets = () => {
           </TableHead>
 
           <TableBody>
-            {data.map(console=>(
+            {data.map((console) => (
               <TableRow key={console.id}>
                 <TableCell>{console.osID}</TableCell>
                 <TableCell>{console.subCatID}</TableCell>
                 <TableCell>{console.name}</TableCell>
                 <TableCell>{console.status}</TableCell>
                 <TableCell>
-                  <Edit className={styles.iconos} onClick={()=>selectedAsset(console, 'Edit')}/>
+                  <Edit
+                    className={styles.iconos}
+                    onClick={() => selectedAsset(console, "Edit")}
+                  />
                   &nbsp;&nbsp;&nbsp;
-                  <Delete className={styles.iconos} onClick={()=>selectedAsset(console, 'Delete')}/>
-                  </TableCell>
+                  <Delete
+                    className={styles.iconos}
+                    onClick={() => selectedAsset(console, "Delete")}
+                  />
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
 
-      
+      <Modal open={modalInsert} onclose={openCloseModalInsert}>
+        {bodyInsert}
+      </Modal>
+
+      <Modal open={modalEdit} onclose={openCloseModalEdit}>
+        {bodyEdit}
+      </Modal>
+
+      <Modal open={modalDelete} onclose={openCloseModalDelete}>
+        {bodyDelete}
+      </Modal>      
     </div>
   );
 };
