@@ -297,15 +297,30 @@ const Assets = () => {
               <TableCell>Belongs To</TableCell>
               <TableCell>SubCategory</TableCell>
               <TableCell>Name</TableCell>
-              <TableCell>Status</TableCell>                                                        
+              <TableCell>Status</TableCell>
+              <TableCell>Actions</TableCell>
             </TableRow>
           </TableHead>
 
           <TableBody>
-            
+            {data.map(console=>(
+              <TableRow key={console.id}>
+                <TableCell>{console.osID}</TableCell>
+                <TableCell>{console.subCatID}</TableCell>
+                <TableCell>{console.name}</TableCell>
+                <TableCell>{console.status}</TableCell>
+                <TableCell>
+                  <Edit className={styles.iconos} onClick={()=>selectedAsset(console, 'Edit')}/>
+                  &nbsp;&nbsp;&nbsp;
+                  <Delete className={styles.iconos} onClick={()=>selectedAsset(console, 'Delete')}/>
+                  </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
+
+      
     </div>
   );
 };
