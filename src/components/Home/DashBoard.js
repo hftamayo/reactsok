@@ -27,6 +27,8 @@ import ViewSubCat from "../entities/SubCategories/ViewSubCat";
 import FormSubCat from "../entities/SubCategories/FormSubCat";
 import DetailSubCat from "../entities/SubCategories/DetailSubCat";
 
+import Assets from "../entities/Assets/Assets";
+
 import { ToastContainer } from "react-toastify";
 
 function DashBoard() {
@@ -118,7 +120,14 @@ function DashBoard() {
             <Route path="/edit-subcat/:id" exact element={<FormSubCat />} />
             <Route path="/detail-subcat/:id" exact element={<DetailSubCat />} />
 
-            <Route path="/newasset" />
+            <Route path="/assets"
+              exact
+              element={
+                <div>
+                  <Assets />
+                </div>
+              }            
+             />             
             <Route path="/inventory" />
           </Route>
         </Routes>

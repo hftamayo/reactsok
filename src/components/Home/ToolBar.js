@@ -23,7 +23,7 @@ const ToolBar = () => {
             <Link to="/subcategories">SubCat</Link>
           </li>
           <li>
-            <Link to="/newasset">Assets</Link>
+            <Link to="/assets">Assets</Link>
           </li>
           <li>
             <Link to="/inventory">Inventory</Link>
