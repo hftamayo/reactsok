@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@mui/material";
 import {
   Table,
   TableContainer,
@@ -10,8 +10,8 @@ import {
   Modal,
   Button,
   TextField,
-} from "@material-ui/core";
-import { Edit, Delete } from "@material-ui/icons";
+} from "@mui/material";
+import { Edit, Delete } from "@mui/icons-material";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
