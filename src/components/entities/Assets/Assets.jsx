@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useEffect, useState } from "react";
+import { css } from "@emotion/css";
+import { useTheme } from "@emotion/react";
 import fireDb from "../../store/firebase";
-import { makeStyles } from "@mui/material";
+import { toast } from "react-toastify";
+
 import {
   Table,
   TableContainer,
@@ -14,7 +17,23 @@ import {
 } from "@mui/material";
 import { Edit, Delete } from "@mui/icons-material";
 
-const useStyles = makeStyles((theme) => ({
+const useClasses = (stylesElement) => {
+  const theme = useTheme();
+  return useMemo(() => {
+    const rawClasses =
+      typeof stylesElement === "function"
+        ? stylesElement(theme)
+        : stylesElement;
+    const prepared = {};
+
+    Object.entries(rawClasses).forEach(([key, value = {}]) => {
+      prepared[key] = css(value);
+    });
+    return prepared;
+  }, [stylesElement, theme]);
+};
+
+const useStyles = (theme) => ({
   modal: {
     position: "absolute",
     width: 400,
@@ -32,14 +51,15 @@ const useStyles = makeStyles((theme) => ({
   inputMaterial: {
     width: "100%",
   },
-}));
+});
 
 const Assets = () => {
-  const styles = useStyles();
+  const styles = useClasses(useStyles);
   const [data, setData] = useState([]);
   const [modalInsert, setModalInsert] = useState(false);
   const [modalEdit, setModalEdit] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
+  const id = 5;
 
   const [selectedAsset, setSelectedAsset] = useState({
     name: "",
@@ -77,7 +97,7 @@ const Assets = () => {
   };
 
   const newRecord = async () => {
-    fireDb.child("assets").push(state, (err) => {
+    fireDb.child("assets").push(selectedAsset, (err) => {
       if (err) {
         toast.error(err);
       } else {
@@ -88,7 +108,7 @@ const Assets = () => {
   };
 
   const updateRecord = async () => {
-    fireDb.child(`assets/${id}`).set(state, (err) => {
+    fireDb.child(`assets/${id}`).set(selectedAsset, (err) => {
       if (err) {
         toast.error(err);
       } else {
@@ -99,7 +119,7 @@ const Assets = () => {
   };
 
   const deleteRecord = async () => {
-    fireDb.child(`assets/${id}`).remove(state, (err) => {
+    fireDb.child(`assets/${id}`).remove(selectedAsset, (err) => {
       if (err) {
         toast.error(err);
       } else {
@@ -159,7 +179,7 @@ const Assets = () => {
         id="status"
         name="status"
         placeholder="Status"
-        value={status || ""}
+        // value={status || ""}
         onChange={handleChange}
       />
       <br />
@@ -337,7 +357,7 @@ const Assets = () => {
 
       <Modal open={modalDelete} onclose={openCloseModalDelete}>
         {bodyDelete}
-      </Modal>      
+      </Modal>
     </div>
   );
 };
