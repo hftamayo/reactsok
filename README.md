@@ -27,4 +27,5 @@ Web based application for links, notes and reminders administration, includes cl
 ### MUI package installation (Feb 2023)
 - npm install @mui/material @emotion/react @emotion/styled --legacy-peer-deps
 - npm install @mui/icons-material --legacy-peer-deps
+- npm install --save @emotion/css
 - package already ported: npm install @emotion/styled @emotion/react @mui/material
