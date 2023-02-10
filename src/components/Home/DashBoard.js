@@ -4,7 +4,7 @@ import ToolBar from "./ToolBar";
 import GlobalProvider from "../store/GlobalState";
 import CategoriesHeader from "../Categories/CategoriesHeader";
 import ViewCategories from "../Categories/ViewCategories";
-import AddCategory from "../Categories/AddCategory";
+import AddCategory from "../entities/junk/tailwind-cats/AddCategory";
 import EditCategory from "../Categories/EditCategory";
 
 import EquipmentHeader from "../entities/Equipments/EquipmentHeader";
