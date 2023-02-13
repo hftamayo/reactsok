@@ -36,4 +36,4 @@ export const AssetHeader = () => {
   );
 };
 
-export default OsHeader;
+export default AssetHeader;
