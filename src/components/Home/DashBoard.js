@@ -124,10 +124,15 @@ function DashBoard() {
               exact
               element={
                 <div>
-                  <Assets />
+                  <AssetHeader />
+                  <ViewAsset />
                 </div>
               }            
              />             
+            <Route path="/add-asset" exact element={<FormAsset />} />
+            <Route path="/edit-asset/:id" exact element={<FormAsset />} />
+            <Route path="/detail-asset/:id" exact element={<DetailAsset />} />
+
             <Route path="/inventory" />
           </Route>
         </Routes>
