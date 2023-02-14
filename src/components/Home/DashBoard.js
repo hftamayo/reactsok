@@ -2,10 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from "./MainLayout";
 import ToolBar from "./ToolBar";
 import GlobalProvider from "../store/GlobalState";
-import CategoriesHeader from "../Categories/CategoriesHeader";
-import ViewCategories from "../Categories/ViewCategories";
-import AddCategory from "../entities/junk/tailwind-cats/AddCategory";
-import EditCategory from "../Categories/EditCategory";
 
 import EquipmentHeader from "../entities/Equipments/EquipmentHeader";
 import ViewEquipments from "../entities/Equipments/ViewEquipments";
