@@ -27,6 +27,10 @@ import ViewSubCat from "../entities/SubCategories/ViewSubCat";
 import FormSubCat from "../entities/SubCategories/FormSubCat";
 import DetailSubCat from "../entities/SubCategories/DetailSubCat";
 
+import AssetHeader from "../entities/Assets/AssetHeader";
+import ViewAsset from "../entities/Assets/ViewAsset";
+import FormAsset from "../entities/Assets/FormAsset";
+import DetailAsset from "../entities/Assets/DetailAsset";
 
 
 import { ToastContainer } from "react-toastify";
