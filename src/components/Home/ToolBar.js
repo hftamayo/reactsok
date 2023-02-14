@@ -8,9 +8,6 @@ const ToolBar = () => {
       <div>
         <ul>
           <li>
-            <Link to="/twcats">TWCats</Link>
-          </li>
-          <li>
             <Link to="/equipments">Equipments</Link>
           </li>
           <li>
@@ -23,7 +20,7 @@ const ToolBar = () => {
             <Link to="/subcategories">SubCat</Link>
           </li>
           <li>
-            <Link to="/newasset">Assets</Link>
+            <Link to="/assets">Assets</Link>
           </li>
           <li>
             <Link to="/inventory">Inventory</Link>

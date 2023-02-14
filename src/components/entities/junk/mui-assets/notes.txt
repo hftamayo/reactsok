@@ -1,0 +1,8 @@
+1. definir como se instala mui 5 que es la que tiene compatibilidad con react 18
+2. verificar el alcance de los cambios dentro de toda la aplicacion 
+mediante el uso de providers y themas para toda la aplicacion
+3. tratar de simplificar las operaciones cruds con menos componentes
+4. links de referencia:
+https://dev.to/atonchev/material-ui-5-the-easiest-way-to-migrate-from-makestyles-to-emotion-1i9l
+https://codevoweb.com/form-validation-react-hook-form-material-ui-react/
+https://www.youtube.com/results?search_query=crud+with+material+ui+5+and+react+18

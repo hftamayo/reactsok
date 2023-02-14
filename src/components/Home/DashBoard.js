@@ -2,10 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from "./MainLayout";
 import ToolBar from "./ToolBar";
 import GlobalProvider from "../store/GlobalState";
-import CategoriesHeader from "../Categories/CategoriesHeader";
-import ViewCategories from "../Categories/ViewCategories";
-import AddCategory from "../Categories/AddCategory";
-import EditCategory from "../Categories/EditCategory";
 
 import EquipmentHeader from "../entities/Equipments/EquipmentHeader";
 import ViewEquipments from "../entities/Equipments/ViewEquipments";
@@ -27,6 +23,12 @@ import ViewSubCat from "../entities/SubCategories/ViewSubCat";
 import FormSubCat from "../entities/SubCategories/FormSubCat";
 import DetailSubCat from "../entities/SubCategories/DetailSubCat";
 
+import AssetHeader from "../entities/Assets/AssetHeader";
+import ViewAsset from "../entities/Assets/ViewAsset";
+import FormAsset from "../entities/Assets/FormAsset";
+import DetailAsset from "../entities/Assets/DetailAsset";
+
+
 import { ToastContainer } from "react-toastify";
 
 function DashBoard() {
@@ -37,7 +39,7 @@ function DashBoard() {
         <ToastContainer position="top-center" />
         <Routes>
           <Route path="/" element={<MainLayout />}>
-            <Route
+            {/* <Route
               path="/twcategories"
               exact
               element={
@@ -48,7 +50,7 @@ function DashBoard() {
               }
             />
             <Route path="/add-twcategory" exact element={<AddCategory />} />
-            <Route path="/edit-twcategory/:id" exact element={<EditCategory />} />
+            <Route path="/edit-twcategory/:id" exact element={<EditCategory />} /> */}
 
             <Route
               path="/equipments"
@@ -118,7 +120,19 @@ function DashBoard() {
             <Route path="/edit-subcat/:id" exact element={<FormSubCat />} />
             <Route path="/detail-subcat/:id" exact element={<DetailSubCat />} />
 
-            <Route path="/newasset" />
+            <Route path="/assets"
+              exact
+              element={
+                <div>
+                  <AssetHeader />
+                  <ViewAsset />
+                </div>
+              }            
+             />             
+            <Route path="/add-asset" exact element={<FormAsset />} />
+            <Route path="/edit-asset/:id" exact element={<FormAsset />} />
+            <Route path="/detail-asset/:id" exact element={<DetailAsset />} />
+
             <Route path="/inventory" />
           </Route>
         </Routes>

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { GlobalContext } from "../store/GlobalState";
+import { GlobalContext } from "../../../store/GlobalState";
 
 export const AddCategory = () => {
   let history = useNavigate();
