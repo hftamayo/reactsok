@@ -105,17 +105,20 @@ const FormAsset = () => {
         {/* <select value={equipment || ""} onChange={handleInputChange}> */}
         <select name="osid" onChange={handleInputChange}>
           <option value="">Please choose a value</option>
-          <option value="dell">Pop Os</option>
-          <option value="cpuclon">Kali</option>
-          <option value="unonucel">Android</option>
+          <option value="poposdell">Pop Os Dell</option>
+          <option value="poposinteli3">Pop OS Intel I3</option>
+          <option value="kaliinteli3">Kali Linux Intel I3</option>
+          <option value="unonu">Android Unonu</option>          
         </select>
         <label htmlFor="subcatid">Sub Category</label>
         {/* <select value={equipment || ""} onChange={handleInputChange}> */}
         <select name="subcatid" onChange={handleInputChange}>
           <option value="">Please choose a value</option>
-          <option value="infosec">Infosec</option>
+          <option value="infosec">Infosecurity</option>
           <option value="frontend">FrontEnd</option>
           <option value="backend">BackEnd</option>
+          <option value="devops">DevOps</option>
+          <option value="influencer">Influencer</option>                    
         </select>
         <label htmlFor="userid">Owner</label>
         {/* <select value={equipment || ""} onChange={handleInputChange}> */}
