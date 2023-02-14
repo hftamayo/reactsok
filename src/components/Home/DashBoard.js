@@ -27,7 +27,7 @@ import ViewSubCat from "../entities/SubCategories/ViewSubCat";
 import FormSubCat from "../entities/SubCategories/FormSubCat";
 import DetailSubCat from "../entities/SubCategories/DetailSubCat";
 
-import Assets from "../entities/Assets/Assets";
+
 
 import { ToastContainer } from "react-toastify";
 
@@ -39,7 +39,7 @@ function DashBoard() {
         <ToastContainer position="top-center" />
         <Routes>
           <Route path="/" element={<MainLayout />}>
-            <Route
+            {/* <Route
               path="/twcategories"
               exact
               element={
@@ -50,7 +50,7 @@ function DashBoard() {
               }
             />
             <Route path="/add-twcategory" exact element={<AddCategory />} />
-            <Route path="/edit-twcategory/:id" exact element={<EditCategory />} />
+            <Route path="/edit-twcategory/:id" exact element={<EditCategory />} /> */}
 
             <Route
               path="/equipments"
