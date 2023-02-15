@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "./MainLayout";
 import ToolBar from "./ToolBar";
-import GlobalProvider from "../entities/junk/mui-assets/GlobalState";
+// import GlobalProvider from "../entities/junk/mui-assets/GlobalState";
 
 import EquipmentHeader from "../entities/Equipments/EquipmentHeader";
 import ViewEquipments from "../entities/Equipments/ViewEquipments";
