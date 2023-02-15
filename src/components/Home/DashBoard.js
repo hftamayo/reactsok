@@ -36,7 +36,7 @@ function DashBoard() {
     <div>
       {/* <GlobalProvider> */}
         <ToolBar />
-        <ToastContainer position="top-center" />
+        <ToastContainer position="bottom-left" />
         <Routes>
           <Route path="/" element={<MainLayout />}>
             {/* <Route
