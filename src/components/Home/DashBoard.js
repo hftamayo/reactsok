@@ -34,7 +34,7 @@ import { ToastContainer } from "react-toastify";
 function DashBoard() {
   return (
     <div>
-      <GlobalProvider>
+      {/* <GlobalProvider> */}
         <ToolBar />
         <ToastContainer position="top-center" />
         <Routes>
@@ -136,7 +136,7 @@ function DashBoard() {
             <Route path="/inventory" />
           </Route>
         </Routes>
-      </GlobalProvider>
+      {/* </GlobalProvider> */}
     </div>
   );
 }
