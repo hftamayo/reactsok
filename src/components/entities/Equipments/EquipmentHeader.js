@@ -5,11 +5,11 @@ import classes from "../Cruds.module.css";
 export const EquipmentHeader = () => {
   return (
     <div>
-      <div className="flex items-center mt-24 mb-10">
-        <div className="flex-grow text-left px-4 py-2 m-2">
-          <h5 className="text-gray-900 font-bold text-xl">Equipment Listing</h5>
+      <div >
+        <div >
+          <h5 >Equipment Listing</h5>
         </div>
-        <div className="flex-grow text-right px-4 py-2 m-2">
+        <div >
           <Link to="/add-equipment">
             <button className={classes.btn + ' ' + classes.btn_new}>
               <svg
