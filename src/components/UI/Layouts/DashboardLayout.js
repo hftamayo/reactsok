@@ -1,9 +1,12 @@
-function CrudLayout(props) {
-  return (
-    <div>
-      <main>{props.children}</main>
-    </div>
-  );
-}
+import MainHeader from "../../MainHeader/MainHeader";
 
-export default CrudLayout;
+const DashboardLayout = () => {
+  return (
+    <>
+      <MainHeader />
+      <main>{props.children}</main>
+    </>
+  );
+};
+
+export default DashboardLayout;
