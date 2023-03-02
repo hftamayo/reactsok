@@ -5,13 +5,13 @@ import classes from "../Cruds.module.css";
 export const EquipmentHeader = () => {
   return (
     <div>
-      <div >
-        <div >
-          <h5 >Equipment Listing</h5>
+      <div>
+        <div>
+          <h5>Equipment Listing</h5>
         </div>
-        <div >
+        <div>
           <Link to="/add-equipment">
-            <button className={classes.btn + ' ' + classes.btn_new}>
+            <button className={classes.btn + " " + classes.btn_new}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
