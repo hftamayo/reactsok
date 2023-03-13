@@ -134,5 +134,12 @@ input[type="submit"]:hover {
 /* crud header and display table */
 .flexbox-container {
     display: flex;
+}
+
+.flexbox-container-title{
+    align-items: center;
+}
+
+.flexbox-container-button {
     flex-direction: row-reverse;
 }
