@@ -132,14 +132,11 @@ input[type="submit"]:hover {
 }
 
 /* crud header and display table */
-.flexbox-container {
+.flexbox_container {
     display: flex;
-}
-
-.flexbox-container-title{
     align-items: center;
 }
 
-.flexbox-container-button {
+.flexbox_container_button {
     flex-direction: row-reverse;
 }
