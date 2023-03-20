@@ -76,6 +76,12 @@ input[type="submit"]:hover {
     border-bottom: 2px solid #009879;
 }
 
+.crud_title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
 .btn {
     border: none;
     color: white;
