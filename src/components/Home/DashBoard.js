@@ -56,7 +56,7 @@ function DashBoard() {
               path="/equipments"
               exact
               element={
-                <div>
+                <div className={classes.component_container}>
                   <EquipmentHeader />
                   <ViewEquipments />
                 </div>
