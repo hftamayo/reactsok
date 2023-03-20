@@ -4,9 +4,10 @@ import classes from "../Cruds.module.css";
 
 export const EquipmentHeader = () => {
   return (
-    <div className={classes.flexbox_container}>
-      <h5>Equipment Listing</h5>
-      <div className={classes.flexbox_container_button}>
+    <div className={classes.flexbox_main_container}>
+      <div className={classes.flexbox_crud_controls}>
+        <span className={classes.crud_title}>Equipment Listing</span>
+        <br />
         <Link to="/add-equipment">
           <button className={classes.btn + " " + classes.btn_new}>
             <svg
