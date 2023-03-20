@@ -85,11 +85,18 @@ input[type="submit"]:hover {
     display: inline-block;
     border-radius: 5px;
     font-size: 16px;
+    font-weight: bold;
     margin: 4px 2px;
+    cursor: default;
+}
+
+.btn:hover {
+    color: black;
+    font-weight: bold;
     cursor: pointer;
 }
 
-.btn-new {
+.btn_new {
     background-color: #4caf50;
 }
 
@@ -102,8 +109,7 @@ input[type="submit"]:hover {
 }
 
 .btn_view {
-    background-color: #e7e7e7;
-    color: black;
+    background-color: orange;
 }
 
 /* Detail Record */
