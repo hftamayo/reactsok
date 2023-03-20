@@ -143,12 +143,26 @@ input[type="submit"]:hover {
     padding: 4px 16px;
 }
 
-/* crud header and display table */
-.flexbox_container {
-    display: flex;
+/* main container for crud title and controls */
+.flexbox_main_container {
+    background-color: #4caf50;
+    position: relative;
+    width: 875px;
+    height: 50px;
+    transform: translate(50%, 175%);
+}
+
+/* container para new button and search criteria */
+.flexbox_crud_controls {
+    background-color: coral;
+    /* position: absolute;
+    left: 0%;
+    top: 100%;
+    width: 600px;
+    height: 50px; */
+    position: absolute;    
+    display: block;
+    justify-content: top;
     align-items: center;
 }
 
-.flexbox_container_button {
-    flex-direction: row-reverse;
-}
