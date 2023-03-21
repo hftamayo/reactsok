@@ -1,0 +1,16 @@
+.main-footer {
+    position: fixed;
+    top: 250;
+    left: 0;
+    width: 98%;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #490557;
+    padding: 0 2rem;
+  }
+  
+  .main-header h3 {
+    color: white;
+  }
