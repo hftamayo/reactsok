@@ -77,7 +77,7 @@ firebase v9
                 <td>{data[id].name}</td>
                 <td>{data[id].description}</td>
                 <td>{data[id].brand}</td>
-                <td>{data[id].status}</td>
+                <td>{data[id].status === '1' ? "Active" : "Inactive"}</td>
                 <td>
                   <Link to={`/edit-equipment/${id}`}>
                     <button className={classes.btn + ' ' + classes.btn_edit}>Edit</button>
