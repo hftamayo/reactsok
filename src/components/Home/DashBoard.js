@@ -57,9 +57,9 @@ function DashBoard() {
             exact
             element={
               <div>
-                  <EquipmentHeader />
-                  <br />
-                  <ViewEquipments />
+                <EquipmentHeader />
+                <br />
+                <ViewEquipments />
               </div>
             }
           />
@@ -77,6 +77,7 @@ function DashBoard() {
             element={
               <div>
                 <OsHeader />
+                <br />
                 <ViewOs />
               </div>
             }
@@ -91,6 +92,7 @@ function DashBoard() {
             element={
               <div>
                 <CategoryHeader />
+                <br />
                 <ViewCategory />
               </div>
             }
@@ -109,6 +111,7 @@ function DashBoard() {
             element={
               <div>
                 <SubCatHeader />
+                <br />
                 <ViewSubCat />
               </div>
             }
@@ -123,6 +126,7 @@ function DashBoard() {
             element={
               <div>
                 <AssetHeader />
+                <br />
                 <ViewAsset />
               </div>
             }
