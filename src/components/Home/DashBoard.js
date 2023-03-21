@@ -37,9 +37,9 @@ function DashBoard() {
       {/* <GlobalProvider> */}
       <ToolBar />
       <ToastContainer position="bottom-left" />
-        <Routes>
-          <Route path="/" element={<MainLayout />}>
-            {/* <Route
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          {/* <Route
               path="/twcategories"
               exact
               element={
@@ -52,91 +52,88 @@ function DashBoard() {
             <Route path="/add-twcategory" exact element={<AddCategory />} />
             <Route path="/edit-twcategory/:id" exact element={<EditCategory />} /> */}
 
-            <Route
-              path="/equipments"
-              exact
-              element={
-                <div className={classes.component_container}>
+          <Route
+            path="/equipments"
+            exact
+            element={
+              <div>
                   <EquipmentHeader />
+                  <br />
                   <ViewEquipments />
-                </div>
-              }
-            />
-            <Route path="/add-equipment" exact element={<FormEquipment />} />
-            <Route
-              path="/edit-equipment/:id"
-              exact
-              element={<FormEquipment />}
-            />
-            <Route
-              path="/detail-equipment/:id"
-              exact
-              element={<DetailEquipment />}
-            />
+              </div>
+            }
+          />
+          <Route path="/add-equipment" exact element={<FormEquipment />} />
+          <Route path="/edit-equipment/:id" exact element={<FormEquipment />} />
+          <Route
+            path="/detail-equipment/:id"
+            exact
+            element={<DetailEquipment />}
+          />
 
-            <Route
-              path="/oses"
-              exact
-              element={
-                <div>
-                  <OsHeader />
-                  <ViewOs />
-                </div>
-              }
-            />
-            <Route path="/add-os" exact element={<FormOs />} />
-            <Route path="/edit-os/:id" exact element={<FormOs />} />
-            <Route path="/detail-os/:id" exact element={<DetailOs />} />
+          <Route
+            path="/oses"
+            exact
+            element={
+              <div>
+                <OsHeader />
+                <ViewOs />
+              </div>
+            }
+          />
+          <Route path="/add-os" exact element={<FormOs />} />
+          <Route path="/edit-os/:id" exact element={<FormOs />} />
+          <Route path="/detail-os/:id" exact element={<DetailOs />} />
 
-            <Route
-              path="/categories"
-              exact
-              element={
-                <div>
-                  <CategoryHeader />
-                  <ViewCategory />
-                </div>
-              }
-            />
-            <Route path="/add-category" exact element={<FormCategory />} />
-            <Route path="/edit-category/:id" exact element={<FormCategory />} />
-            <Route
-              path="/detail-category/:id"
-              exact
-              element={<DetailCategory />}
-            />
+          <Route
+            path="/categories"
+            exact
+            element={
+              <div>
+                <CategoryHeader />
+                <ViewCategory />
+              </div>
+            }
+          />
+          <Route path="/add-category" exact element={<FormCategory />} />
+          <Route path="/edit-category/:id" exact element={<FormCategory />} />
+          <Route
+            path="/detail-category/:id"
+            exact
+            element={<DetailCategory />}
+          />
 
-            <Route
-              path="/subcategories"
-              exact
-              element={
-                <div>
-                  <SubCatHeader />
-                  <ViewSubCat />
-                </div>
-              }
-            />
-            <Route path="/add-subcat" exact element={<FormSubCat />} />
-            <Route path="/edit-subcat/:id" exact element={<FormSubCat />} />
-            <Route path="/detail-subcat/:id" exact element={<DetailSubCat />} />
+          <Route
+            path="/subcategories"
+            exact
+            element={
+              <div>
+                <SubCatHeader />
+                <ViewSubCat />
+              </div>
+            }
+          />
+          <Route path="/add-subcat" exact element={<FormSubCat />} />
+          <Route path="/edit-subcat/:id" exact element={<FormSubCat />} />
+          <Route path="/detail-subcat/:id" exact element={<DetailSubCat />} />
 
-            <Route
-              path="/assets"
-              exact
-              element={
-                <div>
-                  <AssetHeader />
-                  <ViewAsset />
-                </div>
-              }
-            />
-            <Route path="/add-asset" exact element={<FormAsset />} />
-            <Route path="/edit-asset/:id" exact element={<FormAsset />} />
-            <Route path="/detail-asset/:id" exact element={<DetailAsset />} />
+          <Route
+            path="/assets"
+            exact
+            element={
+              <div>
+                <AssetHeader />
+                <ViewAsset />
+              </div>
+            }
+          />
+          <Route path="/add-asset" exact element={<FormAsset />} />
+          <Route path="/edit-asset/:id" exact element={<FormAsset />} />
+          <Route path="/detail-asset/:id" exact element={<DetailAsset />} />
 
-            <Route path="/inventory" />
-          </Route>
-        </Routes>
+          <Route path="/inventory" />
+        </Route>
+      </Routes>
       {/* </GlobalProvider> */}
     </div>
   );

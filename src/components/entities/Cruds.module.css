@@ -1,8 +1,14 @@
-/* container for React Components from Dashboard */
-.component_container{
-    /* float: center; */
+/* container for React Components from Dashboard 
+the bellow methods didn't work
+TODO: remove <br /> using for separation
+*/
+/* .component_container{
     display: block;
 }
+
+.component_container_element{
+    margin: 150px 150px 150px 150px;
+} */
 
 /* Add / Update Form */
 input[type="text"],
