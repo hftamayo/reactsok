@@ -4,6 +4,7 @@ import classes from "../entities/Cruds.module.css";
 import ToolBar from "./ToolBar";
 // import GlobalProvider from "../entities/junk/mui-assets/GlobalState";
 
+
 import EquipmentHeader from "../entities/Equipments/EquipmentHeader";
 import ViewEquipments from "../entities/Equipments/ViewEquipments";
 import FormEquipment from "../entities/Equipments/FormEquipment";
