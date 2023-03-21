@@ -31,7 +31,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #77002e;
+  /* background-color: #77002e; */
   padding: 0 20%;
 }
 
@@ -50,11 +50,12 @@
 .toolbar a {
   text-decoration: none;
   font-size: 1.5rem;
-  color: #000000;
+  color: #77002e;
 }
 
 .toolbar a:hover,
 .toolbar a:active,
 .toolbar a.active {
-  color: white;
+  color: orange;
+  text-decoration: underline;
 }
