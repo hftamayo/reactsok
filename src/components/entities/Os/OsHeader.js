@@ -1,16 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import classes from "../Cruds.module.css";
 
 export const OsHeader = () => {
   return (
-    <div>
-      <div className="flex items-center mt-24 mb-10">
-        <div className="flex-grow text-left px-4 py-2 m-2">
-          <h5 className="text-gray-900 font-bold text-xl">Operating System Listing</h5>
-        </div>
-        <div className="flex-grow text-right px-4 py-2 m-2">
+    <div className={classes.flexbox_main_container}>
+      <div className={classes.flexbox_crud_controls}>
+          <span className={classes.crud_title}>Operating System Listing</span>
+        <br />
           <Link to="/add-os">
-            <button className="bg-green-400 hover:bg-green-500 text-white font-semibold py-2 px-4 rounded inline-flex items-center">
+            <button className={classes.btn + " " + classes.btn_new}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -32,7 +31,6 @@ export const OsHeader = () => {
           </Link>
         </div>
       </div>
-    </div>
   );
 };
 

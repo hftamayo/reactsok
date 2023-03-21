@@ -1,3 +1,15 @@
+/* container for React Components from Dashboard 
+the bellow methods didn't work
+TODO: remove <br /> using for separation
+*/
+/* .component_container{
+    display: block;
+}
+
+.component_container_element{
+    margin: 150px 150px 150px 150px;
+} */
+
 /* Add / Update Form */
 input[type="text"],
 input[type="email"],
@@ -26,6 +38,87 @@ input[type="submit"]{
 input[type="submit"]:hover {
     background-color: #45a049;
 }
+/* navbar */
+.navbar {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+    color: inherit;
+    text-decoration: inherit;
+    text-transform: uppercase;
+    outline: none;
+}
+
+/* main container for crud title and controls */
+.flexbox_main_container {
+    /* background-color: #4caf50; */
+    position: relative;
+    width: 875px;
+    height: 60px;
+    transform: translate(50%, 175%);
+}
+
+/* container para new button and search criteria */
+.flexbox_crud_controls {
+    /* background-color: coral; */
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 40px;
+    text-align: center;
+}
+
+.crud_title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* action buttons */
+.btn {
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 4px 2px;
+    cursor: default;
+}
+
+.btn:hover {
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn_new {
+    background-color: #4caf50;
+}
+
+.btn_edit {
+    background-color: #008cba;
+}
+
+.btn_delete {
+    background-color: #f44336;
+}
+
+.btn_view {
+    background-color: orange;
+}
 
 /* View Records */
 .styled_table {
@@ -33,7 +126,7 @@ input[type="submit"]:hover {
     margin: auto;
     font-size: 0.9em;
     font-family: sans-serif;
-    max-width: 800px;
+    max-width: 1300px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -60,32 +153,6 @@ input[type="submit"]:hover {
     border-bottom: 2px solid #009879;
 }
 
-.btn {
-    border: none;
-    color: white;
-    padding: 5px 8px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 5px;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-
-.btn_edit {
-    background-color: #008cba;
-}
-
-.btn_delete {
-    background-color: #f44336;
-}
-
-.btn_view {
-    background-color: #e7e7e7;
-    color: black;
-}
-
 /* Detail Record */
 .card{
     width: 30%;
@@ -110,3 +177,4 @@ input[type="submit"]:hover {
 .container {
     padding: 4px 16px;
 }
+

@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
-import Modal from "../UI/Modal/Modal";
+import Modal from "../../../UI/Modal/Modal";
 import classes from "./Login.module.css";
-import HeaderButton from "../UI/Buttons/HeaderButton";
-import Input from "../UI/Input/Input";
+import HeaderButton from "../../../UI/Buttons/HeaderButton";
+import Input from "../../../UI/Input/Input";
 
 const FB_KEY = process.env.SOK_FBASE_API_KEY;
 const SIGNUP_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FB_KEY}`;
