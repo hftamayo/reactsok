@@ -3,6 +3,7 @@ import Modal from "../UI/Modal/Modal";
 import classes from "./Login.module.css";
 import Input from "../UI/Input/Input";
 import HeaderButton from "../UI/Buttons/HeaderButton";
+import fireDb from "../../store/firebase";
 
 const IS_SAVING_USER = "Requesting new user creation, please wait...";
 const SAVE_USER_SUCCESS =

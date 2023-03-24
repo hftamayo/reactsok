@@ -5,6 +5,7 @@ import Input from "../UI/Input/Input";
 import HeaderButton from "../UI/Buttons/HeaderButton";
 import AuthContext from "../store/auth-context";
 import { useTranslation } from "react-i18next";
+import fireDb from "../../store/firebase";
 
 const EMAIL_PATTERN =
   /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@](?!yahoo.com)(?!outlook.com)[a-z]{3,9}[\.][a-z]{2,5}/g;
