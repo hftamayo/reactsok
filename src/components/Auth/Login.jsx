@@ -13,7 +13,7 @@ const EMAIL_PATTERN =
 const Login = (props) => {
   const { t } = useTranslation();
   const LOGIN_URL =
-    "https://movieserp-default-rtdb.firebaseio.com/subscribers.json";
+    "https://sotiria-f6005-default-rtdb.firebaseio.com/subscribers.json";
 
   const IS_VALIDATING = t('loginFormErrors.is_validating');
   const INVALID_CREDS = t('loginFormErrors.invalid_creds');

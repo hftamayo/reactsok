@@ -12,7 +12,8 @@ const SAVE_USER_ERROR = "An unexpected error has been occured, Please verify";
 
 const SignUp = (props) => {
   const SIGNUP_URL =
-    "https://movieserp-default-rtdb.firebaseio.com/subscribers.json";
+    "https://sotiria-f6005-default-rtdb.firebaseio.com/subscribers.json";
+    
 
   const [firstNameValue, setFirstNameValue] = useState("");
   const [lastNameValue, setLastNameValue] = useState("");
