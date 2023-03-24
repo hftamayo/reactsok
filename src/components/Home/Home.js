@@ -14,7 +14,9 @@ const Home = (props) => {
           <DashBoard />
         </DashboardLayout>
       ) : (
-        <GeneralInfo />
+        <DashboardLayout>
+          <GeneralInfo />
+        </DashboardLayout>
       )}
     </Fragment>
   );

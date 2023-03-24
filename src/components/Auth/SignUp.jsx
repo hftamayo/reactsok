@@ -3,6 +3,7 @@ import Modal from "../UI/Modal/Modal";
 import classes from "./Login.module.css";
 import Input from "../UI/Input/Input";
 import HeaderButton from "../UI/Buttons/HeaderButton";
+import fireDb from "../store/firebase";
 
 const IS_SAVING_USER = "Requesting new user creation, please wait...";
 const SAVE_USER_SUCCESS =
@@ -11,7 +12,8 @@ const SAVE_USER_ERROR = "An unexpected error has been occured, Please verify";
 
 const SignUp = (props) => {
   const SIGNUP_URL =
-    "https://movieserp-default-rtdb.firebaseio.com/subscribers.json";
+    "https://sotiria-f6005-default-rtdb.firebaseio.com/subscribers.json";
+    
 
   const [firstNameValue, setFirstNameValue] = useState("");
   const [lastNameValue, setLastNameValue] = useState("");
