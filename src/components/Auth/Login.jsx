@@ -49,34 +49,34 @@ const Login = (props) => {
 
   const validateFields = (fieldName) => {
     if (fieldName === "email") {
-      console.log("validating email");
+      // console.log("validating email");
       if (emailValue.trim() !== "") {
         let pattern = EMAIL_PATTERN.test(emailValue);
         if (pattern) {
-          console.log("input email has succedded the 2 levels of validation");
+          // console.log("input email has succedded the 2 levels of validation");
           setEnteredEmailValidation(true);
           return 1;
         } else {
-          console.log("invalid email pattern");
+          // console.log("invalid email pattern");
           setEnteredEmailValidation(false);
           setDisplayEmailErrorMessage(INVALID_EMAIL);
           return 0;
         }
       } else {
-        console.log("blank email");
+        // console.log("blank email");
         setEnteredEmailValidation(false);
         setDisplayEmailErrorMessage(EMPTY_FIELD);
         return 0;
       }
     }
     if (fieldName === "password") {
-      console.log("validating password");
+      // console.log("validating password");
       if (passwordValue.trim() !== "") {
-        console.log("input passwod is valid");
+        // console.log("input passwod is valid");
         setEnteredPasswordValidation(true);
         return 1;
       } else {
-        console.log("invalid password");
+        // console.log("invalid password");
         setEnteredPasswordValidation(false);
         setDisplayPasswordErrorMessage(EMPTY_FIELD);
         return 0;
